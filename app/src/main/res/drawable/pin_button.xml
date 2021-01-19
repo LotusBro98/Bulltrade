@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/pin_btn_bg" />
+    <corners android:bottomRightRadius="@dimen/pin_button_size"
+        android:bottomLeftRadius="@dimen/pin_button_size"
+        android:topRightRadius="@dimen/pin_button_size"
+        android:topLeftRadius="@dimen/pin_button_size"/>
+</shape>
