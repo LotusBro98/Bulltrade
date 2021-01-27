@@ -4,19 +4,280 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".navigation.home.HomeFragment">
+    tools:context=".navigation.home.HomeFragment"
+    android:background="#2B456B">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
+    <com.bullcoin.app.layout.WrapHeightViewPager
+        android:id="@+id/card_pager"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.bullcoin.app.layout.WrapHeightViewPager>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/card_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#3D6CB1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_pager"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="#1C355A"
+        app:tabIndicatorHeight="5dp"
+        app:tabMode="fixed">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:fillViewport="true"
+        android:requiresFadingEdge="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/card_tabs">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|center_vertical">
+
+                        <Button
+                            android:id="@+id/button43"
+                            android:layout_width="@dimen/main_screen_btn_width"
+                            android:layout_height="@dimen/main_screen_btn_height"
+                            android:fontFamily="@font/poppins_bold"
+                            android:foregroundGravity="center"
+                            android:gravity="bottom|left"
+                            android:insetLeft="@dimen/main_screen_btn_margin"
+                            android:insetRight="@dimen/main_screen_btn_margin"
+                            android:text="Bullbank"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="13sp"
+                            app:backgroundTint="#436EAD"
+                            app:cornerRadius="21dp" />
+
+                        <Button
+                            android:id="@+id/button44"
+                            android:layout_width="@dimen/main_screen_btn_width"
+                            android:layout_height="@dimen/main_screen_btn_height"
+                            android:fontFamily="@font/poppins_bold"
+                            android:foreground="@drawable/ic_bullbank"
+                            android:foregroundGravity="center"
+                            android:gravity="bottom|left"
+                            android:insetLeft="@dimen/main_screen_btn_margin"
+                            android:insetRight="@dimen/main_screen_btn_margin"
+                            android:text="Bullbank"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="13sp"
+                            app:backgroundTint="#436EAD"
+                            app:cornerRadius="21dp" />
+
+                        <Button
+                            android:id="@+id/button45"
+                            android:layout_width="@dimen/main_screen_btn_width"
+                            android:layout_height="@dimen/main_screen_btn_height"
+                            android:fontFamily="@font/poppins_bold"
+                            android:foreground="@drawable/ic_bullbank"
+                            android:foregroundGravity="center"
+                            android:gravity="bottom|left"
+                            android:insetLeft="@dimen/main_screen_btn_margin"
+                            android:insetRight="@dimen/main_screen_btn_margin"
+                            android:text="Bullbank"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="13sp"
+                            app:backgroundTint="#436EAD"
+                            app:cornerRadius="21dp" />
+
+                        <Button
+                            android:id="@+id/button46"
+                            android:layout_width="@dimen/main_screen_btn_width"
+                            android:layout_height="@dimen/main_screen_btn_height"
+                            android:fontFamily="@font/poppins_bold"
+                            android:foreground="@drawable/ic_bullbank"
+                            android:foregroundGravity="center"
+                            android:gravity="bottom|left"
+                            android:insetLeft="@dimen/main_screen_btn_margin"
+                            android:insetRight="@dimen/main_screen_btn_margin"
+                            android:text="Bullbank"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="13sp"
+                            app:backgroundTint="#436EAD"
+                            app:cornerRadius="21dp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/button24"
+                            android:layout_width="@dimen/main_screen_btn_width"
+                            android:layout_height="@dimen/main_screen_btn_height"
+                            android:fontFamily="@font/poppins_bold"
+                            android:foreground="@drawable/ic_bullbank"
+                            android:foregroundGravity="center"
+                            android:gravity="bottom|left"
+                            android:insetLeft="@dimen/main_screen_btn_margin"
+                            android:insetRight="@dimen/main_screen_btn_margin"
+                            android:text="Bullbank"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="13sp"
+                            app:backgroundTint="#436EAD"
+                            app:cornerRadius="21dp" />
+
+                        <Button
+                            android:id="@+id/button41"
+                            android:layout_width="@dimen/main_screen_btn_width"
+                            android:layout_height="@dimen/main_screen_btn_height"
+                            android:fontFamily="@font/poppins_bold"
+                            android:foreground="@drawable/ic_bullbank"
+                            android:foregroundGravity="center"
+                            android:gravity="bottom|left"
+                            android:insetLeft="@dimen/main_screen_btn_margin"
+                            android:insetRight="@dimen/main_screen_btn_margin"
+                            android:text="Bullbank"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="13sp"
+                            app:backgroundTint="#436EAD"
+                            app:cornerRadius="21dp" />
+
+                        <Button
+                            android:id="@+id/button42"
+                            android:layout_width="@dimen/main_screen_btn_width"
+                            android:layout_height="@dimen/main_screen_btn_height"
+                            android:fontFamily="@font/poppins_bold"
+                            android:foreground="@drawable/ic_bullbank"
+                            android:foregroundGravity="center"
+                            android:gravity="bottom|left"
+                            android:insetLeft="@dimen/main_screen_btn_margin"
+                            android:insetRight="@dimen/main_screen_btn_margin"
+                            android:text="Bullbank"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="13sp"
+                            app:backgroundTint="#436EAD"
+                            app:cornerRadius="21dp" />
+
+                        <Button
+                            android:id="@+id/button47"
+                            android:layout_width="@dimen/main_screen_btn_width"
+                            android:layout_height="@dimen/main_screen_btn_height"
+                            android:fontFamily="@font/poppins_bold"
+                            android:foreground="@drawable/ic_bullbank"
+                            android:foregroundGravity="center"
+                            android:gravity="bottom|left"
+                            android:insetLeft="@dimen/main_screen_btn_margin"
+                            android:insetRight="@dimen/main_screen_btn_margin"
+                            android:text="Bullbank"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="13sp"
+                            app:backgroundTint="#436EAD"
+                            app:cornerRadius="21dp" />
+
+                    </TableRow>
+
+                </TableLayout>
+            </HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/main_screen_tab_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/main_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/tab_bg_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
+                app:tabIconTint="@null"
+                app:tabIndicator="@drawable/tab_ind_2"
+                app:tabIndicatorColor="#1E385B"
+                app:tabIndicatorFullWidth="true"
+                app:tabIndicatorGravity="center"
+                app:tabIndicatorHeight="27dp"
+                app:tabInlineLabel="true"
+                app:tabRippleColor="@null"
+                app:tabSelectedTextColor="#C9DBE8"
+                app:tabTextAppearance="@style/mainTabTextStyle"
+                app:tabTextColor="#C9DBE8">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wallet" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="News" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bookmarks" />
+            </com.google.android.material.tabs.TabLayout>
+
+            <com.bullcoin.app.layout.WrapHeightViewPager
+                android:id="@+id/main_tab_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#1E385B"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_tabs" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

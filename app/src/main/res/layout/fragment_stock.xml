@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".navigation.stock.StockFragment">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="#1E385B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:translationZ="10dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/stock_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#1E385B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:tabIconTint="@null"
+        app:tabIndicator="@drawable/tab_ind_2"
+        app:tabIndicatorColor="#2B456B"
+        app:tabIndicatorFullWidth="true"
+        app:tabIndicatorGravity="center"
+        app:tabIndicatorHeight="27dp"
+        app:tabInlineLabel="true"
+        app:tabRippleColor="@null"
+        app:tabSelectedTextColor="#C9DBE8"
+        app:tabTextAppearance="@style/mainTabTextStyle"
+        android:translationZ="10dp"
+        android:outlineProvider="bounds"
+        app:tabTextColor="#C9DBE8">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ideas" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stock" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Share" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crypt" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/stock_tabs_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#2B456B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stock_tabs">
+
+    </androidx.viewpager.widget.ViewPager>
+</androidx.constraintlayout.widget.ConstraintLayout>

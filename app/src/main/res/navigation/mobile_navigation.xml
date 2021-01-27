@@ -12,14 +12,20 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.bullcoin.app.navigation.dashboard.DashboardFragment"
+        android:id="@+id/navigation_stock"
+        android:name="com.bullcoin.app.navigation.stock.StockFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_stock" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.bullcoin.app.navigation.notifications.NotificationsFragment"
+        android:id="@+id/navigation_chat"
+        android:name="com.bullcoin.app.navigation.chat.ChatFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_chat" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.bullcoin.app.navigation.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

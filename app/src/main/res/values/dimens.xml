@@ -4,4 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="pin_button_size">44dp</dimen>
     <dimen name="pin_chip_size">16dp</dimen>
+    <dimen name="main_screen_btn_margin">6dp</dimen>
+    <dimen name="main_screen_btn_width">127dp</dimen>
+    <dimen name="main_screen_btn_height">122dp</dimen>
 </resources>

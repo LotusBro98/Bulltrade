@@ -33,7 +33,9 @@ public class PinLoginActivity extends PinActivity {
     @Override
     public void onPinEnter(String pin) {
         if (checkPin(pin)) {
-            Toast.makeText(this, "SUCCESS", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(PinLoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         } else {
             vibrate(50);
         }

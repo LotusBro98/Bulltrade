@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">BULLTRADE</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Wallet</string>
+    <string name="title_dashboard">Stock</string>
+    <string name="title_notifications">Chat</string>
+    <string name="title_profile">Profile</string>
 
     <string-array name="languages">
         <item>English</item>
