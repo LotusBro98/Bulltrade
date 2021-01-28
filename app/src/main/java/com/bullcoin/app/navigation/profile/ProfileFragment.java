@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,6 +37,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(getActivity(), ("You clicked on row number " + position), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ImageButton settingsButton = root.findViewById(R.id.settings_button);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(root).navigate(R.id.action_navigation_profile_to_settingsFragment);
             }
         });
 

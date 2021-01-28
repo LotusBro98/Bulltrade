@@ -31,9 +31,25 @@
         android:id="@+id/navigation_profile"
         android:name="com.bullcoin.app.navigation.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/chatDialogueFragment2"
         android:name="com.bullcoin.app.navigation.chat.ChatDialogueFragment"
         android:label="ChatDialogueFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.bullcoin.app.navigation.profile.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_languageFragment"
+            app:destination="@id/languageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.bullcoin.app.navigation.profile.LanguageFragment"
+        android:label="LanguageFragment" />
 </navigation>

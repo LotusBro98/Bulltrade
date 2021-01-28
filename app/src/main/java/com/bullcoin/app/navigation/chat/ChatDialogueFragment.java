@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,14 +62,27 @@ public class ChatDialogueFragment extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
-                BottomNavigationView nav_view = getActivity().findViewById(R.id.nav_view);
-                nav_view.setVisibility(View.VISIBLE);
-                Navigation.findNavController(root).navigateUp();
+                retutnBack();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
 
+        ImageButton backButton = root.findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                retutnBack();
+            }
+        });
+
         return root;
+    }
+
+    public void retutnBack() {
+        BottomNavigationView nav_view = getActivity().findViewById(R.id.nav_view);
+        nav_view.setVisibility(View.VISIBLE);
+        Navigation.findNavController(getView()).navigateUp();
     }
 
 
