@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="32dp"
+                android:paddingTop="26dp"
+                android:paddingRight="32dp"
+                android:paddingBottom="26dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="218dp"
+                    android:layout_height="79dp"
+                    android:background="@drawable/idea_grad_bg">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Buy BullCoin"
+                        android:textColor="#C9DBE8"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="From 0,10 $"
+                        android:textColor=" #60B8F8"
+                        android:textSize="6sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="41dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Up to 3.5%"
+                        android:textColor="#C9DBE8"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView10"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_bull_small" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="218dp"
+                    android:layout_height="79dp"
+                    android:layout_marginLeft="21dp"
+                    android:background="@drawable/idea_grad_bg">
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="146dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins"
+                        android:lineSpacingExtra="-4sp"
+                        android:text="Connect a ready-made portfolio"
+                        android:textColor="#C9DBE8"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="Free"
+                        android:textColor=" #60B8F8"
+                        android:textSize="8sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="474,98$"
+                        android:textColor="#EFE1E1"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:requiresFadingEdge="vertical"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="48dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Pay attention"
+                    android:textColor="#C9DBE8"
+                    android:textSize="18sp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="32dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:cardBackgroundColor="#5982B8"
+                            app:cardCornerRadius="25dp"
+                            app:cardElevation="0dp">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView12"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginTop="12dp"
+                                    android:contentDescription="TODO"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView23"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+                                    app:layout_constraintEnd_toStartOf="@+id/divider2"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView12"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView12" />
+
+                                <ImageView
+                                    android:id="@+id/imageView13"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginTop="9dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView12"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView24"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Sohu"
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView13"
+                                    app:layout_constraintEnd_toStartOf="@+id/divider2"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView13"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView13" />
+
+                                <ImageView
+                                    android:id="@+id/imageView14"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginTop="9dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView13"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView25"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+                                    app:layout_constraintEnd_toStartOf="@+id/divider2"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView14"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView14" />
+
+                                <ImageView
+                                    android:id="@+id/imageView15"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginTop="9dp"
+                                    android:layout_marginBottom="22dp"
+                                    android:contentDescription="TODO"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView14"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView26"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView15"
+                                    app:layout_constraintEnd_toStartOf="@+id/divider2"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView15"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+                                <View
+                                    android:id="@+id/divider2"
+                                    android:layout_width="1dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:background="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <ImageView
+                                    android:id="@+id/imageView16"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="12dp"
+                                    app:layout_constraintStart_toEndOf="@+id/divider2"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView27"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginEnd="11dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView16"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView16"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView16" />
+
+                                <ImageView
+                                    android:id="@+id/imageView17"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="9dp"
+                                    app:layout_constraintStart_toEndOf="@+id/divider2"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView16"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView28"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginEnd="11dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView17"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView17"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView17" />
+
+                                <ImageView
+                                    android:id="@+id/imageView18"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="9dp"
+                                    app:layout_constraintStart_toEndOf="@+id/divider2"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView17"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView29"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginEnd="11dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView18"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView18"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView18" />
+
+                                <ImageView
+                                    android:id="@+id/imageView19"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="9dp"
+                                    app:layout_constraintStart_toEndOf="@+id/divider2"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView18"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView30"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginEnd="11dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView19"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView19"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView19" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            app:cardBackgroundColor="#5982B8"
+                            app:cardCornerRadius="25dp"
+                            app:cardElevation="0dp">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageView121"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginTop="12dp"
+                                    android:contentDescription="TODO"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView231"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView121"
+                                    app:layout_constraintEnd_toStartOf="@+id/divider21"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView121"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView121" />
+
+                                <ImageView
+                                    android:id="@+id/imageView131"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginTop="9dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView121"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView241"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Sohu"
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView131"
+                                    app:layout_constraintEnd_toStartOf="@+id/divider21"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView131"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView131" />
+
+                                <ImageView
+                                    android:id="@+id/imageView141"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginTop="9dp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView131"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView251"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView141"
+                                    app:layout_constraintEnd_toStartOf="@+id/divider21"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView141"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView141" />
+
+                                <ImageView
+                                    android:id="@+id/imageView151"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginTop="9dp"
+                                    android:layout_marginBottom="22dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView141"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView261"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView151"
+                                    app:layout_constraintEnd_toStartOf="@+id/divider21"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView151"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView151" />
+
+                                <View
+                                    android:id="@+id/divider21"
+                                    android:layout_width="1dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:background="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <ImageView
+                                    android:id="@+id/imageView161"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="12dp"
+                                    app:layout_constraintStart_toEndOf="@+id/divider21"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView271"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginEnd="11dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView161"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView161"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView161" />
+
+                                <ImageView
+                                    android:id="@+id/imageView171"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="9dp"
+                                    app:layout_constraintStart_toEndOf="@+id/divider21"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView161"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView281"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginEnd="11dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView171"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView171"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView171" />
+
+                                <ImageView
+                                    android:id="@+id/imageView181"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="9dp"
+                                    app:layout_constraintStart_toEndOf="@+id/divider21"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView171"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView291"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginEnd="11dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView181"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView181"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView181" />
+
+                                <ImageView
+                                    android:id="@+id/imageView191"
+                                    android:layout_width="45dp"
+                                    android:layout_height="45dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="9dp"
+                                    app:layout_constraintStart_toEndOf="@+id/divider21"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView181"
+                                    app:srcCompat="@drawable/ic_apple" />
+
+                                <TextView
+                                    android:id="@+id/textView301"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:layout_marginEnd="11dp"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="Apple Inc."
+                                    android:textColor="#C9DBE8"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView191"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/imageView191"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView191" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    android:paddingBottom="32dp">
+
+                    <TextView
+                        android:id="@+id/textView31"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="Exchange of currency"
+                        android:textColor="#C9DBE8"
+                        android:textSize="18sp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="83dp"
+                        app:cardBackgroundColor="#5982B8"
+                        app:cardCornerRadius="25dp"
+                        app:cardElevation="0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView20"
+                                android:layout_width="45dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/ic_america" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="USD"
+                                android:textColor="#C9DBE8"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/imageView20"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="0,84€"
+                                android:textColor="#EFE1E1"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="83dp"
+                        android:layout_marginTop="16dp"
+                        app:cardBackgroundColor="#5982B8"
+                        app:cardCornerRadius="25dp"
+                        app:cardElevation="0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView21"
+                                android:layout_width="45dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/ic_america" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="USD"
+                                android:textColor="#C9DBE8"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/imageView21"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="0,84€"
+                                android:textColor="#EFE1E1"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="83dp"
+                        android:layout_marginTop="16dp"
+                        app:cardBackgroundColor="#5982B8"
+                        app:cardCornerRadius="25dp"
+                        app:cardElevation="0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView22"
+                                android:layout_width="45dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/ic_america" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="USD"
+                                android:textColor="#C9DBE8"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/imageView22"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="0,84€"
+                                android:textColor="#EFE1E1"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="83dp"
+                        android:layout_marginTop="16dp"
+                        app:cardBackgroundColor="#5982B8"
+                        app:cardCornerRadius="25dp"
+                        app:cardElevation="0dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageView23"
+                                android:layout_width="45dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/ic_america" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:fontFamily="@font/poppins_bold"
+                                android:text="USD"
+                                android:textColor="#C9DBE8"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/imageView23"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="0,84€"
+                                android:textColor="#EFE1E1"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

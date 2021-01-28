@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bullcoin.app.R;
+import com.bullcoin.app.stocktabs.IdeasFragment;
 import com.bullcoin.app.stocktabs.StockStockFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -49,7 +50,7 @@ public class StockFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new StockStockFragment();
+                    return new IdeasFragment();
                 case 1:
                     return new StockStockFragment();
                 case 2:

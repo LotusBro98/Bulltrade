@@ -12,8 +12,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="32dp"
-        android:background="?android:attr/listDivider"
-        android:foreground="#90C7EF"
+        android:background="#90C7EF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
