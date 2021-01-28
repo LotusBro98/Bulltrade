@@ -31,13 +31,15 @@ public class PinLoginActivity extends PinActivity {
     }
 
     @Override
-    public void onPinEnter(String pin) {
+    public boolean onPinEnter(String pin) {
         if (checkPin(pin)) {
             Intent intent = new Intent(PinLoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
+            return false;
         } else {
             vibrate(50);
+            return true;
         }
     }
 }

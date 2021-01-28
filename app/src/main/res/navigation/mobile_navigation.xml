@@ -21,11 +21,19 @@
         android:id="@+id/navigation_chat"
         android:name="com.bullcoin.app.navigation.chat.ChatFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_navigation_chat_to_chatDialogueFragment2"
+            app:destination="@id/chatDialogueFragment2" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.bullcoin.app.navigation.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/chatDialogueFragment2"
+        android:name="com.bullcoin.app.navigation.chat.ChatDialogueFragment"
+        android:label="ChatDialogueFragment" />
 </navigation>

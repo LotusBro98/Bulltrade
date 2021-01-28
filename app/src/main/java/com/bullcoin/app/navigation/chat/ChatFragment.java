@@ -13,12 +13,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bullcoin.app.R;
 import com.bullcoin.app.maintabs.WalletFragment;
 import com.bullcoin.app.stocktabs.StockStockFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +44,9 @@ public class ChatFragment extends Fragment {
         adapter.setClickListener(new ChatFriendsRecyclerViewAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(getActivity(), ("You clicked on row number " + position), Toast.LENGTH_SHORT).show();
+                BottomNavigationView nav_view = getActivity().findViewById(R.id.nav_view);
+                nav_view.setVisibility(View.GONE);
+                Navigation.findNavController(view).navigate(R.id.action_navigation_chat_to_chatDialogueFragment2);
             }
         });
 

@@ -33,23 +33,25 @@ public class PinCreateActivity extends PinActivity {
     }
 
     @Override
-    public void onPinEnter(String pin) {
+    public boolean onPinEnter(String pin) {
         if (this.pin == null) {
             this.pin = pin;
             messageText.setText("Repeat");
+            return true;
         } else {
             if (!this.pin.equals(pin)) {
                 vibrate(50);
                 Toast.makeText(this, "Pins doesn't match", Toast.LENGTH_LONG).show();
                 messageText.setText("Create a pin");
                 this.pin = null;
-                return;
+                return true;
             }
 
             savePin(pin);
             Intent intent = new Intent(PinCreateActivity.this, PinLoginActivity.class);
             startActivity(intent);
             finish();
+            return false;
         }
     }
 }

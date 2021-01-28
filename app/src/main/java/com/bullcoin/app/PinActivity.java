@@ -43,7 +43,7 @@ public abstract class PinActivity extends AppCompatActivity {
         };
     }
 
-    public abstract void onPinEnter(String pin);
+    public abstract boolean onPinEnter(String pin);
 
     protected void vibrate(int millis) {
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -69,11 +69,19 @@ public abstract class PinActivity extends AppCompatActivity {
         digits[enter_i] = digit;
         enter_i++;
         if (enter_i == 4) {
-            onPinEnter(collectPin());
-            enter_i = 0;
+            boolean clear = onPinEnter(collectPin());
+            if (clear) {
+                enter_i = 0;
+                renderPin();
+            } else {
+                renderPin();
+                enter_i = 0;
+            }
+        } else {
+            renderPin();
         }
 
-        renderPin();
+
     }
 
     private void renderPin() {
