@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".navigation.home.HomeFragment"
-    android:background="#2B456B">
+    android:background="#2B456B"
+    tools:context=".navigation.home.HomeFragment">
 
     <com.bullcoin.app.layout.WrapHeightViewPager
         android:id="@+id/card_pager"
@@ -81,138 +81,389 @@
                         android:layout_height="wrap_content"
                         android:gravity="center|center_vertical">
 
-                        <Button
-                            android:id="@+id/button43"
-                            android:layout_width="@dimen/main_screen_btn_width"
-                            android:layout_height="@dimen/main_screen_btn_height"
-                            android:fontFamily="@font/poppins_bold"
-                            android:foregroundGravity="center"
-                            android:gravity="bottom|left"
-                            android:insetLeft="@dimen/main_screen_btn_margin"
-                            android:insetRight="@dimen/main_screen_btn_margin"
-                            android:text="Bullbank"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textSize="13sp"
-                            app:backgroundTint="#436EAD"
-                            app:cornerRadius="21dp" />
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="#00ffffff"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
 
-                        <Button
-                            android:id="@+id/button44"
-                            android:layout_width="@dimen/main_screen_btn_width"
-                            android:layout_height="@dimen/main_screen_btn_height"
-                            android:fontFamily="@font/poppins_bold"
-                            android:foreground="@drawable/ic_bullbank"
-                            android:foregroundGravity="center"
-                            android:gravity="bottom|left"
-                            android:insetLeft="@dimen/main_screen_btn_margin"
-                            android:insetRight="@dimen/main_screen_btn_margin"
-                            android:text="Bullbank"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textSize="13sp"
-                            app:backgroundTint="#436EAD"
-                            app:cornerRadius="21dp" />
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="@dimen/main_screen_btn_size"
+                                android:layout_height="@dimen/main_screen_btn_size">
 
-                        <Button
-                            android:id="@+id/button45"
-                            android:layout_width="@dimen/main_screen_btn_width"
-                            android:layout_height="@dimen/main_screen_btn_height"
-                            android:fontFamily="@font/poppins_bold"
-                            android:foreground="@drawable/ic_bullbank"
-                            android:foregroundGravity="center"
-                            android:gravity="bottom|left"
-                            android:insetLeft="@dimen/main_screen_btn_margin"
-                            android:insetRight="@dimen/main_screen_btn_margin"
-                            android:text="Bullbank"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textSize="13sp"
-                            app:backgroundTint="#436EAD"
-                            app:cornerRadius="21dp" />
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_bullbank" />
 
-                        <Button
-                            android:id="@+id/button46"
-                            android:layout_width="@dimen/main_screen_btn_width"
-                            android:layout_height="@dimen/main_screen_btn_height"
-                            android:fontFamily="@font/poppins_bold"
-                            android:foreground="@drawable/ic_bullbank"
-                            android:foregroundGravity="center"
-                            android:gravity="bottom|left"
-                            android:insetLeft="@dimen/main_screen_btn_margin"
-                            android:insetRight="@dimen/main_screen_btn_margin"
-                            android:text="Bullbank"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textSize="13sp"
-                            app:backgroundTint="#436EAD"
-                            app:cornerRadius="21dp" />
+                                <Button
+                                    style="@style/Widget.AppCompat.Button.Borderless"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:foregroundGravity="center"
+                                    android:gravity="bottom|left"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:text="Bullbank"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textSize="13sp"
+                                    app:backgroundTint="#00000000"
+                                    app:elevation="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="#00ffffff"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="@dimen/main_screen_btn_size"
+                                android:layout_height="@dimen/main_screen_btn_size">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_stock" />
+
+                                <Button
+                                    style="@style/Widget.AppCompat.Button.Borderless"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:foregroundGravity="center"
+                                    android:gravity="bottom|left"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:text="Stock"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textSize="13sp"
+                                    app:backgroundTint="#00000000"
+                                    app:elevation="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="#00ffffff"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="@dimen/main_screen_btn_size"
+                                android:layout_height="@dimen/main_screen_btn_size">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_crypto" />
+
+                                <Button
+                                    style="@style/Widget.AppCompat.Button.Borderless"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:foregroundGravity="center"
+                                    android:gravity="bottom|left"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:text="Crypto"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textSize="13sp"
+                                    app:backgroundTint="#00000000"
+                                    app:elevation="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="#00ffffff"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="@dimen/main_screen_btn_size"
+                                android:layout_height="@dimen/main_screen_btn_size">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/assistant" />
+
+                                <Button
+                                    style="@style/Widget.AppCompat.Button.Borderless"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:foregroundGravity="center"
+                                    android:gravity="bottom|left"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:text="Trading Assistant"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textSize="13sp"
+                                    app:backgroundTint="#00000000"
+                                    app:elevation="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
                     </TableRow>
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="-8dp">
 
-                        <Button
-                            android:id="@+id/button24"
-                            android:layout_width="@dimen/main_screen_btn_width"
-                            android:layout_height="@dimen/main_screen_btn_height"
-                            android:fontFamily="@font/poppins_bold"
-                            android:foreground="@drawable/ic_bullbank"
-                            android:foregroundGravity="center"
-                            android:gravity="bottom|left"
-                            android:insetLeft="@dimen/main_screen_btn_margin"
-                            android:insetRight="@dimen/main_screen_btn_margin"
-                            android:text="Bullbank"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textSize="13sp"
-                            app:backgroundTint="#436EAD"
-                            app:cornerRadius="21dp" />
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-2dp"
+                            app:cardBackgroundColor="#00ffffff"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
 
-                        <Button
-                            android:id="@+id/button41"
-                            android:layout_width="@dimen/main_screen_btn_width"
-                            android:layout_height="@dimen/main_screen_btn_height"
-                            android:fontFamily="@font/poppins_bold"
-                            android:foreground="@drawable/ic_bullbank"
-                            android:foregroundGravity="center"
-                            android:gravity="bottom|left"
-                            android:insetLeft="@dimen/main_screen_btn_margin"
-                            android:insetRight="@dimen/main_screen_btn_margin"
-                            android:text="Bullbank"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textSize="13sp"
-                            app:backgroundTint="#436EAD"
-                            app:cornerRadius="21dp" />
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="@dimen/main_screen_btn_size"
+                                android:layout_height="@dimen/main_screen_btn_size">
 
-                        <Button
-                            android:id="@+id/button42"
-                            android:layout_width="@dimen/main_screen_btn_width"
-                            android:layout_height="@dimen/main_screen_btn_height"
-                            android:fontFamily="@font/poppins_bold"
-                            android:foreground="@drawable/ic_bullbank"
-                            android:foregroundGravity="center"
-                            android:gravity="bottom|left"
-                            android:insetLeft="@dimen/main_screen_btn_margin"
-                            android:insetRight="@dimen/main_screen_btn_margin"
-                            android:text="Bullbank"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textSize="13sp"
-                            app:backgroundTint="#436EAD"
-                            app:cornerRadius="21dp" />
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/save_trees" />
 
-                        <Button
-                            android:id="@+id/button47"
-                            android:layout_width="@dimen/main_screen_btn_width"
-                            android:layout_height="@dimen/main_screen_btn_height"
-                            android:fontFamily="@font/poppins_bold"
-                            android:foreground="@drawable/ic_bullbank"
-                            android:foregroundGravity="center"
-                            android:gravity="bottom|left"
-                            android:insetLeft="@dimen/main_screen_btn_margin"
-                            android:insetRight="@dimen/main_screen_btn_margin"
-                            android:text="Bullbank"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                            android:textSize="13sp"
-                            app:backgroundTint="#436EAD"
-                            app:cornerRadius="21dp" />
+                                <Button
+                                    style="@style/Widget.AppCompat.Button.Borderless"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:foregroundGravity="center"
+                                    android:gravity="bottom|left"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:text="Save trees\u00A0- breath of Earth"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textSize="13sp"
+                                    app:backgroundTint="#00000000"
+                                    app:elevation="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="#00ffffff"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="@dimen/main_screen_btn_size"
+                                android:layout_height="@dimen/main_screen_btn_size">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_collect_friends" />
+
+                                <Button
+                                    style="@style/Widget.AppCompat.Button.Borderless"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:foregroundGravity="center"
+                                    android:gravity="bottom|left"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:text="Collect friends - get Money"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textSize="13sp"
+                                    app:backgroundTint="#00000000"
+                                    app:elevation="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="#00ffffff"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="@dimen/main_screen_btn_size"
+                                android:layout_height="@dimen/main_screen_btn_size">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/ic_earn_money" />
+
+                                <Button
+                                    style="@style/Widget.AppCompat.Button.Borderless"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:foregroundGravity="center"
+                                    android:gravity="bottom|left"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:text="Earn Money"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textSize="13sp"
+                                    app:backgroundTint="#00000000"
+                                    app:elevation="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardBackgroundColor="#00ffffff"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="@dimen/main_screen_btn_size"
+                                android:layout_height="@dimen/main_screen_btn_size">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@drawable/bullshop" />
+
+                                <Button
+                                    style="@style/Widget.AppCompat.Button.Borderless"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:foregroundGravity="center"
+                                    android:gravity="bottom|left"
+                                    android:insetLeft="0dp"
+                                    android:insetTop="0dp"
+                                    android:insetRight="0dp"
+                                    android:insetBottom="0dp"
+                                    android:text="BullShop"
+                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                                    android:textSize="13sp"
+                                    app:backgroundTint="#00000000"
+                                    app:elevation="0dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.cardview.widget.CardView>
                     </TableRow>
 
                 </TableLayout>

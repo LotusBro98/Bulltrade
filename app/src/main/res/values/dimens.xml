@@ -7,5 +7,6 @@
     <dimen name="main_screen_btn_margin">6dp</dimen>
     <dimen name="main_screen_btn_width">127dp</dimen>
     <dimen name="main_screen_btn_height">122dp</dimen>
+    <dimen name="main_screen_btn_size">115dp</dimen>
     <dimen name="settings_button_height">60dp</dimen>
 </resources>
