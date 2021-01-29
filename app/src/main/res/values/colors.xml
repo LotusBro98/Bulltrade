@@ -10,4 +10,5 @@
 
     <color name="back_blue">#112643</color>
     <color name="pin_btn_bg">#99A9A9A9</color>
+    <color name="Text_color_red">#EFE1E1</color>
 </resources>
