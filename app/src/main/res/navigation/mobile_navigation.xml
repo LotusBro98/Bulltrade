@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.bullcoin.app.navigation.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_selectCardFragment"
+            app:destination="@id/selectCardFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_stock"
@@ -52,4 +56,35 @@
         android:id="@+id/languageFragment"
         android:name="com.bullcoin.app.navigation.profile.LanguageFragment"
         android:label="LanguageFragment" />
+    <fragment
+        android:id="@+id/selectCardFragment"
+        android:name="com.bullcoin.app.cards.SelectCardFragment"
+        android:label="SelectCardFragment" >
+        <action
+            android:id="@+id/action_selectCardFragment_to_addCardFragment"
+            app:destination="@id/addCardFragment" />
+        <action
+            android:id="@+id/action_selectCardFragment_to_cardMenuFragment"
+            app:destination="@id/cardMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCardFragment"
+        android:name="com.bullcoin.app.cards.AddCardFragment"
+        android:label="AddCardFragment" >
+        <action
+            android:id="@+id/action_addCardFragment_to_bullcardFragment"
+            app:destination="@id/bullcardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bullcardFragment"
+        android:name="com.bullcoin.app.cards.BullcardFragment"
+        android:label="BullcardFragment" >
+        <action
+            android:id="@+id/action_bullcardFragment_to_selectCardFragment2"
+            app:destination="@id/selectCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardMenuFragment"
+        android:name="com.bullcoin.app.cards.CardMenuFragment"
+        android:label="CardMenuFragment" />
 </navigation>

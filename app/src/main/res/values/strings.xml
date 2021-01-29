@@ -4,6 +4,8 @@
     <string name="title_dashboard">Stock</string>
     <string name="title_notifications">Chat</string>
     <string name="title_profile">Profile</string>
+    <string name="user_agreement"><u>User Agreement</u></string>
+    <string name="agb"><u>AGB</u></string>
 
     <string-array name="languages">
         <item>English</item>

@@ -28,7 +28,7 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center|center_horizontal|center_vertical"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_card4"
+                app:srcCompat="@drawable/ic_card4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="374:232"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -84,11 +84,11 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView6" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/card_opt_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:src="@drawable/ic_options"
+                app:srcCompat="@drawable/ic_options"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.954"

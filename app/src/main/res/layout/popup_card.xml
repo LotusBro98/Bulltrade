@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#1E385B"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_top_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="left|center_vertical"
+                android:text="Top up your balance"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#C9DBE8"
+                android:textSize="20sp"
+                app:backgroundTint="#263A55"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/ic_top_up"
+                app:iconTint="#C9DBE8" />
+
+            <Button
+                android:id="@+id/button17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="left|center_vertical"
+                android:text="Pay out"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#C9DBE8"
+                android:textSize="20sp"
+                app:backgroundTint="#263A55"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/ic_pay_out"
+                app:iconTint="#C9DBE8" />
+
+            <Button
+                android:id="@+id/button18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="left|center_vertical"
+                android:text="Get a detailed history"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#C9DBE8"
+                android:textSize="20sp"
+                app:backgroundTint="#263A55"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/ic_info"
+                app:iconTint="#C9DBE8" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
