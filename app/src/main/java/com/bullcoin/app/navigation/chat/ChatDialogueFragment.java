@@ -19,25 +19,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bullcoin.app.R;
+import com.bullcoin.app.datamodel.Message;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatDialogueFragment extends Fragment {
-
-    public static class Message {
-        public static final int FROM_ME = 0;
-        public static final int FROM_FRIEND = 1;
-
-        public int source;
-        public String text;
-
-        public Message(int source, String text) {
-            this.source = source;
-            this.text = text;
-        }
-    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

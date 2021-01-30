@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buyableAssets>
+    <asset>
+        <name>Apple Inc.</name>
+        <type>stock</type>
+        <price>474.98</price>
+        <icon>asset_apple</icon>
+    </asset>
+    <asset>
+        <name>JD.com</name>
+        <type>stock</type>
+        <price>70.57</price>
+        <icon>asset_jd</icon>
+    </asset>
+    <asset>
+        <name>Sohu.com</name>
+        <type>stock</type>
+        <price>21.32</price>
+        <icon>asset_sohu</icon>
+    </asset>
+    <asset>
+        <name>Bilibili Inc.</name>
+        <type>stock</type>
+        <price>45.12</price>
+        <icon>asset_bilibili</icon>
+    </asset>
+
+    <asset>
+        <name>Gazprom</name>
+        <type>share</type>
+        <percent>4.7</percent>
+        <price>1554.15</price>
+        <icon>asset_gazprom</icon>
+    </asset>
+    <asset>
+        <name>VTB Perp</name>
+        <type>share</type>
+        <percent>4.7</percent>
+        <price>1100.16</price>
+        <icon>asset_vtb</icon>
+    </asset>
+    <asset>
+        <name>Lukoil</name>
+        <type>share</type>
+        <percent>1</percent>
+        <price>1080.16</price>
+        <icon>asset_lukoil</icon>
+    </asset>
+    <asset>
+        <name>Evras</name>
+        <type>share</type>
+        <percent>2</percent>
+        <price>1158.16</price>
+        <icon>asset_evras</icon>
+    </asset>
+
+    <asset>
+        <name>Bullcoin</name>
+        <type>crypt</type>
+        <price>0.11</price>
+        <icon>asset_bullcoin</icon>
+    </asset>
+    <asset>
+        <name>Bitcoin</name>
+        <type>crypt</type>
+        <price>17139.04</price>
+        <icon>asset_bitcoin</icon>
+    </asset>
+    <asset>
+        <name>Ethereum</name>
+        <type>crypt</type>
+        <price>514.29</price>
+        <icon>asset_ethereum</icon>
+    </asset>
+    <asset>
+        <name>Litecoin</name>
+        <type>crypt</type>
+        <price>68.98</price>
+        <icon>asset_litecoin</icon>
+    </asset>
+</buyableAssets>

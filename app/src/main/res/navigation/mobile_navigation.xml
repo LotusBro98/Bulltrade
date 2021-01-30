@@ -13,13 +13,23 @@
         <action
             android:id="@+id/action_navigation_home_to_selectCardFragment"
             app:destination="@id/selectCardFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_earnMoneyFragment"
+            app:destination="@id/earnMoneyFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_assetFragment"
+            app:destination="@id/assetFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_stock"
         android:name="com.bullcoin.app.navigation.stock.StockFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_stock" />
+        tools:layout="@layout/fragment_stock" >
+        <action
+            android:id="@+id/action_navigation_stock_to_assetFragment"
+            app:destination="@id/assetFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_chat"
@@ -58,7 +68,7 @@
         android:label="LanguageFragment" />
     <fragment
         android:id="@+id/selectCardFragment"
-        android:name="com.bullcoin.app.cards.SelectCardFragment"
+        android:name="com.bullcoin.app.navigation.home.cards.SelectCardFragment"
         android:label="SelectCardFragment" >
         <action
             android:id="@+id/action_selectCardFragment_to_addCardFragment"
@@ -69,7 +79,7 @@
     </fragment>
     <fragment
         android:id="@+id/addCardFragment"
-        android:name="com.bullcoin.app.cards.AddCardFragment"
+        android:name="com.bullcoin.app.navigation.home.cards.AddCardFragment"
         android:label="AddCardFragment" >
         <action
             android:id="@+id/action_addCardFragment_to_bullcardFragment"
@@ -77,7 +87,7 @@
     </fragment>
     <fragment
         android:id="@+id/bullcardFragment"
-        android:name="com.bullcoin.app.cards.BullcardFragment"
+        android:name="com.bullcoin.app.navigation.home.cards.BullcardFragment"
         android:label="BullcardFragment" >
         <action
             android:id="@+id/action_bullcardFragment_to_selectCardFragment2"
@@ -85,6 +95,14 @@
     </fragment>
     <fragment
         android:id="@+id/cardMenuFragment"
-        android:name="com.bullcoin.app.cards.CardMenuFragment"
+        android:name="com.bullcoin.app.navigation.home.cards.CardMenuFragment"
         android:label="CardMenuFragment" />
+    <fragment
+        android:id="@+id/earnMoneyFragment"
+        android:name="com.bullcoin.app.navigation.home.EarnMoneyFragment"
+        android:label="EarnMoneyFragment" />
+    <fragment
+        android:id="@+id/assetFragment"
+        android:name="com.bullcoin.app.navigation.AssetFragment"
+        android:label="AssetFragment" />
 </navigation>

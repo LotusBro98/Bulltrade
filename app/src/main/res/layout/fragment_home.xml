@@ -401,6 +401,7 @@
                                     app:srcCompat="@drawable/ic_earn_money" />
 
                                 <Button
+                                    android:id="@+id/button_earn_money"
                                     style="@style/Widget.AppCompat.Button.Borderless"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
@@ -529,7 +530,6 @@
                 android:id="@+id/main_tab_pager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:background="#1E385B"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

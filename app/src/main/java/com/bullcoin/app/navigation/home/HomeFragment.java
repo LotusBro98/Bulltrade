@@ -1,29 +1,22 @@
 package com.bullcoin.app.navigation.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.bullcoin.app.R;
-import com.bullcoin.app.cards.CardFragmentBroker;
-import com.bullcoin.app.maintabs.WalletFragment;
+import com.bullcoin.app.navigation.home.cards.CardFragmentBroker;
+import com.bullcoin.app.navigation.home.maintabs.WalletFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomeFragment extends Fragment {
@@ -51,6 +44,14 @@ public class HomeFragment extends Fragment {
         TabLayout tabLayout = root.findViewById(R.id.main_tabs);
         tabLayout.setupWithViewPager(mainTabPager);
 
+        Button buttonEarnMoney = root.findViewById(R.id.button_earn_money);
+        buttonEarnMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(root).navigate(R.id.action_navigation_home_to_earnMoneyFragment);
+            }
+        });
+
         return root;
     }
 
@@ -65,14 +66,14 @@ public class HomeFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new CardFragmentBroker();
+                    return new CardFragmentBroker(CardFragmentBroker.TYPE_BROKER);
                 case 1:
-                    return new CardFragmentBroker();
+                    return new CardFragmentBroker(CardFragmentBroker.TYPE_BULLCOIN);
                 case 2:
-                    return new CardFragmentBroker();
+                    return new CardFragmentBroker(CardFragmentBroker.TYPE_BULLBANK);
 
                 default:
-                    return new CardFragmentBroker();
+                    return null;
             }
         }
 

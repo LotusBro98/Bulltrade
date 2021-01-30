@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BULLCOIN">
         <activity
-            android:name=".PinLoginActivity"
+            android:name=".login.PinLoginActivity"
             android:label="@string/app_name"
             android:theme="@style/splashScreenTheme"
             >
@@ -22,8 +22,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PinCreateActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".login.PinCreateActivity" />
+        <activity android:name=".login.RegisterActivity" />
         <activity android:name=".MainActivity" />
 
         <meta-data

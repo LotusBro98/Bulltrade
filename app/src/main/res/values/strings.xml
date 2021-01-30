@@ -12,4 +12,10 @@
         <item>Deutsch</item>
         <item>Русский</item>
     </string-array>
+
+    <string-array name="posts">
+        <item>Today good day to invest in some company.</item>
+        <item>Russia resumes international flights from three more cities.</item>
+        <item>Sample Text</item>
+    </string-array>
 </resources>
