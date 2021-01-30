@@ -18,6 +18,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/coin_bull" />
 
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginBottom="13dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="With us"
+        android:textColor="@color/Text_color_blue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
@@ -25,18 +38,131 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.32" />
 
-    <TextView
-        android:id="@+id/Bullcoin_is_a_new_cryptocurrency"
-        android:layout_width="376dp"
-        android:layout_height="142dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/poppins_bold"
-        android:lineSpacingExtra="0.5"
-        android:text="Bullcoin is a new cryptocurrency , but despite this, it is rapidly gaining popularity and on our platform you can not only buy it, but also receive an annual percentage of the amount for which you bought the cryptocurrency."
-        android:textColor="@color/Text_color_red"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="58dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/textView51"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Earn money"
+        android:textColor="@color/Text_color_red"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView49"
+        app:layout_constraintStart_toStartOf="@+id/textView49" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="19dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="And for bloked Bullcoin Deposit for 12 month 3,5%"
+                android:textColor="@color/Text_color_red"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+            <TextView
+                android:id="@+id/Bullcoin_is_a_new_cryptocurrency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="19dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/Bullcoin_is_a_new_cryptocurrency"
+                android:textColor="@color/Text_color_red"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="6dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView42"
+                app:layout_constraintTop_toTopOf="@+id/textView42"
+                app:srcCompat="@drawable/ic_ellipse_82" />
+
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="19dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="For bloked Bullcoin in Deposit for 6 month 2%"
+                android:textColor="@color/Text_color_red"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+            <ImageView
+                android:id="@+id/imageView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="6dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView41"
+                app:layout_constraintTop_toTopOf="@+id/textView41"
+                app:srcCompat="@drawable/ic_ellipse_82" />
+
+            <ImageView
+                android:id="@+id/imageView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="6dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView43"
+                app:layout_constraintTop_toTopOf="@+id/textView43"
+                app:srcCompat="@drawable/ic_ellipse_82" />
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="19dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="For bloked Bullcoin in Deposit for 3 month 1,5 %"
+                android:textColor="@color/Text_color_red"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Bullcoin_is_a_new_cryptocurrency" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
