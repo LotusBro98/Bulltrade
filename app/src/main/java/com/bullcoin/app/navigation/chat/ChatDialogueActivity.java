@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.DataModel;
+import com.bullcoin.app.datamodel.Dialogue;
 import com.bullcoin.app.datamodel.Message;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -37,19 +38,30 @@ public class ChatDialogueActivity extends AppCompatActivity {
     ChatMessagesRecyclerViewAdapter adapter;
     boolean inserted = false;
 
+    Dialogue dialogue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_chat_messages);
 
-        List<Message> messages = DataModel.get().getMessages();
+        Bundle args = getIntent().getExtras();
+        if (args != null) {
+            int dialogueID = args.getInt("dialogueID");
+            dialogue = DataModel.get().getDialogues().get(dialogueID);
+        }
+
+        TextView name = findViewById(R.id.friend_name);
+        ImageView avatar = findViewById(R.id.friend_avatar);
+
+        name.setText(dialogue.getName());
+        avatar.setImageDrawable(getResources().getDrawable(dialogue.getIconResourceID()));
 
         recyclerView = findViewById(R.id.recycler_messages);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true);
-//        layoutManager.setReverseLayout(true);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new ChatMessagesRecyclerViewAdapter(this, messages);
+        adapter = new ChatMessagesRecyclerViewAdapter(this, dialogue);
 
         recyclerView.setAdapter(adapter);
 
@@ -97,13 +109,17 @@ public class ChatDialogueActivity extends AppCompatActivity {
 
     public static class ChatMessagesRecyclerViewAdapter extends RecyclerView.Adapter {
 
+        Context context;
+        Dialogue dialogue;
         private List<Message> mData;
         private LayoutInflater mInflater;
 
         // data is passed into the constructor
-        ChatMessagesRecyclerViewAdapter(Context context, List<Message> data) {
+        ChatMessagesRecyclerViewAdapter(Context context, Dialogue dialogue) {
+            this.context = context;
             this.mInflater = LayoutInflater.from(context);
-            this.mData = data;
+            this.mData = dialogue.getMessages();
+            this.dialogue = dialogue;
         }
 
         // inflates the row layout from xml when needed
@@ -132,6 +148,7 @@ public class ChatDialogueActivity extends AppCompatActivity {
                     break;
                 case Message.FROM_FRIEND:
                     ((FromFriendViewHolder) holder).message.setText(message.text);
+                    ((FromFriendViewHolder) holder).friend_avatar.setImageDrawable(context.getResources().getDrawable(dialogue.getIconResourceID()));
                     break;
             }
         }

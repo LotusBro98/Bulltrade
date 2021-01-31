@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialogues>
+    <dialogue>
+        <name>Max Spencer</name>
+        <icon>max_spencer</icon>
+        <messages>
+            <message from_me="false">What did you send me?</message>
+            <message from_me="true">Why did i even throw this to you?</message>
+            <message from_me="false">Ok</message>
+        </messages>
+    </dialogue>
+    <dialogue>
+        <name>Андрей Баев</name>
+        <icon>andrew</icon>
+        <messages>
+            <message from_me="true">Привет, как жизнь?</message>
+            <message from_me="false">Поднял миллионы на бирже)</message>
+            <message from_me="true">Ахахахаха красава))</message>
+        </messages>
+    </dialogue>
+    <dialogue>
+        <name>Nekomata Okayu</name>
+        <icon>nekomata</icon>
+        <messages>
+            <message from_me="false">Мяу)</message>
+            <message from_me="true">:3</message>
+            <message from_me="false">Пошли шалить)</message>
+        </messages>
+    </dialogue>
+</dialogues>

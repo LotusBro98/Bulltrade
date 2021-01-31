@@ -6,6 +6,9 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +19,7 @@ public class DataModel {
     private double bankBalance;
     private List<Asset> assets;
     private List<Card> cards;
-    private List<Message> messages;
+    private List<Dialogue> dialogues;
 
     private int userID;
 
@@ -56,11 +59,17 @@ public class DataModel {
             cards.add(new Card(Card.CARD_BULLBANK));
         }
 
-        loadMessages();
+        try {
+            dialogues = Dialogue.parseFromXML(context);
+        } catch (Exception e) {
+            Log.e("ASSET_PARSING", "Failed to parse assets");
+            dialogues = new ArrayList<>();
+            e.printStackTrace();
+        }
     }
 
-    public List<Message> getMessages() {
-        return messages;
+    public List<Dialogue> getDialogues() {
+        return dialogues;
     }
 
     public List<Card> getCards() {
@@ -210,13 +219,5 @@ public class DataModel {
         }
 
         editor.commit();
-    }
-
-    private void loadMessages() {
-        messages = new ArrayList<>();
-
-        messages.add(new Message(Message.FROM_FRIEND, "What did you send me?"));
-        messages.add(new Message(Message.FROM_ME, "Why did I even throw this to you?"));
-        messages.add(new Message(Message.FROM_FRIEND, "Ok"));
     }
 }

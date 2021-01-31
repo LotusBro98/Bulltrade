@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bullcoin.app.MainActivity;
 import com.bullcoin.app.R;
+import com.bullcoin.app.datamodel.DataModel;
+import com.bullcoin.app.datamodel.Dialogue;
 import com.bullcoin.app.login.PinLoginActivity;
 import com.bullcoin.app.login.RegisterActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,20 +32,18 @@ public class ChatFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_chat, container, false);
 
-        ArrayList<String> walletItems = new ArrayList<>();
-        walletItems.add("Max Spenser");
-        walletItems.add("Max Spenser");
-        walletItems.add("Max Spenser");
-        walletItems.add("Max Spenser");
-        walletItems.add("Max Spenser");
+        List<Dialogue> dialogues = DataModel.get().getDialogues();
 
         RecyclerView recyclerView = root.findViewById(R.id.recycler_chat);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ChatFriendsRecyclerViewAdapter adapter = new ChatFriendsRecyclerViewAdapter(getActivity(), walletItems);
+        ChatFriendsRecyclerViewAdapter adapter = new ChatFriendsRecyclerViewAdapter(getActivity(), dialogues);
         adapter.setClickListener(new ChatFriendsRecyclerViewAdapter.ItemClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
+            public void onItemClick(View view, Dialogue dialogue) {
                 Intent intent = new Intent(getActivity(), ChatDialogueActivity.class);
+                Bundle args = new Bundle();
+                args.putInt("dialogueID", dialogue.getId());
+                intent.putExtras(args);
                 startActivity(intent);
             }
         });
@@ -54,12 +55,14 @@ public class ChatFragment extends Fragment {
 
     public static class ChatFriendsRecyclerViewAdapter extends RecyclerView.Adapter<ChatFriendsRecyclerViewAdapter.ViewHolder> {
 
-        private List<String> mData;
+        Context context;
+        private List<Dialogue> mData;
         private LayoutInflater mInflater;
         private ChatFriendsRecyclerViewAdapter.ItemClickListener mClickListener;
 
         // data is passed into the constructor
-        ChatFriendsRecyclerViewAdapter(Context context, List<String> data) {
+        ChatFriendsRecyclerViewAdapter(Context context, List<Dialogue> data) {
+            this.context = context;
             this.mInflater = LayoutInflater.from(context);
             this.mData = data;
         }
@@ -74,8 +77,14 @@ public class ChatFragment extends Fragment {
         // binds the data to the TextView in each row
         @Override
         public void onBindViewHolder(ChatFriendsRecyclerViewAdapter.ViewHolder holder, int position) {
-            String name = mData.get(position);
-            holder.name.setText(name);
+            Dialogue dialogue = mData.get(position);
+            holder.name.setText(dialogue.getName());
+            String lastMsg = "";
+            if (!dialogue.getMessages().isEmpty()) {
+                lastMsg = dialogue.getMessages().get(dialogue.getMessages().size() - 1).text;
+            }
+            holder.lastMsg.setText(lastMsg);
+            holder.avatar.setImageDrawable(context.getResources().getDrawable(dialogue.getIconResourceID()));
         }
 
         // total number of rows
@@ -88,22 +97,21 @@ public class ChatFragment extends Fragment {
         // stores and recycles views as they are scrolled off screen
         public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             TextView name;
+            TextView lastMsg;
+            ImageView avatar;
 
             ViewHolder(View itemView) {
                 super(itemView);
                 name = itemView.findViewById(R.id.friend_name);
+                lastMsg = itemView.findViewById(R.id.friend_last_msg);
+                avatar = itemView.findViewById(R.id.friend_avatar);
                 itemView.setOnClickListener(this);
             }
 
             @Override
             public void onClick(View view) {
-                if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+                if (mClickListener != null) mClickListener.onItemClick(view, mData.get(getAdapterPosition()));
             }
-        }
-
-        // convenience method for getting data at click position
-        String getItem(int id) {
-            return mData.get(id);
         }
 
         // allows clicks events to be caught
@@ -113,7 +121,7 @@ public class ChatFragment extends Fragment {
 
         // parent activity will implement this method to respond to click events
         public interface ItemClickListener {
-            void onItemClick(View view, int position);
+            void onItemClick(View view, Dialogue dialogue);
         }
     }
 }
