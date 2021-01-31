@@ -1,76 +1,97 @@
 package com.bullcoin.app.navigation.chat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bullcoin.app.R;
+import com.bullcoin.app.datamodel.DataModel;
 import com.bullcoin.app.datamodel.Message;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ChatDialogueFragment extends Fragment {
+public class ChatDialogueActivity extends AppCompatActivity {
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_chat_messages, container, false);
+    EditText editMessage;
+    RecyclerView recyclerView;
+    ChatMessagesRecyclerViewAdapter adapter;
+    boolean inserted = false;
 
-        ArrayList<Message> messages = new ArrayList<>();
-        messages.add(new Message(Message.FROM_FRIEND, "fdssdfkllk lklk lklklksdlkflksdlkflk lkslkldkflk lklk lk lkslkdflklk s;;'lA'WSD[QOWFD;L KLK;LK;A ;LK;LK"));
-        messages.add(new Message(Message.FROM_FRIEND, "Ok"));
-        messages.add(new Message(Message.FROM_ME, "falafsdfklj;afasjklfasjklasfljkflasjkjkflsadljkfasljkfsaljkfasdljkfasd lajsfljka ljkaljksd fljkaljks ljkfljk ljkljkljkljkasljkd ljkjkl ljkaljkljk  jklljkaljksldjkljkfljk ljkl jkljkalkjsdljk "));
-        messages.add(new Message(Message.FROM_FRIEND, "Ok"));
-        messages.add(new Message(Message.FROM_ME, "Why did I even throw this to you?"));
-        messages.add(new Message(Message.FROM_FRIEND, "What did you send me?"));
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_chat_messages);
 
-        RecyclerView recyclerView = root.findViewById(R.id.recycler_messages);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setReverseLayout(true);
+        List<Message> messages = DataModel.get().getMessages();
+
+        recyclerView = findViewById(R.id.recycler_messages);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setStackFromEnd(true);
+//        layoutManager.setReverseLayout(true);
         recyclerView.setLayoutManager(layoutManager);
-        ChatMessagesRecyclerViewAdapter adapter = new ChatMessagesRecyclerViewAdapter(getActivity(), messages);
+        adapter = new ChatMessagesRecyclerViewAdapter(this, messages);
 
         recyclerView.setAdapter(adapter);
 
-        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
-            @Override
-            public void handleOnBackPressed() {
-                retutnBack();
-            }
-        };
-        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
-
-        ImageButton backButton = root.findViewById(R.id.back_button);
+        ImageButton backButton = findViewById(R.id.back_button);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                retutnBack();
+                returnBack();
             }
         });
 
-        return root;
+        editMessage = findViewById(R.id.edit_message);
+
+        Button buttonSend = findViewById(R.id.button_send);
+        buttonSend.setOnClickListener(this::onSend);
+
+        editMessage.setOnEditorActionListener((v, actionId, event) -> {
+            onSend(v);
+            return true;
+        });
     }
 
-    public void retutnBack() {
-        BottomNavigationView nav_view = getActivity().findViewById(R.id.nav_view);
-        nav_view.setVisibility(View.VISIBLE);
-        Navigation.findNavController(getView()).navigateUp();
+    public void hideKeyboardFrom(Context context, View view) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private void onSend(View v) {
+        String text = editMessage.getText().toString();
+        if (text.equals("")) {
+            return;
+        }
+        Message message = new Message(Message.FROM_ME, text);
+        editMessage.getText().clear();
+        adapter.mData.add(message);
+        recyclerView.scrollToPosition(adapter.getItemCount() - 1);
+        adapter.notifyItemInserted(adapter.getItemCount() - 1);
+    }
+
+    public void returnBack() {
+        finish();
     }
 
 

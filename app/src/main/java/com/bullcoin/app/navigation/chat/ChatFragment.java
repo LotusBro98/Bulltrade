@@ -1,6 +1,7 @@
 package com.bullcoin.app.navigation.chat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,10 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bullcoin.app.MainActivity;
 import com.bullcoin.app.R;
+import com.bullcoin.app.login.PinLoginActivity;
+import com.bullcoin.app.login.RegisterActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -38,9 +42,8 @@ public class ChatFragment extends Fragment {
         adapter.setClickListener(new ChatFriendsRecyclerViewAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                BottomNavigationView nav_view = getActivity().findViewById(R.id.nav_view);
-                nav_view.setVisibility(View.GONE);
-                Navigation.findNavController(view).navigate(R.id.action_navigation_chat_to_chatDialogueFragment2);
+                Intent intent = new Intent(getActivity(), ChatDialogueActivity.class);
+                startActivity(intent);
             }
         });
 

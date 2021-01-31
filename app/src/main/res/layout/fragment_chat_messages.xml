@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="#2B456B">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="94dp"
+        android:layout_height="64dp"
         app:cardBackgroundColor="#1E385B"
         app:cardCornerRadius="0dp"
         app:cardElevation="12dp"
@@ -84,16 +85,17 @@
         android:id="@+id/recycler_messages"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:focusableInTouchMode="false"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        android:clipToPadding="false"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edit_message"
         android:layout_width="0dp"
         android:layout_height="43dp"
         android:layout_marginStart="24dp"
@@ -102,18 +104,18 @@
         android:ems="10"
         android:fontFamily="@font/poppins_bold"
         android:hint="Write a message"
-        android:inputType="text"
+        android:inputType="textLongMessage|text"
         android:paddingLeft="21dp"
         android:paddingRight="11dp"
         android:textColor="#C9DBE8"
         android:textColorHint="#5C6F82"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toStartOf="@+id/button10"
+        app:layout_constraintEnd_toStartOf="@+id/button_send"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/button_send"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="43dp"
         android:layout_height="43dp"
