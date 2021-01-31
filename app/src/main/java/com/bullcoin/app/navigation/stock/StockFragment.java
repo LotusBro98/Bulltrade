@@ -1,5 +1,6 @@
 package com.bullcoin.app.navigation.stock;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,7 @@ public class StockFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_stock, container, false);
 
-        TabAdapter adapter = new TabAdapter(getChildFragmentManager());
+        TabAdapter adapter = new TabAdapter(getChildFragmentManager(), getContext());
 
         ViewPager tabPager = root.findViewById(R.id.stock_tabs_pager);
         tabPager.setAdapter(adapter);
@@ -38,10 +39,16 @@ public class StockFragment extends Fragment {
     }
 
     public static class TabAdapter extends FragmentPagerAdapter {
-        private String tabTitles[] = new String[] { "Ideas", "Stock", "Share", "Crypt" };
+        private String tabTitles[];
 
-        public TabAdapter(@NonNull FragmentManager fragmentManager) {
+        public TabAdapter(@NonNull FragmentManager fragmentManager, Context context) {
             super(fragmentManager);
+            tabTitles = new String[] {
+                context.getString(R.string.ideas),
+                context.getString(R.string.stock),
+                context.getString(R.string.share),
+                context.getString(R.string.crypt)
+            };
         }
 
         @NonNull

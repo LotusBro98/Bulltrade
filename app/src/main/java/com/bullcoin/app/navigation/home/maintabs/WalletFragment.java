@@ -76,7 +76,7 @@ public class WalletFragment extends Fragment {
             holder.name.setText(asset.getName());
             holder.image.setImageDrawable(context.getResources().getDrawable(asset.getIconResourceID()));
             holder.price.setText("$" + String.valueOf(asset.getPrice()));
-            holder.quantity.setText("quantity x" + String.valueOf(asset.getOwned()));
+            holder.quantity.setText(context.getString(R.string.quantity) + " x" + String.valueOf(asset.getOwned()));
         }
 
         // total number of rows

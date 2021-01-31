@@ -25,7 +25,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Registration"
+        android:text="@string/registration"
         android:textColor="#29304D"
         android:textFontWeight="800"
         android:textSize="24sp"
@@ -47,7 +47,7 @@
             style="@style/reg_entry_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone Number"
+            android:hint="@string/phone_number"
             android:inputType="phone" />
 
         <Spinner
@@ -68,7 +68,7 @@
             style="@style/reg_entry_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -76,7 +76,7 @@
             style="@style/reg_entry_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Country"
+            android:hint="@string/country"
             android:inputType="text" />
 
         <EditText
@@ -84,7 +84,7 @@
             style="@style/reg_entry_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First Name"
+            android:hint="@string/first_name"
             android:inputType="textPersonName" />
 
         <EditText
@@ -92,7 +92,7 @@
             style="@style/reg_entry_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Last Name"
+            android:hint="@string/last_name"
             android:inputType="textPersonName" />
 
         <EditText
@@ -100,7 +100,7 @@
             style="@style/reg_entry_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword" />
 
         <EditText
@@ -108,7 +108,7 @@
             style="@style/reg_entry_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Repeat your password"
+            android:hint="@string/repeat_your_password"
             android:inputType="textPassword" />
 
 
@@ -123,7 +123,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Next"
+        android:text="@string/next"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="18sp"
         android:textColor="#C9DBE8"

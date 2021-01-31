@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Select a card"
+                android:text="@string/select_a_card"
                 android:textColor="#C9DBE8"
                 android:textSize="21sp"
                 app:layout_constraintBottom_toBottomOf="parent"

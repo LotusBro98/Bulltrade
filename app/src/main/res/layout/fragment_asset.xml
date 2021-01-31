@@ -78,7 +78,7 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="left|center_vertical"
                 android:paddingLeft="30dp"
-                android:text="Quantity"
+                android:text="@string/quantity"
                 android:textColor="#C9DBE8"
                 android:textSize="16sp" />
 
@@ -115,7 +115,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="left|center_vertical"
                     android:paddingLeft="30dp"
-                    android:text="Interest deduction"
+                    android:text="@string/interest_deduction"
                     android:textColor="#C9DBE8"
                     android:textSize="16sp" />
 
@@ -149,7 +149,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="left|center_vertical"
                     android:paddingLeft="30dp"
-                    android:text="Total"
+                    android:text="@string/total"
                     android:textColor="#C9DBE8"
                     android:textSize="24sp" />
 
@@ -187,7 +187,7 @@
                     android:layout_marginBottom="16dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="BUY"
+                    android:text="@string/buy"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="#2C456B"
                     android:textSize="20sp"
@@ -205,7 +205,7 @@
                     android:layout_marginBottom="16dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="SELL"
+                    android:text="@string/sell"
                     android:textColor="#2C456B"
                     android:textSize="20sp"
                     app:backgroundTint="#15B3FF"

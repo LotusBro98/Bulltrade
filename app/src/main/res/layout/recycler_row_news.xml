@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/poppins"
-        android:text="сегодня в 17:45"
+        android:text="@string/_17_45"
         android:textColor="#888888"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/news_icon"

@@ -7,6 +7,8 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bullcoin.app.R;
+
 public class PinCreateActivity extends PinActivity {
 
     String pin = null;
@@ -18,7 +20,7 @@ public class PinCreateActivity extends PinActivity {
         createAccBtn.setVisibility(View.INVISIBLE);
         forgotPassBtn.setVisibility(View.INVISIBLE);
 
-        messageText.setText("Create a pin");
+        messageText.setText(R.string.create_a_pin);
     }
 
     private void savePin(String pin) {
@@ -32,13 +34,13 @@ public class PinCreateActivity extends PinActivity {
     public boolean onPinEnter(String pin) {
         if (this.pin == null) {
             this.pin = pin;
-            messageText.setText("Repeat");
+            messageText.setText(R.string.repeat);
             return true;
         } else {
             if (!this.pin.equals(pin)) {
                 vibrate(50);
-                Toast.makeText(this, "Pins doesn't match", Toast.LENGTH_LONG).show();
-                messageText.setText("Create a pin");
+                Toast.makeText(this, getString(R.string.pins_doesnt_match), Toast.LENGTH_LONG).show();
+                messageText.setText(R.string.create_a_pin);
                 this.pin = null;
                 return true;
             }

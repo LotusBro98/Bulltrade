@@ -91,7 +91,6 @@ public class NewsFragment extends Fragment {
             holder.checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    Log.e("CLICKED", String.valueOf(isChecked));
                     news.setSelected(context, isChecked);
                     for (Fragment fragment : fragment.getParentFragmentManager().getFragments()) {
                         if (fragment instanceof BookmarksFragment) {

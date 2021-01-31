@@ -115,7 +115,7 @@
                                     android:insetTop="0dp"
                                     android:insetRight="0dp"
                                     android:insetBottom="0dp"
-                                    android:text="Bullbank"
+                                    android:text="@string/bullbank"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textSize="13sp"
                                     app:backgroundTint="#00000000"
@@ -162,7 +162,7 @@
                                     android:insetTop="0dp"
                                     android:insetRight="0dp"
                                     android:insetBottom="0dp"
-                                    android:text="Stock"
+                                    android:text="@string/stock"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textSize="13sp"
                                     app:backgroundTint="#00000000"
@@ -209,7 +209,7 @@
                                     android:insetTop="0dp"
                                     android:insetRight="0dp"
                                     android:insetBottom="0dp"
-                                    android:text="Crypto"
+                                    android:text="@string/crypto"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textSize="13sp"
                                     app:backgroundTint="#00000000"
@@ -256,7 +256,7 @@
                                     android:insetTop="0dp"
                                     android:insetRight="0dp"
                                     android:insetBottom="0dp"
-                                    android:text="Trading Assistant"
+                                    android:text="@string/trading_assistant"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textSize="13sp"
                                     app:backgroundTint="#00000000"
@@ -314,7 +314,7 @@
                                     android:lineSpacingExtra="-2dp"
                                     android:paddingLeft="11dp"
                                     android:paddingBottom="11dp"
-                                    android:text="Save trees\u00A0- breath of Earth"
+                                    android:text="@string/save_trees_u00a0_breath_of_earth"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textSize="13sp"
                                     app:backgroundTint="#00000000"
@@ -364,7 +364,7 @@
                                     android:lineSpacingExtra="-2dp"
                                     android:paddingLeft="11dp"
                                     android:paddingBottom="11dp"
-                                    android:text="Collect friends - get Money"
+                                    android:text="@string/collect_friends_get_money"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textSize="13sp"
                                     app:backgroundTint="#00000000"
@@ -412,7 +412,7 @@
                                     android:insetTop="0dp"
                                     android:insetRight="0dp"
                                     android:insetBottom="0dp"
-                                    android:text="Earn Money"
+                                    android:text="@string/earn_money"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textSize="13sp"
                                     app:backgroundTint="#00000000"
@@ -459,7 +459,7 @@
                                     android:insetTop="0dp"
                                     android:insetRight="0dp"
                                     android:insetBottom="0dp"
-                                    android:text="BullShop"
+                                    android:text="@string/bullshop"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textSize="13sp"
                                     app:backgroundTint="#00000000"
@@ -513,17 +513,17 @@
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Wallet" />
+                    android:text="@string/wallet" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="News" />
+                    android:text="@string/news" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bookmarks" />
+                    android:text="@string/bookmarks" />
             </com.google.android.material.tabs.TabLayout>
 
             <com.bullcoin.app.layout.WrapHeightViewPager

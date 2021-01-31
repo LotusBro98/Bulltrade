@@ -6,6 +6,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.bullcoin.app.R;
+
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
@@ -156,10 +158,10 @@ public class DataModel {
         if (brokerBalance - asset.getPrice() * quantity >= 0) {
             asset.setOwned(context, asset.getOwned() + quantity);
             setBrokerBalance(context, brokerBalance - asset.getPrice() * quantity);
-            Toast.makeText(context, "You have bought " + asset.getName() + " x" + quantity, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getString(R.string.you_have_bought) + asset.getName() + " x" + quantity, Toast.LENGTH_LONG).show();
             return true;
         } else {
-            Toast.makeText(context, "Not enough money", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getString(R.string.not_enough_money), Toast.LENGTH_LONG).show();
             return false;
         }
     }
@@ -168,10 +170,10 @@ public class DataModel {
         if (asset.getOwned() >= quantity) {
             asset.setOwned(context, asset.getOwned() - quantity);
             setBrokerBalance(context, getBrokerBalance() + asset.getPrice() * quantity);
-            Toast.makeText(context, "You have sold " + asset.getName() + " x" + quantity, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getString(R.string.you_have_sold) + asset.getName() + " x" + quantity, Toast.LENGTH_LONG).show();
             return true;
         } else {
-            Toast.makeText(context, "Not enough " + asset.getName(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getString(R.string.not_enough) + asset.getName(), Toast.LENGTH_LONG).show();
             return false;
         }
     }

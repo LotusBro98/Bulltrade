@@ -92,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto"
                         android:gravity="center_horizontal"
-                        android:text="Income"
+                        android:text="@string/income"
                         android:textColor="#858181"
                         android:textSize="24sp" />
 
@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto"
                         android:gravity="center_horizontal"
-                        android:text="Expences"
+                        android:text="@string/expences"
                         android:textColor="#858181"
                         android:textSize="24sp" />
 
@@ -155,7 +155,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto"
                         android:gravity="center_horizontal"
-                        android:text="Posts"
+                        android:text="@string/posts"
                         android:textColor="#858181"
                         android:textSize="24sp" />
 
@@ -184,7 +184,7 @@
                 android:background="@drawable/main_screen_tab_background"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="Posts"
+                android:text="@string/posts"
                 android:textColor="#C9DBE8"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"

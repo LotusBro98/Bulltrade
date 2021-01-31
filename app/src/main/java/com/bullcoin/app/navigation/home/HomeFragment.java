@@ -1,5 +1,6 @@
 package com.bullcoin.app.navigation.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class HomeFragment extends Fragment {
         TabLayout cardTabs = root.findViewById(R.id.card_tabs);
         cardTabs.setupWithViewPager(cardPager);
 
-        MainTabAdapter mainTabAdapter = new MainTabAdapter(getChildFragmentManager());
+        MainTabAdapter mainTabAdapter = new MainTabAdapter(getChildFragmentManager(), getContext());
 
         ViewPager mainTabPager = root.findViewById(R.id.main_tab_pager);
         mainTabPager.setAdapter(mainTabAdapter);
@@ -86,10 +87,15 @@ public class HomeFragment extends Fragment {
     }
 
     public static class MainTabAdapter extends FragmentPagerAdapter {
-        private String tabTitles[] = new String[] { "Wallet", "News", "Bookmarks" };
+        private String[] tabTitles;
 
-        public MainTabAdapter(@NonNull FragmentManager fragmentManager) {
+        public MainTabAdapter(@NonNull FragmentManager fragmentManager, Context context) {
             super(fragmentManager);
+            tabTitles = new String[] {
+                    context.getString(R.string.wallet),
+                    context.getString(R.string.news),
+                    context.getString(R.string.bookmarks)
+            };
         }
 
         @NonNull

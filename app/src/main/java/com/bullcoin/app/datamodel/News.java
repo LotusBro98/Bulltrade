@@ -25,7 +25,7 @@ public class News {
     boolean selected;
 
     private News() {
-        Log.d("YA RODILSA", this.toString());
+
     }
 
     private void loadSelected(Context context) {

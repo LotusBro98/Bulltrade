@@ -47,20 +47,20 @@ public class CardFragmentBroker extends Fragment {
         switch (type) {
             case TYPE_BROKER:
                 icon.setImageDrawable(view.getResources().getDrawable(R.drawable.ic_bull_small));
-                accountType.setText("Broker account");
-                yourBalance.setText("Your balance");
+                accountType.setText(R.string.broker_account);
+                yourBalance.setText(R.string.your_balance);
                 balance.setText("$" + String.format("%.2f", DataModel.get().getBrokerBalance()));
                 break;
             case TYPE_BULLCOIN:
                 icon.setImageDrawable(view.getResources().getDrawable(R.drawable.asset_bullcoin));
-                accountType.setText("Bullcoin");
-                yourBalance.setText("Your BCN balance");
+                accountType.setText(R.string.bullcoin);
+                yourBalance.setText(R.string.your_bcn_balance);
                 balance.setText(String.valueOf(DataModel.get().getBullcoinBalance()));
                 break;
             case TYPE_BULLBANK:
                 icon.setImageDrawable(view.getResources().getDrawable(R.drawable.ic_bull_small));
-                accountType.setText("Bullbank");
-                yourBalance.setText("Your bank account balance");
+                accountType.setText(R.string.bullbank_card);
+                yourBalance.setText(R.string.your_bank_account_balance);
                 balance.setText("$" +  String.format("%.2f", DataModel.get().getBankBalance()));
                 break;
         }
