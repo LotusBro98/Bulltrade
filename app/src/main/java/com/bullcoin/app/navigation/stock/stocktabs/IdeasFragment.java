@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -12,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.Asset;
 import com.bullcoin.app.datamodel.DataModel;
-import com.bullcoin.app.navigation.AssetFragment;
+import com.bullcoin.app.AssetActivity;
 
 public class IdeasFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,6 +63,7 @@ public class IdeasFragment extends Fragment {
 
     public void goToAsset(View view, String assetName) {
         Asset asset = DataModel.get().getAsset(assetName);
-        AssetFragment.navigateHere(view, R.id.action_navigation_stock_to_assetFragment, asset);
+//        AssetActivity.navigateHere(view, R.id.action_navigation_stock_to_assetFragment, asset);
+        AssetActivity.navigateHere(getActivity(), asset);
     }
 }

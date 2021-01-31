@@ -20,6 +20,7 @@ public class DataModel {
     private List<Asset> assets;
     private List<Card> cards;
     private List<Dialogue> dialogues;
+    private List<News> news;
 
     private int userID;
 
@@ -62,10 +63,31 @@ public class DataModel {
         try {
             dialogues = Dialogue.parseFromXML(context);
         } catch (Exception e) {
-            Log.e("ASSET_PARSING", "Failed to parse assets");
+            Log.e("ASSET_PARSING", "Failed to parse dialogues");
             dialogues = new ArrayList<>();
             e.printStackTrace();
         }
+
+        try {
+            news = News.parseFromXML(context);
+        } catch (Exception e) {
+            Log.e("ASSET_PARSING", "Failed to parse news");
+            news = new ArrayList<>();
+            e.printStackTrace();
+        }
+    }
+
+    public List<News> getNews() {
+        return news;
+    }
+
+    public List<News> getSelectedNews() {
+        List<News> news = new ArrayList<>();
+        for (News news1: this.news ) {
+            if (news1.isSelected())
+                news.add(news1);
+        }
+        return news;
     }
 
     public List<Dialogue> getDialogues() {

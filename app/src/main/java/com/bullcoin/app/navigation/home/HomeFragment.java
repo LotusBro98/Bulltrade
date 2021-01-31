@@ -16,6 +16,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bullcoin.app.R;
 import com.bullcoin.app.navigation.home.cards.CardFragmentBroker;
+import com.bullcoin.app.navigation.home.maintabs.BookmarksFragment;
+import com.bullcoin.app.navigation.home.maintabs.NewsFragment;
 import com.bullcoin.app.navigation.home.maintabs.WalletFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -97,12 +99,12 @@ public class HomeFragment extends Fragment {
                 case 0:
                     return new WalletFragment();
                 case 1:
-                    return new WalletFragment();
+                    return new NewsFragment();
                 case 2:
-                    return new WalletFragment();
+                    return new BookmarksFragment();
 
                 default:
-                    return new WalletFragment();
+                    return null;
             }
         }
 

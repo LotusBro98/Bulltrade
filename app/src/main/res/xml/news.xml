@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<news>
+    <new>
+        <source>Interfax</source>
+        <text>Рухани: Иран вернул доступ к $1,6 млрд, замороженным в Люксембурге по запросу США</text>
+        <icon>ic_news1</icon>
+    </new>
+
+    <new>
+        <source>Reddit</source>
+        <text>Rouhani: Iran returned access to $1.6 billion frozen in Luxembourg at the request of the US</text>
+        <icon>ic_reddit</icon>
+    </new>
+
+    <new>
+        <source>Apple</source>
+        <text>Цой жив</text>
+        <icon>ic_apple</icon>
+    </new>
+</news>

@@ -35,11 +35,7 @@
         android:id="@+id/navigation_chat"
         android:name="com.bullcoin.app.navigation.chat.ChatFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_chat" >
-        <action
-            android:id="@+id/action_navigation_chat_to_chatDialogueFragment2"
-            app:destination="@id/chatDialogueFragment2" />
-    </fragment>
+        tools:layout="@layout/fragment_chat" />
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -50,10 +46,6 @@
             android:id="@+id/action_navigation_profile_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/chatDialogueFragment2"
-        android:name="com.bullcoin.app.navigation.chat.ChatDialogueFragment"
-        android:label="ChatDialogueFragment" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.bullcoin.app.navigation.profile.SettingsFragment"
@@ -107,6 +99,6 @@
         android:label="EarnMoneyFragment" />
     <fragment
         android:id="@+id/assetFragment"
-        android:name="com.bullcoin.app.navigation.AssetFragment"
+        android:name="com.bullcoin.app.AssetActivity"
         android:label="AssetFragment" />
 </navigation>
