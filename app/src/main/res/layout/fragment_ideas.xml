@@ -30,6 +30,7 @@
                 android:paddingBottom="26dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/buy_bullcoin"
                     android:layout_width="218dp"
                     android:layout_height="79dp"
                     android:background="@drawable/idea_grad_bg">
@@ -177,7 +178,7 @@
                                 android:layout_height="match_parent">
 
                                 <ImageView
-                                    android:id="@+id/imageView12"
+                                    android:id="@+id/imageView_apple1"
                                     android:layout_width="45dp"
                                     android:layout_height="45dp"
                                     android:layout_marginStart="4dp"
@@ -189,7 +190,7 @@
                                     app:srcCompat="@drawable/asset_apple" />
 
                                 <TextView
-                                    android:id="@+id/textView23"
+                                    android:id="@+id/textView_apple1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="5dp"
@@ -197,11 +198,11 @@
                                     android:fontFamily="@font/montserrat"
                                     android:text="Apple Inc."
                                     android:textColor="#C9DBE8"
-                                    app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageView_apple1"
                                     app:layout_constraintEnd_toStartOf="@+id/divider2"
                                     app:layout_constraintHorizontal_bias="0.0"
-                                    app:layout_constraintStart_toEndOf="@+id/imageView12"
-                                    app:layout_constraintTop_toTopOf="@+id/imageView12" />
+                                    app:layout_constraintStart_toEndOf="@+id/imageView_apple1"
+                                    app:layout_constraintTop_toTopOf="@+id/imageView_apple1" />
 
                                 <ImageView
                                     android:id="@+id/imageView13"
@@ -210,7 +211,7 @@
                                     android:layout_marginStart="4dp"
                                     android:layout_marginTop="9dp"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/imageView12"
+                                    app:layout_constraintTop_toBottomOf="@+id/imageView_apple1"
                                     app:srcCompat="@drawable/asset_sohu" />
 
                                 <TextView
@@ -236,7 +237,7 @@
                                     android:layout_marginTop="9dp"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView13"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_jd" />
 
                                 <TextView
                                     android:id="@+id/textView25"
@@ -245,7 +246,7 @@
                                     android:layout_marginStart="5dp"
                                     android:layout_marginEnd="8dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="JD.com"
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView14"
                                     app:layout_constraintEnd_toStartOf="@+id/divider2"
@@ -264,7 +265,7 @@
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView14"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_bilibili" />
 
                                 <TextView
                                     android:id="@+id/textView26"
@@ -273,7 +274,7 @@
                                     android:layout_marginStart="5dp"
                                     android:layout_marginEnd="8dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="Bilibili Inc."
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView15"
                                     app:layout_constraintEnd_toStartOf="@+id/divider2"
@@ -301,7 +302,7 @@
                                     android:layout_marginTop="12dp"
                                     app:layout_constraintStart_toEndOf="@+id/divider2"
                                     app:layout_constraintTop_toTopOf="parent"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_gazprom" />
 
                                 <TextView
                                     android:id="@+id/textView27"
@@ -310,10 +311,11 @@
                                     android:layout_marginStart="7dp"
                                     android:layout_marginEnd="11dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="Gazprom"
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView16"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/imageView16"
                                     app:layout_constraintTop_toTopOf="@+id/imageView16" />
 
@@ -325,7 +327,7 @@
                                     android:layout_marginTop="9dp"
                                     app:layout_constraintStart_toEndOf="@+id/divider2"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView16"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_vtb" />
 
                                 <TextView
                                     android:id="@+id/textView28"
@@ -334,10 +336,11 @@
                                     android:layout_marginStart="7dp"
                                     android:layout_marginEnd="11dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="VTB Perp"
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView17"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/imageView17"
                                     app:layout_constraintTop_toTopOf="@+id/imageView17" />
 
@@ -349,7 +352,7 @@
                                     android:layout_marginTop="9dp"
                                     app:layout_constraintStart_toEndOf="@+id/divider2"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView17"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_lukoil" />
 
                                 <TextView
                                     android:id="@+id/textView29"
@@ -358,10 +361,11 @@
                                     android:layout_marginStart="7dp"
                                     android:layout_marginEnd="11dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="Lukoil"
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView18"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/imageView18"
                                     app:layout_constraintTop_toTopOf="@+id/imageView18" />
 
@@ -373,7 +377,7 @@
                                     android:layout_marginTop="9dp"
                                     app:layout_constraintStart_toEndOf="@+id/divider2"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView18"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_evras" />
 
                                 <TextView
                                     android:id="@+id/textView30"
@@ -382,10 +386,11 @@
                                     android:layout_marginStart="7dp"
                                     android:layout_marginEnd="11dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="Evras"
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView19"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/imageView19"
                                     app:layout_constraintTop_toTopOf="@+id/imageView19" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -412,7 +417,7 @@
                                     android:contentDescription="TODO"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_apple" />
 
                                 <TextView
                                     android:id="@+id/textView231"
@@ -437,7 +442,7 @@
                                     android:layout_marginTop="9dp"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView121"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_sohu" />
 
                                 <TextView
                                     android:id="@+id/textView241"
@@ -462,7 +467,7 @@
                                     android:layout_marginTop="9dp"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView131"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_jd" />
 
                                 <TextView
                                     android:id="@+id/textView251"
@@ -471,7 +476,7 @@
                                     android:layout_marginStart="5dp"
                                     android:layout_marginEnd="8dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="JD.com"
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView141"
                                     app:layout_constraintEnd_toStartOf="@+id/divider21"
@@ -489,7 +494,7 @@
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView141"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_bilibili" />
 
                                 <TextView
                                     android:id="@+id/textView261"
@@ -498,7 +503,7 @@
                                     android:layout_marginStart="5dp"
                                     android:layout_marginEnd="8dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="Bilibili Inc."
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView151"
                                     app:layout_constraintEnd_toStartOf="@+id/divider21"
@@ -526,7 +531,7 @@
                                     android:layout_marginTop="12dp"
                                     app:layout_constraintStart_toEndOf="@+id/divider21"
                                     app:layout_constraintTop_toTopOf="parent"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_gazprom" />
 
                                 <TextView
                                     android:id="@+id/textView271"
@@ -535,10 +540,11 @@
                                     android:layout_marginStart="7dp"
                                     android:layout_marginEnd="11dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="Gazprom"
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView161"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/imageView161"
                                     app:layout_constraintTop_toTopOf="@+id/imageView161" />
 
@@ -550,7 +556,7 @@
                                     android:layout_marginTop="9dp"
                                     app:layout_constraintStart_toEndOf="@+id/divider21"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView161"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_vtb" />
 
                                 <TextView
                                     android:id="@+id/textView281"
@@ -559,10 +565,11 @@
                                     android:layout_marginStart="7dp"
                                     android:layout_marginEnd="11dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="VTB Perp"
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView171"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/imageView171"
                                     app:layout_constraintTop_toTopOf="@+id/imageView171" />
 
@@ -574,7 +581,7 @@
                                     android:layout_marginTop="9dp"
                                     app:layout_constraintStart_toEndOf="@+id/divider21"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView171"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_lukoil" />
 
                                 <TextView
                                     android:id="@+id/textView291"
@@ -583,10 +590,11 @@
                                     android:layout_marginStart="7dp"
                                     android:layout_marginEnd="11dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="Lukoil"
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView181"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/imageView181"
                                     app:layout_constraintTop_toTopOf="@+id/imageView181" />
 
@@ -598,7 +606,7 @@
                                     android:layout_marginTop="9dp"
                                     app:layout_constraintStart_toEndOf="@+id/divider21"
                                     app:layout_constraintTop_toBottomOf="@+id/imageView181"
-                                    app:srcCompat="@drawable/ic_apple" />
+                                    app:srcCompat="@drawable/asset_evras" />
 
                                 <TextView
                                     android:id="@+id/textView301"
@@ -607,10 +615,11 @@
                                     android:layout_marginStart="7dp"
                                     android:layout_marginEnd="11dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="Apple Inc."
+                                    android:text="Evras"
                                     android:textColor="#C9DBE8"
                                     app:layout_constraintBottom_toBottomOf="@+id/imageView191"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/imageView191"
                                     app:layout_constraintTop_toTopOf="@+id/imageView191" />
                             </androidx.constraintlayout.widget.ConstraintLayout>

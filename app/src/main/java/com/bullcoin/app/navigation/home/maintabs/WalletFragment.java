@@ -28,6 +28,8 @@ public class WalletFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wallet, container, false);
 
+        setRetainInstance(true);
+
         List<Asset> ownedAssets = DataModel.get().getOwnedAssets();
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_wallet);

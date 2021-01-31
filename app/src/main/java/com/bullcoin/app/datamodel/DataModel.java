@@ -38,11 +38,26 @@ public class DataModel {
             assets = new ArrayList<>();
         }
 
+         cards = new ArrayList<>();
+
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         userFirstName = preferences.getString("firstName", "");
         userLastName = preferences.getString("lastName", "");
         brokerBalance = preferences.getFloat("brokerBalance", 100000.0f);
         bankBalance = preferences.getFloat("bankBalance", 0.0f);
+
+        boolean hasCard1 = preferences.getBoolean("hasCard1", false);
+        boolean hasCard2 = preferences.getBoolean("hasCard2", false);
+        if (hasCard1) {
+            cards.add(new Card(Card.CARD_BULLTRADE));
+        }
+        if (hasCard2) {
+            cards.add(new Card(Card.CARD_BULLBANK));
+        }
+    }
+
+    public List<Card> getCards() {
+        return cards;
     }
 
     public String getUserFirstName() {
@@ -174,5 +189,19 @@ public class DataModel {
         editor.commit();
 
         DataModel.initialize(context);
+    }
+
+    public void addCard(Context context, int type) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        if (type == Card.CARD_BULLTRADE && !preferences.getBoolean("hasCard1", false)) {
+            editor.putBoolean("hasCard1", true); // value to store
+            cards.add(new Card(Card.CARD_BULLTRADE));
+        } else if (type == Card.CARD_BULLBANK && !preferences.getBoolean("hasCard2", false)) {
+            editor.putBoolean("hasCard2", true); // value to store
+            cards.add(new Card(Card.CARD_BULLBANK));
+        }
+
+        editor.commit();
     }
 }

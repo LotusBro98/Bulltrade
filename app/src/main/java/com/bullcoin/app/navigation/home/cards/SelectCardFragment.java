@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.Card;
+import com.bullcoin.app.datamodel.DataModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +33,10 @@ public class SelectCardFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_select_card, container, false);
 
-        ArrayList<Card> cards = new ArrayList<>();
-        cards.add(new Card(Card.CARD_BULLTRADE));
-        cards.add(new Card(Card.CARD_NEW));
+        List<Card> cards = new ArrayList<>(DataModel.get().getCards());
+        if (cards.size() < 2) {
+            cards.add(new Card(Card.CARD_NEW));
+        }
 
         RecyclerView recyclerView = root.findViewById(R.id.recycler_cards);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -108,12 +110,22 @@ public class SelectCardFragment extends Fragment {
                     viewHolder.image.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Navigation.findNavController(v).navigate(R.id.action_selectCardFragment_to_cardMenuFragment);
+                            Bundle args = new Bundle();
+                            args.putInt("cardID", Card.CARD_BULLTRADE);
+                            Navigation.findNavController(v).navigate(R.id.action_selectCardFragment_to_cardMenuFragment, args);
                         }
                     });
                     break;
                 case Card.CARD_BULLBANK:
                     viewHolder.image.setImageDrawable(card_bullbank);
+                    viewHolder.image.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Bundle args = new Bundle();
+                            args.putInt("cardID", Card.CARD_BULLBANK);
+                            Navigation.findNavController(v).navigate(R.id.action_selectCardFragment_to_cardMenuFragment, args);
+                        }
+                    });
                     break;
             }
         }

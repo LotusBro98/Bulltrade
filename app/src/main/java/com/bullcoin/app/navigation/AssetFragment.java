@@ -37,12 +37,9 @@ public class AssetFragment extends Fragment implements TextWatcher{
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_asset, container, false);
 
-        int assetID;
-//        if (savedInstanceState != null && savedInstanceState.containsKey("assetID")) {
-//            assetID = savedInstanceState.getInt("assetID");
-//        } else {
-            assetID = getArguments().getInt("assetID");
-//        }
+        setRetainInstance(true);
+
+        int assetID = getArguments().getInt("assetID");
         asset = DataModel.get().getAssets().get(assetID);
 
 

@@ -36,6 +36,8 @@ public class CardFragmentBroker extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_card_broker, container, false);
 
+        setRetainInstance(true);
+
         ImageView icon = view.findViewById(R.id.card_icon);
         TextView accountType = view.findViewById(R.id.card_account_type);
         TextView yourBalance = view.findViewById(R.id.card_your_balance);
