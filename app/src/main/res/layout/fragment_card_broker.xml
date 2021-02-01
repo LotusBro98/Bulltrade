@@ -154,7 +154,7 @@
                 android:id="@+id/card_opt_button"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@null"
+                android:background="#00000000"
                 android:scaleType="fitCenter"
                 app:layout_constraintDimensionRatio="h,1:1"
                 app:layout_constraintEnd_toStartOf="@+id/guideline12"

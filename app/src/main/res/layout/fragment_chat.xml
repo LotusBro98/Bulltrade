@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="43dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/search_box"
         android:drawableRight="@drawable/ic_lupa"
