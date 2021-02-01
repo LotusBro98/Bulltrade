@@ -64,11 +64,11 @@
             android:paddingTop="10dp">
 
             <Button
-                android:id="@+id/button12"
+                android:id="@+id/language_english"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/settings_button_height"
-                android:drawableLeft="@drawable/ic_america"
+                android:drawableLeft="@drawable/ic_english"
                 android:fontFamily="@font/poppins"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
@@ -82,11 +82,11 @@
                 app:iconPadding="16dp" />
 
             <Button
-                android:id="@+id/button13"
+                android:id="@+id/language_deutsch"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/settings_button_height"
-                android:drawableLeft="@drawable/ic_america"
+                android:drawableLeft="@drawable/ic_deutsch"
                 android:fontFamily="@font/poppins"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
@@ -100,11 +100,11 @@
                 app:iconPadding="16dp" />
 
             <Button
-                android:id="@+id/button14"
+                android:id="@+id/language_russian"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/settings_button_height"
-                android:drawableLeft="@drawable/ic_america"
+                android:drawableLeft="@drawable/ic_russian"
                 android:fontFamily="@font/poppins"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"

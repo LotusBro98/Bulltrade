@@ -26,6 +26,7 @@ public class CardFragmentBroker extends Fragment {
     public final static int TYPE_BULLBANK = 2;
 
     private int type;
+    TextView balance;
 
     public CardFragmentBroker(int type) {
         this.type = type;
@@ -41,7 +42,7 @@ public class CardFragmentBroker extends Fragment {
         ImageView icon = view.findViewById(R.id.card_icon);
         TextView accountType = view.findViewById(R.id.card_account_type);
         TextView yourBalance = view.findViewById(R.id.card_your_balance);
-        TextView balance = view.findViewById(R.id.card_balance);
+        balance = view.findViewById(R.id.card_balance);
         TextView cardholderName = view.findViewById(R.id.cardholder_name);
 
         switch (type) {
@@ -84,5 +85,21 @@ public class CardFragmentBroker extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        switch (type) {
+            case TYPE_BROKER:
+                balance.setText("$" + String.format("%.2f", DataModel.get().getBrokerBalance()));
+                break;
+            case TYPE_BULLCOIN:
+                balance.setText(String.valueOf(DataModel.get().getBullcoinBalance()));
+                break;
+            case TYPE_BULLBANK:
+                balance.setText("$" +  String.format("%.2f", DataModel.get().getBankBalance()));
+                break;
+        }
     }
 }

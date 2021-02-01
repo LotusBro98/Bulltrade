@@ -5,12 +5,12 @@
     <string name="title_notifications">Chat</string>
     <string name="title_profile">Profile</string>
     <string name="user_agreement"><u>User Agreement</u></string>
-    <string name="agb"><u>AGB</u></string>
+    <string name="agb" translatable="false"><u>AGB</u></string>
     <string name="create_new_account">Create new account</string>
     <string name="forgot_password">Forgot password</string>
     <string name="registration">Registration</string>
     <string name="phone_number">Phone Number</string>
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="country">Country</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -24,22 +24,22 @@
     <string name="buy">BUY</string>
     <string name="sell">SELL</string>
     <string name="bulltrade_card">Bulltrade card</string>
-    <string name="advantages_of_the_card_n1_worldwide_pay_with_visa_n2_pay_with_bitcoin_n3_debit_reload_card">Advantages of the card:<br/>1.Worldwide pay with Visa<br/>2.Pay with Bitcoin<br/>3.Debit reload Card</string>
+    <string name="advantages_of_the_card_n1_worldwide_pay_with_visa_n2_pay_with_bitcoin_n3_debit_reload_card">Advantages of the card:<br />1. Worldwide pay with Visa<br />2. Pay with Bitcoin<br />3.Debit reload Card</string>
     <string name="order">Order</string>
     <string name="account">Account</string>
     <string name="profile">Profile</string>
     <string name="my_balance">My balance</string>
     <string name="cards">Cards</string>
-    <string name="agb1">AGB</string>
+    <string name="agb1" translatable="false">AGB</string>
     <string name="search_for_friends">Search for friends</string>
     <string name="write_a_message">Write a message</string>
-    <string name="bullbank">Bullbank</string>
+    <string name="bullbank" translatable="false">Bullbank</string>
     <string name="crypto">Crypto</string>
     <string name="trading_assistant">Trading Assistant</string>
-    <string name="save_trees_u00a0_breath_of_earth"><![CDATA[Save trees - breath of Earth]]></string>
+    <string name="save_trees_u00a0_breath_of_earth">Save trees - breath of Earth</string>
     <string name="collect_friends_get_money">Collect friends - get Money</string>
     <string name="earn_money">Earn Money</string>
-    <string name="bullshop">BullShop</string>
+    <string name="bullshop" translatable="false">BullShop</string>
     <string name="wallet">Wallet</string>
     <string name="news">News</string>
     <string name="bookmarks">Bookmarks</string>
@@ -48,7 +48,7 @@
     <string name="up_to_3_5">Up to 3.5%</string>
     <string name="connect_a_ready_made_portfolio">Connect a ready-made portfolio</string>
     <string name="free">Free</string>
-    <string name="_474_98">474,98$</string>
+    <string name="_474_98" translatable="false">474,98$</string>
     <string name="pay_attention">Pay attention</string>
     <string name="exchange_of_currency">Exchange of currency</string>
     <string name="language">Language</string>
@@ -72,11 +72,11 @@
     <string name="_100_bullcoin_after_your_friend_deposits_money_to_your_account">100 Bullcoin after your friend deposits money to your account</string>
     <string name="_100_bullcoin_immediately_after_registration">100 BullCoin immediately after registration</string>
     <string name="get_a_link">Get a link</string>
-    <string name="_17_45">сегодня в 17:45</string>
+    <string name="_17_45">today at 17:45</string>
     <string name="today_at_17_45">Today at 17:45</string>
 
-    <string name="you_have_bought">You have bought </string>
-    <string name="you_have_sold">You have sold </string>
+    <string name="you_have_bought">You have bought\u00A0</string>
+    <string name="you_have_sold">You have sold\u00A0</string>
     <string name="not_enough_money">Not enough money</string>
     <string name="not_enough">Not enough </string>
 
@@ -86,11 +86,12 @@
 
     <string name="broker_account">Broker account</string>
     <string name="your_balance">Your balance</string>
-    <string name="bullcoin">Bullcoin</string>
+    <string name="bullcoin" translatable="false">Bullcoin</string>
     <string name="your_bcn_balance">Your BCN balance</string>
-    <string name="bullbank_card">Bullbank</string>
+    <string name="bullbank_card" translatable="false">Bullbank</string>
     <string name="your_bank_account_balance">Your bank account balance</string>
 
+    <string name="quantity_x">quantity x</string>
 
     <string-array name="languages">
         <item>English</item>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +23,9 @@ import com.bullcoin.app.AssetActivity;
 import java.util.List;
 
 public class WalletFragment extends Fragment {
+
+    WalletRecyclerViewAdapter adapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,7 +37,7 @@ public class WalletFragment extends Fragment {
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_wallet);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        WalletRecyclerViewAdapter adapter = new WalletRecyclerViewAdapter(getActivity(), ownedAssets);
+        adapter = new WalletRecyclerViewAdapter(getActivity(), ownedAssets);
         adapter.setClickListener(new WalletRecyclerViewAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, Asset asset) {
@@ -47,6 +51,12 @@ public class WalletFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.mData = DataModel.get().getOwnedAssets();
+        adapter.notifyDataSetChanged();
+    }
 
     public static class WalletRecyclerViewAdapter extends RecyclerView.Adapter<WalletRecyclerViewAdapter.ViewHolder> {
 
@@ -76,7 +86,7 @@ public class WalletFragment extends Fragment {
             holder.name.setText(asset.getName());
             holder.image.setImageDrawable(context.getResources().getDrawable(asset.getIconResourceID()));
             holder.price.setText("$" + String.valueOf(asset.getPrice()));
-            holder.quantity.setText(context.getString(R.string.quantity) + " x" + String.valueOf(asset.getOwned()));
+            holder.quantity.setText(context.getString(R.string.quantity_x) + String.valueOf(asset.getOwned()));
         }
 
         // total number of rows

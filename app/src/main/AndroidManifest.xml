@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <application
+        android:configChanges="locale"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -25,7 +26,10 @@
 
         <activity android:name=".login.PinCreateActivity" android:screenOrientation="portrait" />
         <activity android:name=".login.RegisterActivity" android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity" android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/splashScreenTheme"
+        />
         <activity android:name=".navigation.chat.ChatDialogueActivity" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".AssetActivity" android:windowSoftInputMode="adjustResize" />
 

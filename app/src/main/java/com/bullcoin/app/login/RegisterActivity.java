@@ -1,21 +1,27 @@
 package com.bullcoin.app.login;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bullcoin.app.LocaleManager;
+import com.bullcoin.app.LocalizedActivity;
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.DataModel;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends LocalizedActivity {
     EditText phone;
     Spinner language;
     EditText email;
@@ -24,6 +30,9 @@ public class RegisterActivity extends AppCompatActivity {
     EditText lastName;
     EditText password;
     EditText repeatPassword;
+
+    TextView registration;
+    Button next;
 
 
     enum Step {
@@ -47,6 +56,8 @@ public class RegisterActivity extends AppCompatActivity {
         lastName = findViewById(R.id.editLastName);
         password = findViewById(R.id.editPassword);
         repeatPassword = findViewById(R.id.editPasswordRepeat);
+        registration = findViewById(R.id.registration);
+        next = findViewById(R.id.button_next);
 
         String[] languages = getResources().getStringArray(R.array.languages);
         ArrayAdapter<?> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, languages);
@@ -59,6 +70,30 @@ public class RegisterActivity extends AppCompatActivity {
         lastName.setVisibility(View.GONE);
         password.setVisibility(View.GONE);
         repeatPassword.setVisibility(View.GONE);
+
+        String locale_code = LocaleManager.getLocale(getResources()).toString();
+        if (locale_code.equals("en")) {
+            language.setSelection(0);
+        } else if (locale_code.equals("de")) {
+            language.setSelection(1);
+        } else if (locale_code.equals("ru")) {
+            language.setSelection(2);
+        } else {
+            language.setSelection(0);
+        }
+
+        language.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String languageStr = LocaleManager.LocaleDef.SUPPORTED_LOCALES[position];
+                setLocale(languageStr);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private boolean handlePhoneLang() {
@@ -98,6 +133,20 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = new Intent(RegisterActivity.this, PinCreateActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onConfigurationChanged(final Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        phone.setText(getResources().getString(R.string.phone_number));
+        email.setHint(getResources().getString(R.string.email));
+        country.setHint(getResources().getString(R.string.country));
+        firstName.setHint(getResources().getString(R.string.first_name));
+        lastName.setHint(getResources().getString(R.string.last_name));
+        password.setHint(getResources().getString(R.string.password));
+        repeatPassword.setHint(getResources().getString(R.string.repeat_your_password));
+        registration.setText(getResources().getString(R.string.registration));
+        next.setText(getResources().getString(R.string.next));
     }
 
     public void onNextClick(View view) {

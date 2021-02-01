@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,21 +25,24 @@ import com.google.android.material.tabs.TabLayout;
 
 public class HomeFragment extends Fragment {
 
+    MainTabAdapter mainTabAdapter;
+    CardAdapter cardAdapter;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        CardAdapter adapter = new CardAdapter(getChildFragmentManager());
+        cardAdapter = new CardAdapter(getChildFragmentManager());
 
         ViewPager cardPager = root.findViewById(R.id.card_pager);
-        cardPager.setAdapter(adapter);
+        cardPager.setAdapter(cardAdapter);
         cardPager.setCurrentItem(0);
 
         TabLayout cardTabs = root.findViewById(R.id.card_tabs);
         cardTabs.setupWithViewPager(cardPager);
 
-        MainTabAdapter mainTabAdapter = new MainTabAdapter(getChildFragmentManager(), getContext());
+        mainTabAdapter = new MainTabAdapter(getChildFragmentManager(), getContext());
 
         ViewPager mainTabPager = root.findViewById(R.id.main_tab_pager);
         mainTabPager.setAdapter(mainTabAdapter);
@@ -57,7 +61,6 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
-
 
     public static class CardAdapter extends FragmentPagerAdapter {
         public CardAdapter(@NonNull FragmentManager fragmentManager) {

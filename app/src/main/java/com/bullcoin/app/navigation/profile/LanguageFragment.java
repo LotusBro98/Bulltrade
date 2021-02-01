@@ -15,6 +15,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.bullcoin.app.LocaleManager;
+import com.bullcoin.app.MainActivity;
 import com.bullcoin.app.R;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
@@ -30,6 +32,31 @@ public class LanguageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(root).navigateUp();
+            }
+        });
+
+        Button buttonEnglish = root.findViewById(R.id.language_english);
+        Button buttonDeutsch = root.findViewById(R.id.language_deutsch);
+        Button buttonRussian = root.findViewById(R.id.language_russian);
+
+        buttonEnglish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).setNewLocale(((MainActivity)getActivity()), LocaleManager.ENGLISH);
+            }
+        });
+
+        buttonDeutsch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).setNewLocale(((MainActivity)getActivity()), LocaleManager.DEUTSCH);
+            }
+        });
+
+        buttonRussian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).setNewLocale(((MainActivity)getActivity()), LocaleManager.RUSSIAN);
             }
         });
 

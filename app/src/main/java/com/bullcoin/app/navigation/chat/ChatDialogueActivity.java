@@ -23,6 +23,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bullcoin.app.LocalizedActivity;
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.DataModel;
 import com.bullcoin.app.datamodel.Dialogue;
@@ -31,7 +32,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class ChatDialogueActivity extends AppCompatActivity {
+public class ChatDialogueActivity extends LocalizedActivity {
 
     EditText editMessage;
     RecyclerView recyclerView;

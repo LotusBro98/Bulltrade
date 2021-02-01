@@ -25,7 +25,7 @@ import com.bullcoin.app.datamodel.Asset;
 import com.bullcoin.app.datamodel.DataModel;
 import com.bullcoin.app.navigation.chat.ChatDialogueActivity;
 
-public class AssetActivity extends AppCompatActivity implements TextWatcher{
+public class AssetActivity extends LocalizedActivity implements TextWatcher{
     Asset asset;
     int quantity = 0;
 

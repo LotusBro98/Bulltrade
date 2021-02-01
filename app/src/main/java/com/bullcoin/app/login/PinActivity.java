@@ -14,9 +14,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bullcoin.app.LocalizedActivity;
 import com.bullcoin.app.R;
 
-public abstract class PinActivity extends AppCompatActivity {
+public abstract class PinActivity extends LocalizedActivity {
 
     int enter_i = 0;
     int[] digits;
