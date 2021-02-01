@@ -33,6 +33,7 @@
         app:tabIndicatorGravity="center"
         app:tabIndicatorHeight="27dp"
         app:tabInlineLabel="true"
+        app:tabMode="auto"
         app:tabPaddingEnd="16dp"
         app:tabPaddingStart="16dp"
         app:tabRippleColor="@null"

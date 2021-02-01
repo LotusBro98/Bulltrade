@@ -78,7 +78,7 @@
     <string name="you_have_bought">You have bought\u00A0</string>
     <string name="you_have_sold">You have sold\u00A0</string>
     <string name="not_enough_money">Not enough money</string>
-    <string name="not_enough">Not enough </string>
+    <string name="not_enough">Not enough\\u00A0</string>
 
     <string name="create_a_pin">Create a pin</string>
     <string name="repeat">Repeat</string>

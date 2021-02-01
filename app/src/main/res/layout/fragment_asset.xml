@@ -179,9 +179,9 @@
 
                 <Button
                     android:id="@+id/button_buy"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="68dp"
-                    android:layout_marginLeft="32dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="16dp"
@@ -197,11 +197,11 @@
 
                 <Button
                     android:id="@+id/button_sell"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="68dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="32dp"
+                    android:layout_marginRight="16dp"
                     android:layout_marginBottom="16dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat_bold"

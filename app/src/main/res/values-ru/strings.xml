@@ -20,8 +20,8 @@
     <string name="quantity">Количество</string>
     <string name="interest_deduction">Процентный вычет</string>
     <string name="total">Итого</string>
-    <string name="buy">КУПИТЬ</string>
-    <string name="sell">ПРОДАТЬ</string>
+    <string name="buy"><font size="16">КУПИТЬ</font></string>
+    <string name="sell"><font size="16">ПРОДАТЬ</font></string>
     <string name="bulltrade_card">Карта Bulltrade</string>
     <string name="advantages_of_the_card_n1_worldwide_pay_with_visa_n2_pay_with_bitcoin_n3_debit_reload_card">Достоинства карты:<br />1. Платите с помощью Visa по всему миру<br />2. Платите с помощью Bitcoin<br />3. Дебетовая карта</string>
     <string name="order">Заказать</string>
@@ -72,7 +72,7 @@
     <string name="you_have_bought">"Вы купили\u00A0"</string>
     <string name="you_have_sold">"Вы продали\u00A0"</string>
     <string name="not_enough_money">Недостаточно денег</string>
-    <string name="not_enough">"Недостаточно "</string>
+    <string name="not_enough">Недостаточно\u00A0</string>
     <string name="create_a_pin">Создайте пин-код</string>
     <string name="repeat">Повторите</string>
     <string name="pins_doesnt_match">Пин-коды не совпадают</string>
