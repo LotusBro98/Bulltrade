@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="30dp"
+        android:text="@string/quantity"
+        android:textColor="#C9DBE8"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/asset_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/asset_quantity_bg"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:inputType="number"
+        android:paddingLeft="24dp"
+        android:textColor="#84D7FF"
+        android:textSize="24sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_interest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="30dp"
+            android:text="@string/interest_deduction"
+            android:textColor="#C9DBE8"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
+            android:gravity="right|center_vertical"
+            android:paddingRight="30dp"
+            android:text="0"
+            android:textColor="#84D7FF"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="30dp"
+            android:text="@string/total"
+            android:textColor="#C9DBE8"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/asset_total_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="right|center_vertical"
+            android:paddingRight="30dp"
+            android:text="$0"
+            android:textColor="#15B3FF"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_buy"
+            android:layout_width="0dp"
+            android:layout_height="68dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/buy"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#2C456B"
+            android:textSize="20sp"
+            app:backgroundTint="#15B3FF"
+            app:icon="@drawable/ic_buy"
+            app:iconTint="#2C456B" />
+
+        <Button
+            android:id="@+id/button_sell"
+            app:backgroundTint="#15B3FF"
+            app:icon="@drawable/ic_sell"
+            app:iconTint="#2C456B"
+            android:layout_width="0dp"
+            android:layout_height="68dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/sell"
+            android:textColor="#2C456B"
+            android:textSize="20sp" />
+    </LinearLayout>
+</LinearLayout>

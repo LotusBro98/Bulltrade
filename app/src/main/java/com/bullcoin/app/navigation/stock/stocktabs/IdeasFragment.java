@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.Asset;
 import com.bullcoin.app.datamodel.DataModel;
-import com.bullcoin.app.AssetActivity;
+import com.bullcoin.app.asset.AssetActivity;
 
 public class IdeasFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,

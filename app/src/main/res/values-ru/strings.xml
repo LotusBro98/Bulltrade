@@ -81,4 +81,14 @@
     <string name="your_bcn_balance">Ваш BCN баланс</string>
     <string name="your_bank_account_balance">Баланс банковского счета</string>
     <string name="quantity_x">количество x</string>
+    <string name="overview">Обзор</string>
+    <string name="bidding">Торг</string>
+    <string name="forecasts">Прогнозы</string>
+    <string name="country1">Страна</string>
+    <string name="united_states_of_america">Соединенные Штаты Америки</string>
+    <string name="recommendation">Рекомендация</string>
+    <string name="buy1">Купить</string>
+    <string name="predicted_price">Прогнозируемая цена</string>
+    <string name="price_change">Изменение цены</string>
+    <string name="keep">Держать</string>
 </resources>

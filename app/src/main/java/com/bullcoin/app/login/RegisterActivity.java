@@ -71,16 +71,17 @@ public class RegisterActivity extends LocalizedActivity {
         password.setVisibility(View.GONE);
         repeatPassword.setVisibility(View.GONE);
 
-        String locale_code = LocaleManager.getLocale(getResources()).toString();
-        if (locale_code.equals("en")) {
-            language.setSelection(0);
-        } else if (locale_code.equals("de")) {
-            language.setSelection(1);
-        } else if (locale_code.equals("ru")) {
-            language.setSelection(2);
-        } else {
-            language.setSelection(0);
-        }
+//        String locale_code = LocaleManager.getLocale(getResources()).toString();
+//        if (locale_code.equals("en")) {
+//            language.setSelection(0);
+//        } else if (locale_code.equals("de")) {
+//            language.setSelection(1);
+//        } else if (locale_code.equals("ru")) {
+//            language.setSelection(2);
+//        } else {
+//            language.setSelection(0);
+//        }
+        language.setSelection(0);
 
         language.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

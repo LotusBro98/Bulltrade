@@ -531,9 +531,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#1E385B"
+                app:fillViewport="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/main_tabs" />
+                app:layout_constraintTop_toBottomOf="@+id/main_tabs"
+                app:useCurrentHeight="false" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.Asset;
 import com.bullcoin.app.datamodel.DataModel;
-import com.bullcoin.app.AssetActivity;
+import com.bullcoin.app.asset.AssetActivity;
 
 import java.util.List;
 

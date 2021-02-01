@@ -81,4 +81,14 @@
     <string name="your_bcn_balance">Ihr BCN-Guthaben</string>
     <string name="your_bank_account_balance">Ihr Kontostand</string>
     <string name="quantity_x">menge x</string>
+    <string name="overview">Überblick</string>
+    <string name="bidding">Tender</string>
+    <string name="forecasts">Prognose</string>
+    <string name="country1">Land</string>
+    <string name="united_states_of_america">Vereinigte Staaten von Amerika</string>
+    <string name="recommendation">Empfehlung</string>
+    <string name="buy1">Kaufen</string>
+    <string name="predicted_price">Vorhergesagter Preis</string>
+    <string name="price_change">Preisänderung</string>
+    <string name="keep">Halten</string>
 </resources>

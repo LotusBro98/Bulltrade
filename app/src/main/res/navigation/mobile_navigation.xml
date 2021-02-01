@@ -99,6 +99,6 @@
         android:label="EarnMoneyFragment" />
     <fragment
         android:id="@+id/assetFragment"
-        android:name="com.bullcoin.app.AssetActivity"
+        android:name="com.bullcoin.app.asset.AssetActivity"
         android:label="AssetFragment" />
 </navigation>

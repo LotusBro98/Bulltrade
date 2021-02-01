@@ -78,7 +78,7 @@
     <string name="you_have_bought">You have bought\u00A0</string>
     <string name="you_have_sold">You have sold\u00A0</string>
     <string name="not_enough_money">Not enough money</string>
-    <string name="not_enough">Not enough\\u00A0</string>
+    <string name="not_enough">Not enough\u00A0</string>
 
     <string name="create_a_pin">Create a pin</string>
     <string name="repeat">Repeat</string>
@@ -92,6 +92,16 @@
     <string name="your_bank_account_balance">Your bank account balance</string>
 
     <string name="quantity_x">quantity x</string>
+    <string name="overview">Overview</string>
+    <string name="bidding">Bidding</string>
+    <string name="forecasts">Forecasts</string>
+    <string name="country1">Country</string>
+    <string name="united_states_of_america">United States of America</string>
+    <string name="recommendation">Recommendation</string>
+    <string name="buy1">Buy</string>
+    <string name="predicted_price">Predicted price</string>
+    <string name="price_change">Price change</string>
+    <string name="keep">Keep</string>
 
     <string-array name="languages">
         <item>English</item>

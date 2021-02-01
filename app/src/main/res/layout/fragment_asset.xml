@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1E385B"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context=".asset.AssetActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline19"
@@ -17,7 +18,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:fillViewport="true"
+        android:fillViewport="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +27,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:gravity="bottom"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,153 +66,55 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView6" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Space
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/asset_tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="10" />
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/tab_bg_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
+                app:tabIconTint="@null"
+                app:tabIndicator="@drawable/tab_ind_2"
+                app:tabIndicatorColor="#1E385B"
+                app:tabIndicatorFullWidth="true"
+                app:tabIndicatorGravity="center"
+                app:tabIndicatorHeight="27dp"
+                app:tabInlineLabel="true"
+                app:tabRippleColor="@null"
+                app:tabSelectedTextColor="#C9DBE8"
+                app:tabTextAppearance="@style/mainTabTextStyle"
+                app:tabTextColor="#C9DBE8">
 
-            <TextView
-                android:id="@+id/textView42"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="30dp"
-                android:text="@string/quantity"
-                android:textColor="#C9DBE8"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/asset_quantity"
-                android:layout_width="match_parent"
-                android:layout_height="61dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
-                android:background="@drawable/asset_quantity_bg"
-                android:ems="10"
-                android:fontFamily="@font/montserrat"
-                android:inputType="number"
-                android:paddingLeft="24dp"
-                android:textColor="#84D7FF"
-                android:textSize="24sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:id="@+id/LinearLayout_interest"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="bottom"
-                android:orientation="horizontal">
-
-                <TextView
+                <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:gravity="left|center_vertical"
-                    android:paddingLeft="30dp"
-                    android:text="@string/interest_deduction"
-                    android:textColor="#C9DBE8"
-                    android:textSize="16sp" />
+                    android:text="@string/overview" />
 
-                <TextView
+                <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="right|center_vertical"
-                    android:paddingRight="30dp"
-                    android:text="0"
-                    android:textColor="#84D7FF"
-                    android:textSize="24sp" />
-            </LinearLayout>
+                    android:text="@string/bidding" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:id="@+id/LinearLayout_total"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
+                <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:gravity="left|center_vertical"
-                    android:paddingLeft="30dp"
-                    android:text="@string/total"
-                    android:textColor="#C9DBE8"
-                    android:textSize="24sp" />
+                    android:text="@string/forecasts" />
+            </com.google.android.material.tabs.TabLayout>
 
-                <TextView
-                    android:id="@+id/asset_total_cost"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:gravity="right|center_vertical"
-                    android:paddingRight="30dp"
-                    android:text="$0"
-                    android:textColor="#15B3FF"
-                    android:textSize="30sp" />
-            </LinearLayout>
-
-            <Space
+            <com.bullcoin.app.layout.WrapHeightViewPager
+                android:id="@+id/asset_pager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button_buy"
-                    android:layout_width="0dp"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/buy"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="#2C456B"
-                    android:textSize="20sp"
-                    app:backgroundTint="#15B3FF"
-                    app:icon="@drawable/ic_buy"
-                    app:iconTint="#2C456B" />
-
-                <Button
-                    android:id="@+id/button_sell"
-                    android:layout_width="0dp"
-                    android:layout_height="68dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/sell"
-                    android:textColor="#2C456B"
-                    android:textSize="20sp"
-                    app:backgroundTint="#15B3FF"
-                    app:icon="@drawable/ic_sell"
-                    app:iconTint="#2C456B" />
-            </LinearLayout>
+                android:background="#1E385B"
+                app:fillViewport="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/asset_tabs"
+                app:useCurrentHeight="true" />
 
         </LinearLayout>
     </ScrollView>
