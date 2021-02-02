@@ -64,6 +64,10 @@ public class HomeFragment extends Fragment {
                 v -> Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_bullbankFragment)
         );
 
+        root.findViewById(R.id.button_save_trees).setOnClickListener(
+                v -> Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_saveTreesFragment)
+        );
+
         return root;
     }
 
