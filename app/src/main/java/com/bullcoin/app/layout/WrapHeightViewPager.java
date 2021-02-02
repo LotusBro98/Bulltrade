@@ -46,9 +46,7 @@ public class WrapHeightViewPager extends ViewPager {
 
                 @Override
                 public void onPageSelected(int position) {
-                    Log.d("GWEGGGGGGGGG", String.valueOf(position));
                     requestLayout();
-//                requestFitSystemWindows();
                 }
 
                 @Override

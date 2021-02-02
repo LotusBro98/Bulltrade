@@ -2,6 +2,7 @@ package com.bullcoin.app.datamodel;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -10,9 +11,19 @@ import com.bullcoin.app.R;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 public class DataModel {
     private String userFirstName;
@@ -23,6 +34,8 @@ public class DataModel {
     private List<Card> cards;
     private List<Dialogue> dialogues;
     private List<News> news;
+
+    private static final String BASE_URL = "http://82.148.29.197:8000/";
 
     private int userID;
 
@@ -202,6 +215,61 @@ public class DataModel {
         editor.commit();
     }
 
+    public static String doGet(String url, Map<String, String> args) throws Exception {
+
+        String get_url = BASE_URL + url + "?";
+
+        for (Map.Entry<String, String> entry : args.entrySet()) {
+            get_url += URLEncoder.encode(entry.getKey(), "utf-8") + "=" + URLEncoder.encode(entry.getValue(), "utf-8") + "&";
+        }
+        if (get_url.charAt(get_url.length() - 1) == '&') {
+            get_url = get_url.substring(0, get_url.length()-1);
+        }
+
+        Log.d("SERVER_GET", "Sending GET request: " + get_url);
+
+        java.net.URL obj = new URL(get_url);
+        HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+
+        //add reuqest header
+        connection.setRequestMethod("GET");
+        connection.setRequestProperty("User-Agent", "Mozilla/5.0" );
+        connection.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+        connection.setRequestProperty("Content-Type", "application/json");
+
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = bufferedReader.readLine()) != null) {
+            response.append(inputLine);
+        }
+        bufferedReader.close();
+
+        Log.d("SERVER_GET","Response string: " + response.toString());
+
+        return response.toString();
+    }
+
+    public static void doGetAsync(String url, Map<String, String> args) {
+        new AsyncTask<Void, String, String>() {
+            @Override
+            protected String doInBackground(Void... voids) {
+                String s = "";
+                try {
+                    s = doGet(url, args);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return s;
+            }
+
+            @Override
+            protected void onPostExecute(final String result) {
+            }
+        }.execute();
+    }
+
     public static void register(Context context,
             String phone,
             String language,
@@ -227,6 +295,15 @@ public class DataModel {
         editor.putString("lastName", lastName);
 
         editor.commit();
+
+        Map<String, String> registerData = new HashMap<>();
+        registerData.put("phone_number", phone);
+        registerData.put("language", language);
+        registerData.put("email", email);
+        registerData.put("country", country);
+        registerData.put("first_name", firstName);
+        registerData.put("last_name", lastName);
+        doGetAsync("register", registerData);
 
         DataModel.initialize(context);
     }

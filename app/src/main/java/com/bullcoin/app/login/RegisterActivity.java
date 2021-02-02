@@ -139,7 +139,7 @@ public class RegisterActivity extends LocalizedActivity {
     @Override
     public void onConfigurationChanged(final Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        phone.setText(getResources().getString(R.string.phone_number));
+        phone.setHint(getResources().getString(R.string.phone_number));
         email.setHint(getResources().getString(R.string.email));
         country.setHint(getResources().getString(R.string.country));
         firstName.setHint(getResources().getString(R.string.first_name));
