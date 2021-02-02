@@ -57,4 +57,24 @@
         <item name="android:textCursorDrawable">@null</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="bullbankButton" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableRight">@drawable/ic_arrow_right</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">26dp</item>
+        <item name="android:paddingRight">26dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:textColor">@color/Text_color_red</item>
+        <item name="android:textSize">18sp</item>
+        <item name="backgroundTint">#00ffffff</item>
+        <item name="elevation">0dp</item>
+        <item name="iconPadding">16dp</item>
+    </style>
 </resources>

@@ -105,6 +105,7 @@
                                     app:srcCompat="@drawable/ic_bullbank" />
 
                                 <Button
+                                    android:id="@+id/button_bullbank"
                                     style="@style/Widget.AppCompat.Button.Borderless"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"

@@ -60,6 +60,10 @@ public class HomeFragment extends Fragment {
             v -> Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_friendsFragment)
         );
 
+        root.findViewById(R.id.button_bullbank).setOnClickListener(
+                v -> Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_bullbankFragment)
+        );
+
         return root;
     }
 

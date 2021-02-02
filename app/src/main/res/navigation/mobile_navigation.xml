@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_navigation_home_to_friendsFragment"
             app:destination="@id/friendsFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_bullbankFragment"
+            app:destination="@id/bullbankFragment" />
     </fragment>
 
     <fragment
@@ -122,4 +125,8 @@
         android:id="@+id/friendsFragment"
         android:name="com.bullcoin.app.screens.FriendsFragment"
         android:label="FriendsFragment" />
+    <fragment
+        android:id="@+id/bullbankFragment"
+        android:name="com.bullcoin.app.screens.BullbankFragment"
+        android:label="BullbankFragment" />
 </navigation>
