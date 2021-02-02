@@ -102,7 +102,14 @@
     <string name="predicted_price">Predicted price</string>
     <string name="price_change">Price change</string>
     <string name="keep">Keep</string>
-    <string name="Bullcoin_is_a_new_cryptocurrency">Bullcoin is a new cryptocurrency , but despite this, it is rapidly gaining popularity and on our platform you can not only buy it, but also receive an annual percentage of the amount for which you bought the cryptocurrency.</string>
+    <string name="Bullcoin_is_a_new_cryptocurrency" translatable="false">Bullcoin is a new cryptocurrency , but despite this, it is rapidly gaining popularity and on our platform you can not only buy it, but also receive an annual percentage of the amount for which you bought the cryptocurrency.</string>
+    <string name="collect_friends_get_money_screen">Collect friends - get Money</string>
+    <string name="bullfamily" translatable="false">BULLFAMILY</string>
+    <string name="friends_text">Collect friends and get bonus for each friend! When a friend makes Invest in App 100 Dollar / euro User become 100 Bullcoin Bonus. 100% = 100 Bullcoin Bonus</string>
+    <string name="your_bullfamily">Your Bullfamily</string>
+    <string name="details">Details</string>
+    <string name="name">Name</string>
+    <string name="your_bonus">Your bonus</string>
 
     <string-array name="languages">
         <item>English</item>

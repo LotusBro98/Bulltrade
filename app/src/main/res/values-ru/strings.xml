@@ -91,4 +91,10 @@
     <string name="predicted_price">Прогнозируемая цена</string>
     <string name="price_change">Изменение цены</string>
     <string name="keep">Держать</string>
+    <string name="collect_friends_get_money_screen">Собирай друзей - получай деньги</string>
+    <string name="friends_text">Заводите друзей и получайте бонусы за каждого друга! Когда друг инвестирует 100 долларов / евро, пользователь получает 100 Bullcoin в подарок. 100% = 100 Bullcoin</string>
+    <string name="your_bullfamily">Bullfamily</string>
+    <string name="details">Детали</string>
+    <string name="name">Имя</string>
+    <string name="your_bonus">Ваш бонус</string>
 </resources>

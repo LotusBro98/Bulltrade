@@ -91,4 +91,10 @@
     <string name="predicted_price">Vorhergesagter Preis</string>
     <string name="price_change">Preisänderung</string>
     <string name="keep">Halten</string>
+    <string name="collect_friends_get_money_screen">Freunde sammeln - Geld bekommen</string>
+    <string name="friends_text">Sammle Freunde und erhalte Bonus für jeden Freund! Wenn ein Freund macht Investieren in App-100 Dollar / euro-Benutzer werden zu 100 Bullcoin Bonus. 100% = 100 Bonus Bullcoin</string>
+    <string name="your_bullfamily">Bullfamily</string>
+    <string name="details">Hinweise</string>
+    <string name="name">Name</string>
+    <string name="your_bonus">Ihr bonus</string>
 </resources>

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_navigation_home_to_assetFragment"
             app:destination="@id/assetFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_friendsFragment"
+            app:destination="@id/friendsFragment" />
     </fragment>
 
     <fragment
@@ -115,4 +118,8 @@
         android:id="@+id/profileButtonsFragment"
         android:name="com.bullcoin.app.screens.ProfileButtonsFragment"
         android:label="ProfileButtonsFragment" />
+    <fragment
+        android:id="@+id/friendsFragment"
+        android:name="com.bullcoin.app.screens.FriendsFragment"
+        android:label="FriendsFragment" />
 </navigation>

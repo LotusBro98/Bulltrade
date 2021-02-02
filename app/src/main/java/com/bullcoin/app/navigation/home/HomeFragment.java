@@ -52,12 +52,13 @@ public class HomeFragment extends Fragment {
         tabLayout.setupWithViewPager(mainTabPager);
 
         Button buttonEarnMoney = root.findViewById(R.id.button_earn_money);
-        buttonEarnMoney.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(root).navigate(R.id.action_navigation_home_to_earnMoneyFragment);
-            }
-        });
+        buttonEarnMoney.setOnClickListener(
+            v -> Navigation.findNavController(root).navigate(R.id.action_navigation_home_to_earnMoneyFragment)
+        );
+
+        root.findViewById(R.id.button_collect_friends).setOnClickListener(
+            v -> Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_friendsFragment)
+        );
 
         return root;
     }

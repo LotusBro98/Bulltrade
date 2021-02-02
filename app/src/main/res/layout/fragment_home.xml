@@ -351,6 +351,7 @@
                                     app:srcCompat="@drawable/ic_collect_friends" />
 
                                 <Button
+                                    android:id="@+id/button_collect_friends"
                                     style="@style/Widget.AppCompat.Button.Borderless"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
