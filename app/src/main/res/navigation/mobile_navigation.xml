@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_navigation_home_to_saveTreesFragment"
             app:destination="@id/saveTreesFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_bullshopFragment"
+            app:destination="@id/bullshopFragment" />
     </fragment>
 
     <fragment
@@ -136,4 +139,8 @@
         android:id="@+id/saveTreesFragment"
         android:name="com.bullcoin.app.screens.SaveTreesFragment"
         android:label="SaveTreesFragment" />
+    <fragment
+        android:id="@+id/bullshopFragment"
+        android:name="com.bullcoin.app.screens.BullshopFragment"
+        android:label="BullshopFragment" />
 </navigation>
