@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.Asset;
@@ -57,6 +58,13 @@ public class IdeasFragment extends Fragment {
         (root.findViewById(R.id.imageView191)).setOnClickListener(v -> goToAsset(v, "Evras"));
         (root.findViewById(R.id.textView30)).setOnClickListener(v -> goToAsset(v, "Evras"));
         (root.findViewById(R.id.textView301)).setOnClickListener(v -> goToAsset(v, "Evras"));
+
+        root.findViewById(R.id.buy_bullcoin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_navigation_stock_to_buyBullcoinFragment);
+            }
+        });
 
         return root;
     }

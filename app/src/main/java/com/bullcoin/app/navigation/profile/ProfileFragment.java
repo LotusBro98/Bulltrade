@@ -46,6 +46,14 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        ImageView avatar = root.findViewById(R.id.avatar);
+        avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_navigation_profile_to_profileButtonsFragment);
+            }
+        });
+
         recyclerView.setAdapter(adapter);
 
         return root;

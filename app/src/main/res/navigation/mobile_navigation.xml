@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_navigation_stock_to_assetFragment"
             app:destination="@id/assetFragment" />
+        <action
+            android:id="@+id/action_navigation_stock_to_buyBullcoinFragment"
+            app:destination="@id/buyBullcoinFragment" />
     </fragment>
 
     <fragment
@@ -45,6 +48,9 @@
         <action
             android:id="@+id/action_navigation_profile_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_navigation_profile_to_profileButtonsFragment"
+            app:destination="@id/profileButtonsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -95,10 +101,18 @@
         android:label="CardMenuFragment" />
     <fragment
         android:id="@+id/earnMoneyFragment"
-        android:name="com.bullcoin.app.navigation.home.EarnMoneyFragment"
+        android:name="com.bullcoin.app.screens.EarnMoneyFragment"
         android:label="EarnMoneyFragment" />
     <fragment
         android:id="@+id/assetFragment"
         android:name="com.bullcoin.app.asset.AssetActivity"
         android:label="AssetFragment" />
+    <fragment
+        android:id="@+id/buyBullcoinFragment"
+        android:name="com.bullcoin.app.screens.BuyBullcoinFragment"
+        android:label="BuyBullcoinFragment" />
+    <fragment
+        android:id="@+id/profileButtonsFragment"
+        android:name="com.bullcoin.app.screens.ProfileButtonsFragment"
+        android:label="ProfileButtonsFragment" />
 </navigation>
