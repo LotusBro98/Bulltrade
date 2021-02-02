@@ -67,8 +67,8 @@
         <item name="android:insetBottom">0dp</item>
         <item name="android:paddingLeft">26dp</item>
         <item name="android:paddingRight">26dp</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
         <item name="android:textColor">@color/Text_color_red</item>
