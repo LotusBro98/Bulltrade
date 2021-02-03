@@ -10,7 +10,7 @@ from .models import User
 def index(request):
     users = User.objects.all()
     users_dict = [dict([(field.name, user.__getattribute__(field.name)) for field in user._meta.fields]) for user in users]
-    users_json = json.dumps(users_dict, indent=2)
+    users_json = json.dumps(users_dict, indent=2, ensure_ascii=False)
     return HttpResponse(users_json, content_type="application/json")
 
 def register(request: HttpRequest):
