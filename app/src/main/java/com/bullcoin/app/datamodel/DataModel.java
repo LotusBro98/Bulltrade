@@ -2,8 +2,13 @@ package com.bullcoin.app.datamodel;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -36,6 +41,8 @@ public class DataModel {
     private List<Dialogue> dialogues;
     private List<News> news;
 
+    Drawable avatar;
+
     Dialogue tradingAssistant;
 
     public Dialogue getTradingAssistant() {
@@ -54,6 +61,10 @@ public class DataModel {
 
     public static void initialize(Context context) {
         instance = new DataModel(context);
+    }
+
+    public Drawable getAvatar() {
+        return avatar;
     }
 
     public DataModel(Context context) {
@@ -100,6 +111,43 @@ public class DataModel {
             Log.e("ASSET_PARSING", "Failed to parse news");
             news = new ArrayList<>();
             e.printStackTrace();
+        }
+
+        loadAvatar(context);
+    }
+
+    public static String encodeTobase64(Bitmap image) {
+        Bitmap immage = image;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        immage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
+
+        Log.d("Image Log:", imageEncoded);
+        return imageEncoded;
+    }
+
+    public static Bitmap decodeBase64(String input) {
+        byte[] decodedByte = Base64.decode(input, 0);
+        return BitmapFactory
+                .decodeByteArray(decodedByte, 0, decodedByte.length);
+    }
+
+    public void setAvatar(Context context, Bitmap bitmap) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("avatar", encodeTobase64(bitmap));
+        editor.commit();
+        avatar = new BitmapDrawable(context.getResources(), bitmap);
+    }
+
+    private void loadAvatar(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String avatarStr = preferences.getString("avatar", "");
+        if (avatarStr.equals("")) {
+            avatar = context.getResources().getDrawable(R.drawable.avatar);
+        } else {
+            avatar = new BitmapDrawable(context.getResources(), decodeBase64(avatarStr));
         }
     }
 

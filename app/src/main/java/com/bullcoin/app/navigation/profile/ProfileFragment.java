@@ -53,6 +53,7 @@ public class ProfileFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_navigation_profile_to_profileButtonsFragment);
             }
         });
+        avatar.setImageDrawable(DataModel.get().getAvatar());
 
         recyclerView.setAdapter(adapter);
 
@@ -84,6 +85,7 @@ public class ProfileFragment extends Fragment {
             String text = mData.get(position);
             holder.name.setText(DataModel.get().getUserFirstName() + " " + DataModel.get().getUserLastName());
             holder.text.setText(text);
+            holder.avatar.setImageDrawable(DataModel.get().getAvatar());
         }
 
         // total number of rows
