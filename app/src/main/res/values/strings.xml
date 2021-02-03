@@ -115,6 +115,9 @@
     <string name="your_bonus">Your bonus</string>
     <string name="invate_friend" translatable="false"><b>Invite friend</b><br/>Tell your joy and get 10 € in bitcoin for each new bison</string>
     <string name="crypto_currencies_deposit_new" translatable="false">Crypto-currencies Deposit</string>
+    <string name="for_bloked1">For bloked Bullcoin in Deposit for 3 month 1,5 %</string>
+    <string name="for_bloked2">For bloked Bullcoin in Deposit for 6 month 2%</string>
+    <string name="for_bloked3">And for bloked Bullcoin Deposit for 12 month 3,5%</string>
 
     <string-array name="languages">
         <item>English</item>
