@@ -102,9 +102,9 @@
     <string name="predicted_price">Predicted price</string>
     <string name="price_change">Price change</string>
     <string name="keep">Keep</string>
-    <string name="Bullcoin_is_a_new_cryptocurrency" translatable="false">Bullcoin is a new cryptocurrency , but despite this, it is rapidly gaining popularity and on our platform you can not only buy it, but also receive an annual percentage of the amount for which you bought the cryptocurrency.</string>
-    <string name="Save_the_trees" translatable="false">Our company is very concerned about the environment and now we are holding a campaign and we are going to give part of the income to buy trees , we will take care of nature TOGETHER. <br/> <br/> Save trees - buy Bullcoin!</string>
-    <string name="Save_the_trees2" translatable="false">You already save:</string>
+    <string name="Bullcoin_is_a_new_cryptocurrency">Bullcoin is a new cryptocurrency , but despite this, it is rapidly gaining popularity and on our platform you can not only buy it, but also receive an annual percentage of the amount for which you bought the cryptocurrency.</string>
+    <string name="Save_the_trees">Our company is very concerned about the environment and now we are holding a campaign and we are going to give part of the income to buy trees , we will take care of nature TOGETHER. <br/> <br/> Save trees - buy Bullcoin!</string>
+    <string name="Save_the_trees2">You already save:</string>
     <string name="Save_the_trees3" translatable="false">0</string>
     <string name="collect_friends_get_money_screen">Collect friends - get Money</string>
     <string name="bullfamily" translatable="false">BULLFAMILY</string>
