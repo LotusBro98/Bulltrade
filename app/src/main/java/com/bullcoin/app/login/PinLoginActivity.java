@@ -11,6 +11,7 @@ import com.bullcoin.app.datamodel.DataModel;
 public class PinLoginActivity extends PinActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         super.onCreate(savedInstanceState);
 
         DataModel.initialize(this);

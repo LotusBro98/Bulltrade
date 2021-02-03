@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         android:allowBackup="false">
         <activity
-            android:name=".login.PinLoginActivity"
+            android:name=".SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/splashScreenTheme"
             android:screenOrientation="portrait"
@@ -35,6 +35,7 @@
         />
         <activity android:name=".navigation.chat.ChatDialogueActivity" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".asset.AssetActivity" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".login.PinLoginActivity" android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
