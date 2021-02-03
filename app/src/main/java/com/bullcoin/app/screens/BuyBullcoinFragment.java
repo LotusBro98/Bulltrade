@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.bullcoin.app.R;
+import com.bullcoin.app.asset.AssetActivity;
+import com.bullcoin.app.datamodel.DataModel;
 
 public class BuyBullcoinFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -23,6 +25,14 @@ public class BuyBullcoinFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(root).navigateUp();
+            }
+        });
+
+        ImageView buyBullcoinButton = root.findViewById(R.id.buy_bullcoin_button);
+        buyBullcoinButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AssetActivity.navigateHere(getActivity(), DataModel.get().getAsset("Bullcoin"));
             }
         });
 
