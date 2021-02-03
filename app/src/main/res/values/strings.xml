@@ -102,9 +102,9 @@
     <string name="predicted_price">Predicted price</string>
     <string name="price_change">Price change</string>
     <string name="keep">Keep</string>
-    <string name="Bullcoin_is_a_new_cryptocurrency" translatable="false">Bullcoin is a new cryptocurrency , but despite this, it is rapidly gaining popularity and on our platform you can not only buy it, but also receive an annual percentage of the amount for which you bought the cryptocurrency.</string>
-    <string name="Save_the_trees" translatable="false">Our company is very concerned about the environment and now we are holding a campaign and we are going to give part of the income to buy trees , we will take care of nature TOGETHER. <br/> <br/> Save trees - buy Bullcoin!</string>
-    <string name="Save_the_trees2" translatable="false">You already save:</string>
+    <string name="Bullcoin_is_a_new_cryptocurrency">Bullcoin is a new cryptocurrency , but despite this, it is rapidly gaining popularity and on our platform you can not only buy it, but also receive an annual percentage of the amount for which you bought the cryptocurrency.</string>
+    <string name="Save_the_trees">Our company is very concerned about the environment and now we are holding a campaign and we are going to give part of the income to buy trees , we will take care of nature TOGETHER. <br/> <br/> Save trees - buy Bullcoin!</string>
+    <string name="Save_the_trees2">You already save:</string>
     <string name="Save_the_trees3" translatable="false">0</string>
     <string name="collect_friends_get_money_screen">Collect friends - get Money</string>
     <string name="bullfamily" translatable="false">BULLFAMILY</string>
@@ -115,11 +115,15 @@
     <string name="your_bonus">Your bonus</string>
     <string name="invate_friend" translatable="false"><b>Invite friend</b><br/>Tell your joy and get 10 € in bitcoin for each new bison</string>
     <string name="crypto_currencies_deposit_new" translatable="false">Crypto-currencies Deposit</string>
+    <string name="for_bloked1">For bloked Bullcoin in Deposit for 3 month 1,5 %</string>
+    <string name="for_bloked2">For bloked Bullcoin in Deposit for 6 month 2%</string>
+    <string name="for_bloked3">And for bloked Bullcoin Deposit for 12 month 3,5%</string>
     <string name="get_a_ready_made_portfolio">Get a ready-made portfolio</string>
     <string name="order_a_call">Order a call</string>
     <string name="help">Help</string>
     <string name="get_recommendations_for_your_portfolio">Get recommendations for your portfolio</string>
     <string name="how_can_i_help_you">How can I help you?</string>
+
 
     <string-array name="languages">
         <item>English</item>

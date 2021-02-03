@@ -97,9 +97,16 @@
     <string name="details">Hinweise</string>
     <string name="name">Name</string>
     <string name="your_bonus">Ihr bonus</string>
+    <string name="Bullcoin_is_a_new_cryptocurrency">Bullcoin ist eine neue Kryptowährung , aber trotzdem gewinnt sie schnell an Popularität und auf unserer Plattform können Sie sie nicht nur kaufen, sondern auch einen jährlichen Prozentsatz des Betrags erhalten, für den Sie die Kryptowährung gekauft haben.</string>
+    <string name="Save_the_trees">Unser Unternehmen ist sehr besorgt über die Umwelt und jetzt halten wir eine Kampagne und wir werden einen Teil des Einkommens geben , um Bäume zu kaufen, wir werden uns GEMEINSAM um die Natur kümmern.Bäume retten-Bullcoin kaufen!</string>
+    <string name="Save_the_trees2">Sie haben bereits gespeichert:</string>
+    <string name="for_bloked1">Wenn Bullcoin in einer Einzahlung für 3 Monate 1,5 gehalten wird %</string>
+    <string name="for_bloked2">Um Bullcoin für 6 Monate in der Einzahlung zu halten, 2%</string>
+    <string name="for_bloked3">Und um Bullcoin Kaution für 12 Monate 3,5 halten%</string>
     <string name="get_a_ready_made_portfolio">Holen Sie sich ein fertiges Portfolio</string>
     <string name="order_a_call">Bestellen Sie einen Anruf</string>
     <string name="help">Helfen</string>
     <string name="get_recommendations_for_your_portfolio">Erhalten Sie Empfehlungen für Ihr Portfolio</string>
     <string name="how_can_i_help_you">Wie kann ich dir helfen?</string>
+
 </resources>

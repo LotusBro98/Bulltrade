@@ -97,9 +97,16 @@
     <string name="details">Детали</string>
     <string name="name">Имя</string>
     <string name="your_bonus">Ваш бонус</string>
+    <string name="Bullcoin_is_a_new_cryptocurrency">Bullcoin-это новая криптовалюта , но, несмотря на это, она стремительно набирает популярность и на нашей платформе вы можете не только купить ее, но и получать ежегодный процент от суммы, на которую вы купили криптовалюту.</string>
+    <string name="Save_the_trees">Наша компания очень заботится об окружающей среде , и сейчас мы проводим акцию и собираемся отдать часть дохода на покупку деревьев, будем вместе заботиться о природе. Спасите деревья - купите Bullcoin!</string>
+    <string name="Save_the_trees2">Вы уже сохранили:</string>
+    <string name="for_bloked1">При удержании Bullcoin в депозите на 3 месяца 1,5 %</string>
+    <string name="for_bloked2">Для удержания Bullcoin в депозите на 6 месяцев 2%</string>
+    <string name="for_bloked3">А для удержания Bullcoin депозита на 12 месяцев 3,5%</string>
     <string name="get_a_ready_made_portfolio">Получить готовое портфолио</string>
     <string name="order_a_call">Заказать звонок</string>
     <string name="help">Помощь</string>
     <string name="get_recommendations_for_your_portfolio">Получить рекомендации для портфолио</string>
     <string name="how_can_i_help_you">Чем я могу Вам помочь?</string>
+
 </resources>
