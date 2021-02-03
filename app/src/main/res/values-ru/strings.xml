@@ -97,4 +97,9 @@
     <string name="details">Детали</string>
     <string name="name">Имя</string>
     <string name="your_bonus">Ваш бонус</string>
+    <string name="get_a_ready_made_portfolio">Получить готовое портфолио</string>
+    <string name="order_a_call">Заказать звонок</string>
+    <string name="help">Помощь</string>
+    <string name="get_recommendations_for_your_portfolio">Получить рекомендации для портфолио</string>
+    <string name="how_can_i_help_you">Чем я могу Вам помочь?</string>
 </resources>
