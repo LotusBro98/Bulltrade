@@ -26,6 +26,12 @@ public class Dialogue {
         messages = new ArrayList<>();
     }
 
+    public Dialogue(int iconResourceID, String name, List<Message> messages) {
+        this.iconResourceID = iconResourceID;
+        this.name = name;
+        this.messages = messages;
+    }
+
     public int getIconResourceID() {
         return iconResourceID;
     }

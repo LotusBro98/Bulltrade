@@ -19,6 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,12 @@ public class DataModel {
     private List<Card> cards;
     private List<Dialogue> dialogues;
     private List<News> news;
+
+    Dialogue tradingAssistant;
+
+    public Dialogue getTradingAssistant() {
+        return tradingAssistant;
+    }
 
     private static final String BASE_URL = "http://82.148.29.197:8000/";
 
@@ -58,7 +65,11 @@ public class DataModel {
             assets = new ArrayList<>();
         }
 
-         cards = new ArrayList<>();
+        List<Message> messages = new ArrayList<>();
+        messages.add(new Message(Message.FROM_FRIEND, context.getString(R.string.how_can_i_help_you)));
+        tradingAssistant = new Dialogue(R.drawable.max_spencer, context.getString(R.string.trading_assistant), messages);
+
+        cards = new ArrayList<>();
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         userFirstName = preferences.getString("firstName", "");

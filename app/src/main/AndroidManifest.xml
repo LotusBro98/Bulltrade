@@ -34,6 +34,7 @@
             android:theme="@style/splashScreenTheme"
         />
         <activity android:name=".navigation.chat.ChatDialogueActivity" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".navigation.chat.TradingAssistantActivity" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".asset.AssetActivity" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".login.PinLoginActivity" android:screenOrientation="portrait" />
 

@@ -115,6 +115,11 @@
     <string name="your_bonus">Your bonus</string>
     <string name="invate_friend" translatable="false"><b>Invite friend</b><br/>Tell your joy and get 10 € in bitcoin for each new bison</string>
     <string name="crypto_currencies_deposit_new" translatable="false">Crypto-currencies Deposit</string>
+    <string name="get_a_ready_made_portfolio">Get a ready-made portfolio</string>
+    <string name="order_a_call">Order a call</string>
+    <string name="help">Help</string>
+    <string name="get_recommendations_for_your_portfolio">Get recommendations for your portfolio</string>
+    <string name="how_can_i_help_you">How can I help you?</string>
 
     <string-array name="languages">
         <item>English</item>
