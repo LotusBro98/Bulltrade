@@ -5,4 +5,8 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('register', views.register, name='register'),
+    path('set_avatar', views.set_avatar, name='set_avatar'),
+    path('get_avatar', views.get_avatar, name='get_avatar'),
+    path('get_users', views.get_users, name='get_users'),
+    path('get_messages', views.get_messages, name='get_messages'),
 ]

@@ -51,8 +51,19 @@ public class ProfileButtonsFragment extends Fragment {
                     if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
                     } else {
-                        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(i, PICK_FROM_GALLERY);
+                        Intent photoPickerIntent = new Intent();
+                        photoPickerIntent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                        photoPickerIntent.setAction(Intent.ACTION_GET_CONTENT);
+                        photoPickerIntent.putExtra("crop", "true");
+                        photoPickerIntent.putExtra("return-data", true);
+                        photoPickerIntent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
+                        photoPickerIntent.putExtra("aspectX", 1);
+                        photoPickerIntent.putExtra("aspectY", 1);
+                        // indicate output X and Y
+                        photoPickerIntent.putExtra("outputX", 300);
+                        photoPickerIntent.putExtra("outputY", 300);
+                        startActivityForResult(photoPickerIntent, PICK_FROM_GALLERY);
+
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -68,18 +79,14 @@ public class ProfileButtonsFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_FROM_GALLERY && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-            Cursor cursor = getActivity().getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
 
-            Bitmap photo = BitmapFactory.decodeFile(picturePath);
-            DataModel.get().setAvatar(getContext(), photo);
-            avatar.setImageDrawable(DataModel.get().getAvatar());
+            Bundle extras = data.getExtras();
+            if (extras != null) {
+                Bitmap photo = extras.getParcelable("data");
+
+                DataModel.get().setAvatar(getContext(), photo);
+                avatar.setImageDrawable(DataModel.get().getAvatar());
+            }
         }
     }
 }

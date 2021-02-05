@@ -14,12 +14,21 @@ import android.widget.Toast;
 
 import com.bullcoin.app.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -44,6 +53,7 @@ public class DataModel {
     Drawable avatar;
 
     Dialogue tradingAssistant;
+    public static final int TRADING_ASSISTANT_ID = -228;
 
     public Dialogue getTradingAssistant() {
         return tradingAssistant;
@@ -67,6 +77,14 @@ public class DataModel {
         return avatar;
     }
 
+    private void setUserID(Context context, int userID) {
+        this.userID = userID;
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("userID", userID);
+        editor.commit();
+    }
+
     public DataModel(Context context) {
         try {
             assets = Asset.parseFromXML(context);
@@ -78,7 +96,7 @@ public class DataModel {
 
         List<Message> messages = new ArrayList<>();
         messages.add(new Message(Message.FROM_FRIEND, context.getString(R.string.how_can_i_help_you)));
-        tradingAssistant = new Dialogue(R.drawable.max_spencer, context.getString(R.string.trading_assistant), messages);
+        tradingAssistant = new Dialogue(context.getString(R.string.trading_assistant), messages, context.getResources().getDrawable(R.drawable.max_spencer), TRADING_ASSISTANT_ID);
 
         cards = new ArrayList<>();
 
@@ -87,6 +105,7 @@ public class DataModel {
         userLastName = preferences.getString("lastName", "");
         brokerBalance = preferences.getFloat("brokerBalance", 100000.0f);
         bankBalance = preferences.getFloat("bankBalance", 0.0f);
+        userID = preferences.getInt("userID", -1);
 
         boolean hasCard1 = preferences.getBoolean("hasCard1", false);
         boolean hasCard2 = preferences.getBoolean("hasCard2", false);
@@ -97,13 +116,7 @@ public class DataModel {
             cards.add(new Card(Card.CARD_BULLBANK));
         }
 
-        try {
-            dialogues = Dialogue.parseFromXML(context);
-        } catch (Exception e) {
-            Log.e("ASSET_PARSING", "Failed to parse dialogues");
-            dialogues = new ArrayList<>();
-            e.printStackTrace();
-        }
+        dialogues = new ArrayList<>();
 
         try {
             news = News.parseFromXML(context);
@@ -116,6 +129,28 @@ public class DataModel {
         loadAvatar(context);
     }
 
+    public static void loadDialogues(Context context, Runnable callback) {
+        new AsyncTask<Void, String, List<Dialogue>>() {
+            @Override
+            protected List<Dialogue> doInBackground(Void... voids) {
+                try {
+                    return Dialogue.loadDialogues(context);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return new ArrayList<>();
+                }
+            }
+
+            @Override
+            protected void onPostExecute(final List<Dialogue> result) {
+                DataModel.get().dialogues = new ArrayList<>(result);
+                if (callback != null) {
+                    callback.run();
+                }
+            }
+        }.execute();
+    }
+
     public static String encodeTobase64(Bitmap image) {
         Bitmap immage = image;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -123,7 +158,6 @@ public class DataModel {
         byte[] b = baos.toByteArray();
         String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
 
-        Log.d("Image Log:", imageEncoded);
         return imageEncoded;
     }
 
@@ -133,12 +167,43 @@ public class DataModel {
                 .decodeByteArray(decodedByte, 0, decodedByte.length);
     }
 
+    public int getUserID() {
+        return userID;
+    }
+
     public void setAvatar(Context context, Bitmap bitmap) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("avatar", encodeTobase64(bitmap));
         editor.commit();
         avatar = new BitmapDrawable(context.getResources(), bitmap);
+
+        sendAvatar(getUserID(), bitmap);
+    }
+
+    private static void sendAvatar(int userID, Bitmap bitmap) {
+        Map<String, String> args = new HashMap<>();
+        args.put("user_id", String.valueOf(userID));
+
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+
+        new AsyncTask<Void, String, String>() {
+            @Override
+            protected String doInBackground(Void... voids) {
+                String s = "";
+                try {
+                    s = doPost("set_avatar", args, bos.toByteArray());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return s;
+            }
+
+            @Override
+            protected void onPostExecute(final String result) {
+            }
+        }.execute();
     }
 
     private void loadAvatar(Context context) {
@@ -164,8 +229,33 @@ public class DataModel {
         return news;
     }
 
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            java.net.URL url = new java.net.URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url
+                    .openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public List<Dialogue> getDialogues() {
         return dialogues;
+    }
+
+    public Dialogue getDialogue(int userID) {
+        for (Dialogue dialogue : dialogues) {
+            if (dialogue.userID == userID) {
+                return dialogue;
+            }
+        }
+        return null;
     }
 
     public List<Card> getCards() {
@@ -310,24 +400,56 @@ public class DataModel {
         return response.toString();
     }
 
-    public static void doGetAsync(String url, Map<String, String> args) {
-        new AsyncTask<Void, String, String>() {
-            @Override
-            protected String doInBackground(Void... voids) {
-                String s = "";
-                try {
-                    s = doGet(url, args);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return s;
-            }
+    public static String doPost(String url, Map<String, String> args, byte[] data) throws Exception {
+        String get_url = BASE_URL + url + "?";
 
-            @Override
-            protected void onPostExecute(final String result) {
+        for (Map.Entry<String, String> entry : args.entrySet()) {
+            get_url += URLEncoder.encode(entry.getKey(), "utf-8") + "=" + URLEncoder.encode(entry.getValue(), "utf-8") + "&";
+        }
+        if (get_url.charAt(get_url.length() - 1) == '&') {
+            get_url = get_url.substring(0, get_url.length()-1);
+        }
+
+        String dataEncoded = Base64.encodeToString(data, Base64.DEFAULT);
+        String query = "data=" + URLEncoder.encode(dataEncoded, "utf-8");
+
+        Log.d("SERVER_POST", "Sending POST request: " + get_url);
+        Log.d("SERVER_POST", dataEncoded.substring(0, 100) + " ... " + dataEncoded.substring(dataEncoded.length() - 100));
+
+        URL url_obj = new URL(get_url);
+        HttpURLConnection conn = (HttpURLConnection) url_obj.openConnection();
+        conn.setReadTimeout(15000);
+        conn.setConnectTimeout(15000);
+        conn.setRequestMethod("POST");
+        conn.setDoInput(true);
+        conn.setDoOutput(true);
+
+        OutputStream os = conn.getOutputStream();
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+        writer.write(query);
+
+        writer.flush();
+        writer.close();
+        os.close();
+        int responseCode = conn.getResponseCode();
+
+        String response = "";
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            String line;
+            BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            while ((line=br.readLine()) != null) {
+                response+=line;
             }
-        }.execute();
+        }
+        else {
+            response="";
+        }
+
+        Log.d("SERVER_POST", "Response: " + response);
+
+        return response;
     }
+
 
     public static void register(Context context,
             String phone,
@@ -362,7 +484,31 @@ public class DataModel {
         registerData.put("country", country);
         registerData.put("first_name", firstName);
         registerData.put("last_name", lastName);
-        doGetAsync("register", registerData);
+
+        new AsyncTask<Void, String, String>() {
+            @Override
+            protected String doInBackground(Void... voids) {
+                String s = "";
+                try {
+                    s = doGet("register", registerData);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return s;
+            }
+
+            @Override
+            protected void onPostExecute(final String result) {
+                try {
+                    JSONObject obj = new JSONObject(result);
+                    int userID = obj.getInt("user_id");
+                    DataModel.get().setUserID(context, userID);
+                    Log.d("REGISTRATION", "User ID: " + userID);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.execute();
 
         DataModel.initialize(context);
     }

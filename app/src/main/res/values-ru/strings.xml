@@ -23,7 +23,7 @@
     <string name="buy"><font size="16">КУПИТЬ</font></string>
     <string name="sell"><font size="16">ПРОДАТЬ</font></string>
     <string name="bulltrade_card">Карта Bulltrade</string>
-    <string name="advantages_of_the_card_n1_worldwide_pay_with_visa_n2_pay_with_bitcoin_n3_debit_reload_card">Достоинства карты:<br />1. Платите с помощью Visa по всему миру<br />2. Платите с помощью Bitcoin<br />3. Дебетовая карта</string>
+    <string name="advantages_of_the_card_n1_worldwide_pay_with_visa_n2_pay_with_bitcoin_n3_debit_reload_card">Достоинства карты: <br/> 1. Платите с помощью Visa по всему миру <br/> 2. Платите с помощью Bitcoin <br/> 3. Дебетовая карта</string>
     <string name="order">Заказать</string>
     <string name="account">Аккаунт</string>
     <string name="profile">Профиль</string>
