@@ -2,7 +2,9 @@ package com.bullcoin.app.navigation.chat;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -41,22 +43,26 @@ public class ChatDialogueActivity extends LocalizedActivity {
 
     Dialogue dialogue;
 
+    UpdateTask updateTask;
+    Runnable updateRunnable;
+    Handler updateHandler;
+
+    private static final int UPDATE_PERIOD = 1000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_chat_messages);
 
         Bundle args = getIntent().getExtras();
-        if (args != null) {
-            int dialogueID = args.getInt("dialogueID");
-            dialogue = DataModel.get().getDialogues().get(dialogueID);
-        }
+        int dialogueID = args.getInt("userID");
+        dialogue = DataModel.get().getDialogue(dialogueID);
 
         TextView name = findViewById(R.id.friend_name);
         ImageView avatar = findViewById(R.id.friend_avatar);
 
         name.setText(dialogue.getName());
-        avatar.setImageDrawable(getResources().getDrawable(dialogue.getIconResourceID()));
+        avatar.setImageDrawable(dialogue.getAvatar());
 
         recyclerView = findViewById(R.id.recycler_messages);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -84,6 +90,40 @@ public class ChatDialogueActivity extends LocalizedActivity {
             onSend(v);
             return true;
         });
+
+        updateHandler = new Handler();
+        updateRunnable = new Runnable() {
+            @Override
+            public void run() {
+                new UpdateTask().execute();
+
+            }
+        };
+        updateRunnable.run();
+    }
+
+    private class UpdateTask extends AsyncTask<Void, Void, Integer>{
+        @Override
+        protected Integer doInBackground(java.lang.Void... voids) {
+            return dialogue.updateMessages();
+        }
+
+        @Override
+        protected void onPostExecute(Integer inserted) {
+            if (inserted == 1) {
+                adapter.notifyItemInserted(adapter.getItemCount() - 1);
+                recyclerView.scrollToPosition(adapter.getItemCount() - 1);
+            } else if (inserted != 0) {
+                adapter.notifyDataSetChanged();
+            }
+            updateHandler.postDelayed(updateRunnable, UPDATE_PERIOD);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        updateHandler.removeCallbacks(updateRunnable);
     }
 
     public void hideKeyboardFrom(Context context, View view) {
@@ -96,11 +136,16 @@ public class ChatDialogueActivity extends LocalizedActivity {
         if (text.equals("")) {
             return;
         }
-        Message message = new Message(Message.FROM_ME, text);
         editMessage.getText().clear();
-        adapter.mData.add(message);
-        recyclerView.scrollToPosition(adapter.getItemCount() - 1);
-        adapter.notifyItemInserted(adapter.getItemCount() - 1);
+
+        dialogue.sendMessage(text, new Runnable() {
+            @Override
+            public void run() {
+                updateHandler.post(updateRunnable);
+//                recyclerView.scrollToPosition(adapter.getItemCount() - 1);
+//                adapter.notifyItemInserted(adapter.getItemCount() - 1);
+            }
+        });
     }
 
     public void returnBack() {
@@ -149,7 +194,7 @@ public class ChatDialogueActivity extends LocalizedActivity {
                     break;
                 case Message.FROM_FRIEND:
                     ((FromFriendViewHolder) holder).message.setText(message.text);
-                    ((FromFriendViewHolder) holder).friend_avatar.setImageDrawable(context.getResources().getDrawable(dialogue.getIconResourceID()));
+                    ((FromFriendViewHolder) holder).friend_avatar.setImageDrawable(dialogue.getAvatar());
                     break;
             }
         }

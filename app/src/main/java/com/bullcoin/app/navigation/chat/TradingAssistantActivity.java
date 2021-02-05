@@ -44,7 +44,7 @@ public class TradingAssistantActivity extends LocalizedActivity {
         ImageView avatar = findViewById(R.id.friend_avatar);
 
         name.setText(dialogue.getName());
-        avatar.setImageDrawable(getResources().getDrawable(dialogue.getIconResourceID()));
+        avatar.setImageDrawable(dialogue.getAvatar());
 
         recyclerView = findViewById(R.id.recycler_messages);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -146,7 +146,7 @@ public class TradingAssistantActivity extends LocalizedActivity {
                     break;
                 case Message.FROM_FRIEND:
                     ((FromFriendViewHolder) holder).message.setText(message.text);
-                    ((FromFriendViewHolder) holder).friend_avatar.setImageDrawable(context.getResources().getDrawable(dialogue.getIconResourceID()));
+                    ((FromFriendViewHolder) holder).friend_avatar.setImageDrawable(dialogue.getAvatar());
                     break;
             }
         }

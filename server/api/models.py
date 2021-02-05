@@ -19,10 +19,10 @@ class User(models.Model):
 
 class Chat(models.Model):
     users = models.ManyToManyField(User)
-    last_seq = models.IntegerField()
+    count = models.IntegerField()
 
     def __str__(self):
-        return str(self.users.all())
+        return str(list(self.users.all()))
 
 
 class Message(models.Model):
@@ -30,4 +30,7 @@ class Message(models.Model):
     id_from = models.IntegerField()
     seq = models.IntegerField()
     text = models.TextField()
+
+    def __str__(self):
+        return str(self.id_from) + "> " + self.text
 

@@ -1,7 +1,8 @@
 import sys
 
 from django.conf import settings
-from django.http import HttpResponse
+from django.db.models import Count
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.http.request import HttpRequest
 from django.core import serializers
@@ -12,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.staticfiles import finders
 from django.templatetags.static import static
 
-from .models import User, Chat
+from .models import User, Chat, Message
 
 
 def index(request):
@@ -101,10 +102,35 @@ def get_users(request: HttpRequest):
     return HttpResponse(users_json, content_type="application/json")
 
 
+def get_dialogue(user_1, user_2, force_create=False):
+    if user_1.id == user_2.id:
+        chats = Chat.objects.annotate(users_count=Count('users')).filter(users=user_1).filter(users_count=1)
+    else:
+        chats = Chat.objects.annotate(users_count=Count('users')).filter(users=user_1).filter(users=user_2).filter(users_count=2)
+
+    if len(chats) == 0:
+        if not force_create:
+            return None
+
+        chat = Chat()
+        chat.count = 0
+        chat.save()
+        chat.users.add(user_1)
+        chat.users.add(user_2)
+        chat.save()
+        return chat
+
+    assert len(chats) == 1
+    return chats[0]
+
+
 def get_messages(request: HttpRequest):
     user_id = int(request.GET["user_id"])
     friend_id = int(request.GET["friend_id"])
-    last_n = int(request.GET["last_n"])
+    if "from_n" in request.GET:
+        from_n = int(request.GET["from_n"])
+    else:
+        from_n = 0
 
     user = User.objects.get(id=user_id)
     friend = User.objects.get(id=friend_id)
@@ -113,8 +139,52 @@ def get_messages(request: HttpRequest):
     if friend is None:
         return HttpResponse("Friend not found", content_type="text/html", status=404)
 
-    chats = Chat.objects.filter(user__in=[user, friend])
-    print(chats, file=sys.stderr)
+    chat = get_dialogue(user, friend)
+    if chat is None:
+        response = {"messages": [], "count": 0}
+        return JsonResponse(response, content_type="application/json")
 
-    messages = {"messages": [{"from": friend_id, "text": "Hello"}], "last_seq": 0}
-    return HttpResponse(messages, content_type="application/json")
+    if from_n < 0:
+        messages = Message.objects.filter(chat=chat, seq__gte=chat.count+from_n)
+    elif from_n > 0:
+        messages = Message.objects.filter(chat=chat, seq__gte=from_n)
+    else:
+        messages = Message.objects.filter(chat=chat)
+
+    messages = {
+        "messages": [
+            {
+                "from": message.id_from,
+                "text": message.text
+            }
+            for message in messages
+        ],
+        "count": chat.count
+    }
+    return JsonResponse(messages, content_type="application/json")
+
+
+def send_message(request: HttpRequest):
+    user_id = int(request.GET["user_id"])
+    friend_id = int(request.GET["friend_id"])
+    text = request.GET["text"]
+
+    user = User.objects.get(id=user_id)
+    friend = User.objects.get(id=friend_id)
+    if user is None:
+        return HttpResponse("User not found", content_type="text/html", status=404)
+    if friend is None:
+        return HttpResponse("Friend not found", content_type="text/html", status=404)
+
+    chat = get_dialogue(user, friend, force_create=True)
+
+    message = Message()
+    message.id_from = user_id
+    message.chat = chat
+    message.text = text
+    message.seq = chat.count
+    chat.count = chat.count + 1
+    message.save()
+    chat.save()
+
+    return HttpResponse("Ok", content_type="text/html")

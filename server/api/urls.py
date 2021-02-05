@@ -9,4 +9,5 @@ urlpatterns = [
     path('get_avatar', views.get_avatar, name='get_avatar'),
     path('get_users', views.get_users, name='get_users'),
     path('get_messages', views.get_messages, name='get_messages'),
+    path('send_message', views.send_message, name='send_message'),
 ]
