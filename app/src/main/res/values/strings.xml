@@ -69,7 +69,7 @@
     <string name="invite_a_friend_and_get_bonuses">Invite a friend and get bonuses!</string>
     <string name="you_will_get">You will get:</string>
     <string name="your_friend_will_get">Your friend will get:</string>
-    <string name="_100_bullcoin_after_your_friend_deposits_money_to_your_account">100 Bullcoin after your friend deposits money to your account</string>
+    <string name="_100_bullcoin_after_your_friend_deposits_money_to_your_account">100 Bullcoin after your friend deposits 100 Dollar dollars in the account</string>
     <string name="_100_bullcoin_immediately_after_registration">100 BullCoin immediately after registration</string>
     <string name="get_a_link">Get a link</string>
     <string name="_17_45">today at 17:45</string>
@@ -113,7 +113,7 @@
     <string name="details">Details</string>
     <string name="name">Name</string>
     <string name="your_bonus">Your bonus</string>
-    <string name="invate_friend" translatable="false"><b>Invite friend</b><br/>Tell your joy and get 10 € in bitcoin for each new bison</string>
+    <string name="invate_friend" translatable="false"><b>Invite friend</b><br/>Tell your joy and get 10 € in bitcoin for each new bulltrade</string>
     <string name="crypto_currencies_deposit_new" translatable="false">Crypto-currencies Deposit</string>
     <string name="for_bloked1">For bloked Bullcoin in Deposit for 3 month 1,5 %</string>
     <string name="for_bloked2">For bloked Bullcoin in Deposit for 6 month 2%</string>
