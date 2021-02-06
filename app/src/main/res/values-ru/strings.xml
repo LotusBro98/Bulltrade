@@ -108,5 +108,7 @@
     <string name="help">Помощь</string>
     <string name="get_recommendations_for_your_portfolio">Получить рекомендации для портфолио</string>
     <string name="how_can_i_help_you">Чем я могу Вам помочь?</string>
+    <string name="buy_bullcoin2">Купить Bullcoin</string>
+    <string name="save_the_world_grow_up_your_tree">Спасите мир, вырастите свое дерево.</string>
 
 </resources>

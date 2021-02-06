@@ -18,6 +18,13 @@ import androidx.fragment.app.Fragment;
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.DataModel;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class CardFragmentBroker extends Fragment {
@@ -30,6 +37,18 @@ public class CardFragmentBroker extends Fragment {
 
     public CardFragmentBroker(int type) {
         this.type = type;
+    }
+
+    private static String formatBalance(double balance) {
+        DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+        DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+        symbols.setGroupingSeparator('.');
+        symbols.setDecimalSeparator('.');
+        formatter.setDecimalFormatSymbols(symbols);
+        formatter.setMinimumFractionDigits(2);
+        formatter.setMaximumFractionDigits(2);
+        BigDecimal bd = new BigDecimal(balance);
+        return formatter.format(bd.doubleValue());
     }
 
     @Nullable
@@ -50,21 +69,20 @@ public class CardFragmentBroker extends Fragment {
                 icon.setImageDrawable(view.getResources().getDrawable(R.drawable.ic_bull_small));
                 accountType.setText(R.string.broker_account);
                 yourBalance.setText(R.string.your_balance);
-                balance.setText("$" + String.format("%.2f", DataModel.get().getBrokerBalance()));
                 break;
             case TYPE_BULLCOIN:
                 icon.setImageDrawable(view.getResources().getDrawable(R.drawable.asset_bullcoin));
                 accountType.setText(R.string.bullcoin);
                 yourBalance.setText(R.string.your_bcn_balance);
-                balance.setText(String.valueOf(DataModel.get().getBullcoinBalance()));
                 break;
             case TYPE_BULLBANK:
                 icon.setImageDrawable(view.getResources().getDrawable(R.drawable.ic_bull_small));
                 accountType.setText(R.string.bullbank_card);
                 yourBalance.setText(R.string.your_bank_account_balance);
-                balance.setText("$" +  String.format("%.2f", DataModel.get().getBankBalance()));
                 break;
         }
+
+        setBalance();
 
         cardholderName.setText(DataModel.get().getUserFirstName() + " " + DataModel.get().getUserLastName());
 
@@ -87,19 +105,23 @@ public class CardFragmentBroker extends Fragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    private void setBalance() {
         switch (type) {
             case TYPE_BROKER:
-                balance.setText("$" + String.format("%.2f", DataModel.get().getBrokerBalance()));
+                balance.setText("$" + formatBalance(DataModel.get().getBrokerBalance()));
                 break;
             case TYPE_BULLCOIN:
                 balance.setText(String.valueOf(DataModel.get().getBullcoinBalance()));
                 break;
             case TYPE_BULLBANK:
-                balance.setText("$" +  String.format("%.2f", DataModel.get().getBankBalance()));
+                balance.setText("$" +  formatBalance(DataModel.get().getBankBalance()));
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setBalance();
     }
 }
