@@ -1,7 +1,8 @@
 import sys
 
 from django.conf import settings
-from django.db.models import Count
+from django.db.models import Count, Value, Q
+from django.db.models.functions import Concat
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.http.request import HttpRequest
@@ -87,8 +88,32 @@ def get_avatar(request: HttpRequest):
         return HttpResponse("User not found", content_type="text/html", status=404)
 
 
+def search_users(query: str):
+    return User.objects\
+        .annotate(full_name_1=Concat('first_name', Value(' '), 'last_name')) \
+        .annotate(full_name_2=Concat('last_name', Value(' '), 'first_name')) \
+        .filter(Q(full_name_1__contains=query) | Q(full_name_2__contains=query))
+
 def get_users(request: HttpRequest):
-    users = User.objects.all()
+    user_id = int(request.GET["user_id"])
+    if "query" in request.GET:
+        query = request.GET["query"]
+    else:
+        query = ""
+
+    user = User.objects.get(id=user_id)
+    if user is None:
+        return HttpResponse("User not found", content_type="text/html", status=404)
+
+    if query == "":
+        chats = Chat.objects.filter(users=user)
+        users = User.objects.filter(chat__in=chats).distinct()
+        if user in users:
+            self_chat = Chat.objects.annotate(users_count=Count('users')).filter(users=user).filter(users_count=1)
+            if len(self_chat) == 0:
+                users = [u for u in users if u != user]
+    else:
+        users = search_users(query)
 
     users_list = []
     for user in users:

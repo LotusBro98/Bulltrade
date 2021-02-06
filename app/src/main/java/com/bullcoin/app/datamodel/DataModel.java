@@ -129,12 +129,12 @@ public class DataModel {
         loadAvatar(context);
     }
 
-    public static void loadDialogues(Context context, Runnable callback) {
+    public static void loadDialogues(Context context, String search, Runnable callback) {
         new AsyncTask<Void, String, List<Dialogue>>() {
             @Override
             protected List<Dialogue> doInBackground(Void... voids) {
                 try {
-                    return Dialogue.loadDialogues(context);
+                    return Dialogue.loadDialogues(context, search);
                 } catch (Exception e) {
                     e.printStackTrace();
                     return new ArrayList<>();

@@ -118,8 +118,10 @@ public class Dialogue {
         }
     }
 
-    public static List<Dialogue> loadDialogues(Context context) {
+    public static List<Dialogue> loadDialogues(Context context, String search) {
         Map<String, String> queryData = new HashMap<>();
+        queryData.put("query", search);
+        queryData.put("user_id", String.valueOf(DataModel.get().getUserID()));
         try {
             String response = doGet("get_users", queryData);
             JSONObject obj = new JSONObject(response);

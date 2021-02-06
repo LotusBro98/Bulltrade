@@ -121,8 +121,8 @@ public class ChatDialogueActivity extends LocalizedActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onPause() {
+        super.onPause();
         updateHandler.removeCallbacks(updateRunnable);
     }
 

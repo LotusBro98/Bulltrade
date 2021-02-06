@@ -3,10 +3,15 @@ package com.bullcoin.app.navigation.chat;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +56,24 @@ public class ChatFragment extends Fragment {
             }
         });
 
+        EditText searchForFriends = root.findViewById(R.id.search_for_friends);
+        searchForFriends.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
+//        searchForFriends.addTextChangedListener(this);
+        searchForFriends.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                String search = searchForFriends.getText().toString();
+                DataModel.get().loadDialogues(getContext(), search, new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.mData = DataModel.get().getDialogues();
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                return false;
+            }
+        });
+
         recyclerView.setAdapter(adapter);
 
         return root;
@@ -59,14 +82,13 @@ public class ChatFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        DataModel.get().loadDialogues(getContext(), new Runnable() {
+        DataModel.get().loadDialogues(getContext(), "", new Runnable() {
             @Override
             public void run() {
                 adapter.mData = DataModel.get().getDialogues();
                 adapter.notifyDataSetChanged();
             }
         });
-        Log.d("ADSASDASD", "ADASDASDADS");
     }
 
     public static class ChatFriendsRecyclerViewAdapter extends RecyclerView.Adapter<ChatFriendsRecyclerViewAdapter.ViewHolder> {
