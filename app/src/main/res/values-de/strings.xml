@@ -61,7 +61,7 @@
     <string name="top_up_your_balance">Laden Sie Ihr Guthaben auf</string>
     <string name="pay_out">Auszahlen</string>
     <string name="get_a_detailed_history">Holen Sie sich eine detaillierte Geschichte</string>
-    <string name="invite_a_friend_and_get_bonuses">Lade einen Freund ein und erhalte Boni!</string>
+    <string name="invite_a_friend_and_get_bonuses">Laden Sie einen Freund und erhalten Bonus!</string>
     <string name="you_will_get">Sie werden bekommen:</string>
     <string name="your_friend_will_get">Dein Freund wird bekommen:</string>
     <string name="_100_bullcoin_after_your_friend_deposits_money_to_your_account">100 Bullcoin, nachdem Ihr Freund Geld auf Ihr Konto eingezahlt hat</string>
@@ -103,4 +103,10 @@
     <string name="for_bloked1">Wenn Bullcoin in einer Einzahlung für 3 Monate 1,5 gehalten wird %</string>
     <string name="for_bloked2">Um Bullcoin für 6 Monate in der Einzahlung zu halten, 2%</string>
     <string name="for_bloked3">Und um Bullcoin Kaution für 12 Monate 3,5 halten%</string>
+    <string name="get_a_ready_made_portfolio">Holen Sie sich ein fertiges Portfolio</string>
+    <string name="order_a_call">Bestellen Sie einen Anruf</string>
+    <string name="help">Helfen</string>
+    <string name="get_recommendations_for_your_portfolio">Erhalten Sie Empfehlungen für Ihr Portfolio</string>
+    <string name="how_can_i_help_you">Wie kann ich dir helfen?</string>
+
 </resources>

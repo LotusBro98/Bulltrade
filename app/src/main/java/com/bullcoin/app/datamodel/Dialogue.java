@@ -1,112 +1,204 @@
 package com.bullcoin.app.datamodel;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 
 import com.bullcoin.app.R;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static com.bullcoin.app.datamodel.DataModel.doGet;
 
 public class Dialogue {
 
-    int id;
     int userID;
-    int iconResourceID;
+    Drawable avatar;
     String name;
     List<Message> messages;
+    int start_seq;
+    int last_seq;
+
+    public static final int MESSAGES_LIMIT = 100;
 
     private Dialogue() {
         messages = new ArrayList<>();
     }
 
-    public int getIconResourceID() {
-        return iconResourceID;
+    public Dialogue(String name, List<Message> messages, Drawable avatar, int userID) {
+        this.avatar = avatar;
+        this.name = name;
+        this.messages = messages;
+        this.userID = userID;
+    }
+
+    public Drawable getAvatar() {
+        return avatar;
+    }
+
+    public int getUserID() {
+        return userID;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public List<Message> getMessages() {
         return messages;
     }
 
-    public static List<Dialogue> parseFromXML(Context context) throws XmlPullParserException, IOException {
-        Resources res = context.getResources();
-        XmlResourceParser xmlResourceParser = res.getXml(R.xml.dialogues);
+    public void sendMessage(String text, Runnable callback) {
+        new SendMessageTask(this, text, callback).execute();
+    }
 
-        String logTag = "ASSET_PARSER";
-        ArrayList<String> xmlTagStack = new ArrayList<>();
-        ArrayList<Dialogue> dialogues = new ArrayList<>();
-        Dialogue currentDialogue = null;
-        Message currentMessage = null;
-        int source = Message.FROM_ME;
-        int id = 0;
-
-        xmlResourceParser.next();
-        int eventType = xmlResourceParser.getEventType();
-        while (eventType != XmlPullParser.END_DOCUMENT) {
-            if (eventType == XmlPullParser.START_DOCUMENT) {
-                Log.d(logTag, "Begin Document");
-            } else if (eventType == XmlPullParser.START_TAG) {
-                String tagName = xmlResourceParser.getName();
-                xmlTagStack.add(tagName);
-
-                if (tagName.equals("dialogue")) {
-                    Log.d(logTag, "new dialogue");
-                    currentDialogue = new Dialogue();
-                } else if (tagName.equals("message")) {
-                    boolean from_me = xmlResourceParser.getAttributeBooleanValue(null, "from_me", false);
-                    source = from_me ? Message.FROM_ME : Message.FROM_FRIEND;
-                }
-            } else if (eventType == XmlPullParser.END_TAG) {
-                String tagName = xmlResourceParser.getName();
-                if (xmlTagStack.size() < 1) {
-                    Log.e(logTag, "Error 101: encountered END_TAG " + xmlResourceParser.getName() + " while TagStack is empty");
-                    return null;
-                }
-
-                xmlTagStack.remove(xmlTagStack.size() - 1);
-
-                if (tagName.equals("dialogue")) {
-                    if (currentDialogue != null) {
-                        currentDialogue.id = id;
-                        id++;
-                        dialogues.add(currentDialogue);
-                    }
-                    currentDialogue = null;
-                }
-            } else if (eventType == XmlPullParser.TEXT) {
-                String currentTag = xmlTagStack.get(xmlTagStack.size() - 1);
-                String text = xmlResourceParser.getText();
-
-                if (currentDialogue == null) {
-                    Log.e(logTag, "currentDialogue is not initialized! text: " + text + ", current tag: " + currentTag + ", depth: " + xmlTagStack.size());
-                    continue;
-                }
-
-                if (currentTag.equals("icon")) {
-                    currentDialogue.iconResourceID = context.getResources().getIdentifier(text, "drawable", context.getPackageName());
-                } else if (currentTag.equals("name")) {
-                    currentDialogue.name = text;
-                } else if (currentTag.equals("message")) {
-                    currentDialogue.messages.add(new Message(source, text));
-                }
+    public int updateMessages() {
+        if (start_seq > 0) {
+            List<Message> newMessages = getUserMessages(userID, -MESSAGES_LIMIT);
+            messages.clear();
+            messages.addAll(newMessages);
+            int new_start = last_seq - MESSAGES_LIMIT;
+            int inserted = newMessages.size() - 1;
+            if (newMessages.size() == 0)
+                inserted = 0;
+            if (new_start < 0) {
+                new_start = 0;
             }
-            eventType = xmlResourceParser.next();
+            start_seq = new_start;
+            return inserted;
+        } else {
+            List<Message> newMessages = getUserMessages(userID, last_seq + 1);
+            messages.addAll(newMessages);
+            return newMessages.size();
+        }
+    }
+
+    class SendMessageTask extends AsyncTask<Void, Void, String> {
+
+        Runnable callback;
+        Dialogue dialogue;
+        String text;
+
+        SendMessageTask(Dialogue dialogue, String text, Runnable callback) {
+            this.dialogue = dialogue;
+            this.text = text;
+            this.callback = callback;
         }
 
-        return dialogues;
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                Map<String, String> args = new HashMap<>();
+                args.put("user_id", String.valueOf(DataModel.get().getUserID()));
+                args.put("friend_id", String.valueOf(dialogue.userID));
+                args.put("text", text);
+                return DataModel.doGet("send_message", args);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(final String result) {
+            if (!result.equals("Ok"))
+                return;
+
+//            Message message = new Message(Message.FROM_ME, text);
+//            dialogue.messages.add(message);
+            callback.run();
+        }
     }
+
+    public static List<Dialogue> loadDialogues(Context context) {
+        Map<String, String> queryData = new HashMap<>();
+        try {
+            String response = doGet("get_users", queryData);
+            JSONObject obj = new JSONObject(response);
+
+            List<Dialogue> dialogues= new ArrayList<>();
+
+            JSONArray jsonArray = obj.getJSONArray("users");
+            if (jsonArray != null) {
+                int len = jsonArray.length();
+                for (int i=0; i<len; i++){
+                    JSONObject user = jsonArray.getJSONObject(i);
+
+                    int userID = user.getInt("id");
+                    String name = user.getString("first_name") + " " + user.getString("last_name");
+
+                    String avatarUrl = user.getString("avatar");
+                    Drawable avatar = null;
+                    if (!avatarUrl.equals("")) {
+                        Bitmap avatarBitmap = DataModel.getBitmapFromURL(avatarUrl);
+                        if (avatarBitmap != null) {
+                            avatar = new BitmapDrawable(context.getResources(), avatarBitmap);
+                        }
+                    }
+                    if (avatar == null) {
+                        avatar = context.getResources().getDrawable(R.drawable.avatar);
+                    }
+
+                    Dialogue dialogue = new Dialogue(name, null, avatar, userID);
+                    dialogue.messages = dialogue.getUserMessages(userID, -1);
+                    dialogue.start_seq = dialogue.last_seq;
+                    dialogues.add(dialogue);
+                }
+            }
+
+            return dialogues;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    private List<Message> getUserMessages(int userID, int fromN) {
+        int myID = DataModel.get().getUserID();
+
+        Map<String, String> queryData = new HashMap<>();
+        queryData.put("user_id", String.valueOf(myID));
+        queryData.put("friend_id", String.valueOf(userID));
+        queryData.put("from_n", String.valueOf(fromN));
+
+        try {
+            String response = doGet("get_messages", queryData);
+            JSONObject obj = new JSONObject(response);
+
+            List<Message> messages = new ArrayList<>();
+
+            JSONArray jsonArray = obj.getJSONArray("messages");
+            if (jsonArray == null) {
+                return messages;
+            }
+
+            int len = jsonArray.length();
+            for (int i = 0; i < len; i++){
+                JSONObject messageObj = jsonArray.getJSONObject(i);
+
+                int fromID = messageObj.getInt("from");
+                String text = messageObj.getString("text");
+                int source = fromID == myID ? Message.FROM_ME : Message.FROM_FRIEND;
+                Message message = new Message(source, text);
+                messages.add(message);
+            }
+
+            last_seq = obj.getInt("count") - 1;
+
+            return messages;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
 }

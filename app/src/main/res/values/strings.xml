@@ -66,7 +66,7 @@
     <string name="top_up_your_balance">Top up your balance</string>
     <string name="pay_out">Pay out</string>
     <string name="get_a_detailed_history">Get a detailed history</string>
-    <string name="invite_a_friend_and_get_bonuses">Invite a friend and get bonuses!</string>
+    <string name="invite_a_friend_and_get_bonuses">Invite a friend and get bonus!</string>
     <string name="you_will_get">You will get:</string>
     <string name="your_friend_will_get">Your friend will get:</string>
     <string name="_100_bullcoin_after_your_friend_deposits_money_to_your_account">100 Bullcoin after your friend deposits 100 Dollar dollars in the account</string>
@@ -118,6 +118,12 @@
     <string name="for_bloked1">For bloked Bullcoin in Deposit for 3 month 1,5 %</string>
     <string name="for_bloked2">For bloked Bullcoin in Deposit for 6 month 2%</string>
     <string name="for_bloked3">And for bloked Bullcoin Deposit for 12 month 3,5%</string>
+    <string name="get_a_ready_made_portfolio">Get a ready-made portfolio</string>
+    <string name="order_a_call">Order a call</string>
+    <string name="help">Help</string>
+    <string name="get_recommendations_for_your_portfolio">Get recommendations for your portfolio</string>
+    <string name="how_can_i_help_you">How can I help you?</string>
+
 
     <string-array name="languages">
         <item>English</item>

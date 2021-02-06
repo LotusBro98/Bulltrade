@@ -1,6 +1,7 @@
 package com.bullcoin.app.navigation.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bullcoin.app.R;
+import com.bullcoin.app.navigation.chat.ChatDialogueActivity;
+import com.bullcoin.app.navigation.chat.TradingAssistantActivity;
 import com.bullcoin.app.navigation.home.cards.CardFragmentBroker;
 import com.bullcoin.app.navigation.home.maintabs.BookmarksFragment;
 import com.bullcoin.app.navigation.home.maintabs.NewsFragment;
@@ -70,6 +73,13 @@ public class HomeFragment extends Fragment {
 
         root.findViewById(R.id.button_bullshop).setOnClickListener(
                 v -> Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_bullshopFragment)
+        );
+
+        root.findViewById(R.id.button_trading_assistant).setOnClickListener(
+                v -> {
+                    Intent intent = new Intent(getActivity(), TradingAssistantActivity.class);
+                    startActivity(intent);
+                }
         );
 
         return root;

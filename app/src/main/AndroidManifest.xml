@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:configChanges="locale"
         android:icon="@mipmap/ic_launcher"
@@ -34,6 +35,7 @@
             android:theme="@style/splashScreenTheme"
         />
         <activity android:name=".navigation.chat.ChatDialogueActivity" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".navigation.chat.TradingAssistantActivity" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".asset.AssetActivity" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".login.PinLoginActivity" android:screenOrientation="portrait" />
 

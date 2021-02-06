@@ -2,15 +2,10 @@ package com.bullcoin.app.navigation.chat;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,10 +13,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,11 +21,10 @@ import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.DataModel;
 import com.bullcoin.app.datamodel.Dialogue;
 import com.bullcoin.app.datamodel.Message;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class ChatDialogueActivity extends LocalizedActivity {
+public class TradingAssistantActivity extends LocalizedActivity {
 
     EditText editMessage;
     RecyclerView recyclerView;
@@ -43,20 +33,12 @@ public class ChatDialogueActivity extends LocalizedActivity {
 
     Dialogue dialogue;
 
-    UpdateTask updateTask;
-    Runnable updateRunnable;
-    Handler updateHandler;
-
-    private static final int UPDATE_PERIOD = 1000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_chat_messages);
+        setContentView(R.layout.fragment_trading_assistant);
 
-        Bundle args = getIntent().getExtras();
-        int dialogueID = args.getInt("userID");
-        dialogue = DataModel.get().getDialogue(dialogueID);
+        dialogue = DataModel.get().getTradingAssistant();
 
         TextView name = findViewById(R.id.friend_name);
         ImageView avatar = findViewById(R.id.friend_avatar);
@@ -91,39 +73,10 @@ public class ChatDialogueActivity extends LocalizedActivity {
             return true;
         });
 
-        updateHandler = new Handler();
-        updateRunnable = new Runnable() {
-            @Override
-            public void run() {
-                new UpdateTask().execute();
-
-            }
-        };
-        updateRunnable.run();
-    }
-
-    private class UpdateTask extends AsyncTask<Void, Void, Integer>{
-        @Override
-        protected Integer doInBackground(java.lang.Void... voids) {
-            return dialogue.updateMessages();
-        }
-
-        @Override
-        protected void onPostExecute(Integer inserted) {
-            if (inserted == 1) {
-                adapter.notifyItemInserted(adapter.getItemCount() - 1);
-                recyclerView.scrollToPosition(adapter.getItemCount() - 1);
-            } else if (inserted != 0) {
-                adapter.notifyDataSetChanged();
-            }
-            updateHandler.postDelayed(updateRunnable, UPDATE_PERIOD);
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        updateHandler.removeCallbacks(updateRunnable);
+        findViewById(R.id.message2).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.get_a_ready_made_portfolio))));
+        findViewById(R.id.message6).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.order_a_call))));
+        findViewById(R.id.message8).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.help))));
+        findViewById(R.id.message7).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.get_recommendations_for_your_portfolio))));
     }
 
     public void hideKeyboardFrom(Context context, View view) {
@@ -131,21 +84,20 @@ public class ChatDialogueActivity extends LocalizedActivity {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    private void send(Message message) {
+        editMessage.getText().clear();
+        adapter.mData.add(message);
+        recyclerView.scrollToPosition(adapter.getItemCount() - 1);
+        adapter.notifyItemInserted(adapter.getItemCount() - 1);
+    }
+
     private void onSend(View v) {
         String text = editMessage.getText().toString();
         if (text.equals("")) {
             return;
         }
-        editMessage.getText().clear();
-
-        dialogue.sendMessage(text, new Runnable() {
-            @Override
-            public void run() {
-                updateHandler.post(updateRunnable);
-//                recyclerView.scrollToPosition(adapter.getItemCount() - 1);
-//                adapter.notifyItemInserted(adapter.getItemCount() - 1);
-            }
-        });
+        Message message = new Message(Message.FROM_ME, text);
+        send(message);
     }
 
     public void returnBack() {

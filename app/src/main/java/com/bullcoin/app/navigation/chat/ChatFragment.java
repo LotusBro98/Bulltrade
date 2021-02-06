@@ -3,6 +3,7 @@ package com.bullcoin.app.navigation.chat;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,8 @@ import java.util.List;
 
 public class ChatFragment extends Fragment {
 
+    ChatFriendsRecyclerViewAdapter adapter;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_chat, container, false);
@@ -36,13 +39,13 @@ public class ChatFragment extends Fragment {
 
         RecyclerView recyclerView = root.findViewById(R.id.recycler_chat);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ChatFriendsRecyclerViewAdapter adapter = new ChatFriendsRecyclerViewAdapter(getActivity(), dialogues);
+        adapter = new ChatFriendsRecyclerViewAdapter(getActivity(), dialogues);
         adapter.setClickListener(new ChatFriendsRecyclerViewAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, Dialogue dialogue) {
                 Intent intent = new Intent(getActivity(), ChatDialogueActivity.class);
                 Bundle args = new Bundle();
-                args.putInt("dialogueID", dialogue.getId());
+                args.putInt("userID", dialogue.getUserID());
                 intent.putExtras(args);
                 startActivity(intent);
             }
@@ -51,6 +54,19 @@ public class ChatFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        DataModel.get().loadDialogues(getContext(), new Runnable() {
+            @Override
+            public void run() {
+                adapter.mData = DataModel.get().getDialogues();
+                adapter.notifyDataSetChanged();
+            }
+        });
+        Log.d("ADSASDASD", "ADASDASDADS");
     }
 
     public static class ChatFriendsRecyclerViewAdapter extends RecyclerView.Adapter<ChatFriendsRecyclerViewAdapter.ViewHolder> {
@@ -84,7 +100,7 @@ public class ChatFragment extends Fragment {
                 lastMsg = dialogue.getMessages().get(dialogue.getMessages().size() - 1).text;
             }
             holder.lastMsg.setText(lastMsg);
-            holder.avatar.setImageDrawable(context.getResources().getDrawable(dialogue.getIconResourceID()));
+            holder.avatar.setImageDrawable(dialogue.getAvatar());
         }
 
         // total number of rows
