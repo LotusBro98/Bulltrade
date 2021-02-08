@@ -103,8 +103,8 @@ public class DataModel {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         userFirstName = preferences.getString("firstName", "");
         userLastName = preferences.getString("lastName", "");
-        brokerBalance = preferences.getFloat("brokerBalance", 100000.0f);
-        bankBalance = preferences.getFloat("bankBalance", 0.0f);
+        brokerBalance = preferences.getFloat("brokerBalance", 10000.0f);
+        bankBalance = preferences.getFloat("bankBalance", 254.0f);
         userID = preferences.getInt("userID", -1);
 
         boolean hasCard1 = preferences.getBoolean("hasCard1", false);
@@ -129,12 +129,12 @@ public class DataModel {
         loadAvatar(context);
     }
 
-    public static void loadDialogues(Context context, Runnable callback) {
+    public static void loadDialogues(Context context, String search, Runnable callback) {
         new AsyncTask<Void, String, List<Dialogue>>() {
             @Override
             protected List<Dialogue> doInBackground(Void... voids) {
                 try {
-                    return Dialogue.loadDialogues(context);
+                    return Dialogue.loadDialogues(context, search);
                 } catch (Exception e) {
                     e.printStackTrace();
                     return new ArrayList<>();

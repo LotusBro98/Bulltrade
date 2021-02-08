@@ -8,7 +8,7 @@
     tools:context=".navigation.chat.ChatFragment" >
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/search_for_friends"
         android:layout_width="0dp"
         android:layout_height="43dp"
         android:layout_marginStart="32dp"
@@ -33,7 +33,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText">
+        app:layout_constraintTop_toBottomOf="@+id/search_for_friends">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_chat"

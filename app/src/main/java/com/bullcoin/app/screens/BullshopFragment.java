@@ -1,7 +1,9 @@
 package com.bullcoin.app.screens;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,6 +69,15 @@ public class BullshopFragment extends Fragment {
 
         ImageView backButton = view.findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> Navigation.findNavController(view).navigateUp());
+
+        TextView bulltradeLink = view.findViewById(R.id.bulltrade_link);
+        bulltradeLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.bull-trade.net"));
+                startActivity(browserIntent);
+            }
+        });
 
         return view;
     }

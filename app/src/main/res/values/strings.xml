@@ -105,7 +105,7 @@
     <string name="Bullcoin_is_a_new_cryptocurrency">Bullcoin is a new cryptocurrency , but despite this, it is rapidly gaining popularity and on our platform you can not only buy it, but also receive an annual percentage of the amount for which you bought the cryptocurrency.</string>
     <string name="Save_the_trees">Our company is very concerned about the environment and now we are holding a campaign and we are going to give part of the income to buy trees , we will take care of nature TOGETHER. <br/> <br/> Save trees - buy Bullcoin!</string>
     <string name="Save_the_trees2">You already save:</string>
-    <string name="Save_the_trees3" translatable="false">0</string>
+    <string name="Save_the_trees3" translatable="false">125</string>
     <string name="collect_friends_get_money_screen">Collect friends - get Money</string>
     <string name="bullfamily" translatable="false">BULLFAMILY</string>
     <string name="friends_text">Collect friends and get bonus for each friend! When a friend makes Invest in App 100 Dollar / euro User become 100 Bullcoin Bonus. 100% = 100 Bullcoin Bonus. Payout with 100 Prozent.</string>
@@ -123,6 +123,9 @@
     <string name="help">Help</string>
     <string name="get_recommendations_for_your_portfolio">Get recommendations for your portfolio</string>
     <string name="how_can_i_help_you">How can I help you?</string>
+    <string name="bull_trade_net" translatable="false"><u>Bull-trade.net</u></string>
+    <string name="save_the_world_grow_up_your_tree">Save the world grow up your tree.</string>
+    <string name="buy_bullcoin2">Buy Bullcoin</string>
 
 
     <string-array name="languages">
