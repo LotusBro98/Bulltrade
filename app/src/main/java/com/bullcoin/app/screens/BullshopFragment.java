@@ -46,9 +46,9 @@ public class BullshopFragment extends Fragment {
     }
 
     private ShopItem[] shopItems = {
-            new ShopItem("BULLTRADE Jacket", "€79.90", "€69.90", R.drawable.bulltrade_jacket),
+//          new ShopItem("BULLTRADE Jacket", "€79.90", "€69.90", R.drawable.bulltrade_jacket),
             new ShopItem("BULLTRADE Cap", "€24.90", "€19.90", R.drawable.bulltrade_cap),
-//            new ShopItem("BULLTRADE Hoody", "€79.90", "€69.90", R.drawable.bulltrade_hoody),
+            new ShopItem("BULLTRADE Polo Shirt", "29.90", "€24.90", R.drawable.otstoinaya_futbolka),
             new ShopItem("BULLTRADE Hoody black", "€79.90", "€69.90", R.drawable.bulltrade_hoody_black),
             new ShopItem("BULLTRADE Cup", "€20.90", "€14.90", R.drawable.bulltrade_cup),
     };
