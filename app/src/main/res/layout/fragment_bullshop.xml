@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="BullTrade Shop"
+                android:text="BullShop"
                 android:textColor="#ffffff"
                 android:textSize="27sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView23"
