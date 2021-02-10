@@ -6,6 +6,7 @@
         <price>474.98</price>
         <icon>asset_apple</icon>
         <text>asset_text_apple</text>
+        <country>asset_country_america</country>
     </asset>
     <asset>
         <name>JD.com</name>
@@ -13,6 +14,7 @@
         <price>70.57</price>
         <icon>asset_jd</icon>
         <text>asset_text_jd_com</text>
+        <country>asset_country_america</country>
     </asset>
     <asset>
         <name>Sohu.com</name>
@@ -20,6 +22,7 @@
         <price>21.32</price>
         <icon>asset_sohu</icon>
         <text>asset_text_sohu</text>
+        <country>asset_country_america</country>
     </asset>
     <asset>
         <name>Bilibili Inc.</name>
@@ -27,6 +30,7 @@
         <price>45.12</price>
         <icon>asset_bilibili</icon>
         <text>asset_text_bilibili</text>
+        <country>asset_country_america</country>
     </asset>
 
     <asset>
@@ -36,6 +40,7 @@
         <price>1554.15</price>
         <icon>asset_gazprom</icon>
         <text>asset_text_gazprom</text>
+        <country>asset_country_russia</country>
     </asset>
     <asset>
         <name>VTB Perp</name>
@@ -44,6 +49,7 @@
         <price>1100.16</price>
         <icon>asset_vtb</icon>
         <text>asset_text_vtb</text>
+        <country>asset_country_russia</country>
     </asset>
     <asset>
         <name>Lukoil</name>
@@ -52,6 +58,7 @@
         <price>1080.16</price>
         <icon>asset_lukoil</icon>
         <text>asset_text_lukoil</text>
+        <country>asset_country_russia</country>
     </asset>
     <asset>
         <name>Evras</name>
@@ -60,6 +67,7 @@
         <price>1158.16</price>
         <icon>asset_evras</icon>
         <text>asset_text_evras</text>
+        <country>asset_country_america</country>
     </asset>
 
     <asset>
@@ -68,6 +76,7 @@
         <price>0.11</price>
         <icon>asset_bullcoin</icon>
         <text>asset_text_bullcoin</text>
+        <country>asset_country_austria</country>
     </asset>
     <asset>
         <name>Bitcoin</name>
@@ -75,6 +84,7 @@
         <price>17139.04</price>
         <icon>asset_bitcoin</icon>
         <text>asset_text_bitcoin</text>
+        <country>asset_country_america</country>
     </asset>
     <asset>
         <name>Ethereum</name>
@@ -82,6 +92,7 @@
         <price>514.29</price>
         <icon>asset_ethereum</icon>
         <text>asset_text_ethereum</text>
+        <country>asset_country_america</country>
     </asset>
     <asset>
         <name>Litecoin</name>
@@ -89,5 +100,6 @@
         <price>68.98</price>
         <icon>asset_litecoin</icon>
         <text>asset_text_litecoin</text>
+        <country>asset_country_america</country>
     </asset>
 </buyableAssets>

@@ -140,6 +140,10 @@
     <string name="asset_text_ethereum"></string>
     <string name="asset_text_litecoin"></string>
 
+    <string name="asset_country_america">United States of America</string>
+    <string name="asset_country_austria">Austria</string>
+    <string name="asset_country_russia">Russian Federation</string>
+
 
     <string-array name="languages">
         <item>English</item>

@@ -30,6 +30,16 @@ public class Asset {
     private String name;
     private int id;
     private int descriptionID;
+    private int countryNameID;
+    private int countryIconID;
+
+    public int getCountryNameID() {
+        return countryNameID;
+    }
+
+    public int getCountryIconID() {
+        return countryIconID;
+    }
 
     public String getDescription(Context context) {
         return context.getResources().getString(descriptionID);
@@ -147,6 +157,9 @@ public class Asset {
                     currentAsset.percent = Double.parseDouble(text);
                 } else if (currentTag.equals("text")) {
                     currentAsset.descriptionID = context.getResources().getIdentifier(text, "string", context.getPackageName());
+                } else if (currentTag.equals("country")) {
+                    currentAsset.countryNameID = context.getResources().getIdentifier(text, "string", context.getPackageName());
+                    currentAsset.countryIconID = context.getResources().getIdentifier(text, "drawable", context.getPackageName());
                 }
             }
             eventType = xmlResourceParser.next();

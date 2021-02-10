@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,12 @@ public class ReviewFragment extends Fragment {
 
         TextView assetText = root.findViewById(R.id.asset_text);
         assetText.setText(asset.getDescription(getContext()));
+
+        TextView countryText = root.findViewById(R.id.asset_country_text);
+        countryText.setText(asset.getCountryNameID());
+
+        ImageView countryIcon = root.findViewById(R.id.asset_country_icon);
+        countryIcon.setImageDrawable(getResources().getDrawable(asset.getCountryIconID()));
 
         return root;
     }
