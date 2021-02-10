@@ -14,7 +14,7 @@
         <price>70.57</price>
         <icon>asset_jd</icon>
         <text>asset_text_jd_com</text>
-        <country>asset_country_america</country>
+        <country>asset_country_china</country>
     </asset>
     <asset>
         <name>Sohu.com</name>
@@ -22,7 +22,7 @@
         <price>21.32</price>
         <icon>asset_sohu</icon>
         <text>asset_text_sohu</text>
-        <country>asset_country_america</country>
+        <country>asset_country_china</country>
     </asset>
     <asset>
         <name>Bilibili Inc.</name>
@@ -30,7 +30,7 @@
         <price>45.12</price>
         <icon>asset_bilibili</icon>
         <text>asset_text_bilibili</text>
-        <country>asset_country_america</country>
+        <country>asset_country_china</country>
     </asset>
 
     <asset>

@@ -141,6 +141,7 @@
     <string name="asset_country_america">United States of America</string>
     <string name="asset_country_austria">Austria</string>
     <string name="asset_country_russia">Russian Federation</string>
+    <string name="asset_country_china">China</string>
 
 
     <string-array name="languages">

@@ -125,5 +125,6 @@
     <string name="asset_text_ethereum">Ethereum (Ethereum, from the English ether [iiːθə] - \"ether\") — Kryptowährung und Plattform für die Schaffung von dezentralen Online-Diensten auf der Basis von Blockchain (dezentrale Anwendungen), die auf der Basis von intelligenten Verträgen arbeiten. Implementiert als eine einzige dezentrale virtuelle Maschine. Das Konzept wurde Ende 2013 vom Gründer des Bitcoin Magazins Vitalik Buterin vorgeschlagen, das Netzwerk wurde am 30. Juli 2015 gestartet.</string>
     <string name="asset_text_litecoin">"Litecoin (from the English lite — \"easy\", English coin — \"coin\")- eine Gabel von Bitcoin, ein Peer-to-Peer-elektronisches Zahlungssystem, das die gleichnamige Kryptowährung verwendet. "</string>
     <string name="asset_text_apple">Apple Inc. ist ein amerikanisches Unternehmen, das Personal-und Tablet-Computer, Audio-Player, Telefone und software.it besitzt den Apple Pay-Zahlungsdienst. Ein 7-zu-1-Split der Aktien ermöglichte es ihnen, im März 2015 dem Dow Jones Index beizutreten. Das Unternehmen verfolgt eine großzügige Politik gegenüber seinen Aktionären: Neben der Zahlung von Dividenden werden regelmäßig auch Rückkaufprogramme durchgeführt.</string>
+    <string name="asset_country_china">Chinesisch</string>
 
 </resources>
