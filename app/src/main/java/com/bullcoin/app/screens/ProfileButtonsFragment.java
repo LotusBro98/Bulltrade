@@ -29,6 +29,7 @@ import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.DataModel;
 
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -51,17 +52,17 @@ public class ProfileButtonsFragment extends Fragment {
                     if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
                     } else {
-                        Intent photoPickerIntent = new Intent();
-                        photoPickerIntent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                        photoPickerIntent.setAction(Intent.ACTION_GET_CONTENT);
-                        photoPickerIntent.putExtra("crop", "true");
+                        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                        photoPickerIntent.setDataAndType(MediaStore.Images.Media.INTERNAL_CONTENT_URI, "image/*");
                         photoPickerIntent.putExtra("return-data", true);
-                        photoPickerIntent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
+                        photoPickerIntent.putExtra("crop", "true");
+                        photoPickerIntent.putExtra("scale", true);
                         photoPickerIntent.putExtra("aspectX", 1);
                         photoPickerIntent.putExtra("aspectY", 1);
                         // indicate output X and Y
                         photoPickerIntent.putExtra("outputX", 300);
                         photoPickerIntent.putExtra("outputY", 300);
+
                         startActivityForResult(photoPickerIntent, PICK_FROM_GALLERY);
 
                     }
@@ -79,13 +80,22 @@ public class ProfileButtonsFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_FROM_GALLERY && resultCode == RESULT_OK && null != data) {
-
             Bundle extras = data.getExtras();
             if (extras != null) {
                 Bitmap photo = extras.getParcelable("data");
 
                 DataModel.get().setAvatar(getContext(), photo);
                 avatar.setImageDrawable(DataModel.get().getAvatar());
+            } else {
+                try {
+                    InputStream inputStream = getContext().getContentResolver().openInputStream(data.getData());
+                    Bitmap photo = BitmapFactory.decodeStream(inputStream);
+
+                    DataModel.get().setAvatar(getContext(), photo);
+                    avatar.setImageDrawable(DataModel.get().getAvatar());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
