@@ -83,7 +83,7 @@ public class AssetActivity extends LocalizedActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new ReviewFragment();
+                    return new ReviewFragment(assetActivity.asset);
                 case 1:
                     return new BiddingFragment(assetActivity.asset);
                 case 2:

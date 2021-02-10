@@ -29,6 +29,11 @@ public class Asset {
     private int type;
     private String name;
     private int id;
+    private int descriptionID;
+
+    public String getDescription(Context context) {
+        return context.getResources().getString(descriptionID);
+    }
 
     public int getId() {
         return id;
@@ -133,13 +138,15 @@ public class Asset {
                         currentAsset.type = TYPE_SHARE;
                     } else if (text.equals("crypt")) {
                         currentAsset.type = TYPE_CRYPT;
-                    }  else {
+                    } else {
                         currentAsset.type = 0;
                     }
                 } else if (currentTag.equals("price")) {
                     currentAsset.price = Double.parseDouble(text);
                 } else if (currentTag.equals("percent")) {
                     currentAsset.percent = Double.parseDouble(text);
+                } else if (currentTag.equals("text")) {
+                    currentAsset.descriptionID = context.getResources().getIdentifier(text, "string", context.getPackageName());
                 }
             }
             eventType = xmlResourceParser.next();

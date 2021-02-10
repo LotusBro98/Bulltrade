@@ -127,6 +127,19 @@
     <string name="save_the_world_grow_up_your_tree">Save the world grow up your tree.</string>
     <string name="buy_bullcoin2">Buy Bullcoin</string>
 
+    <string name="asset_text_apple">Apple Inc. is an American Corporation that produces personal and tablet computers, audio players, phones, and software.it owns the Apple Pay payment service. A 7-to-1 split of the shares allowed them to join the Dow Jones index in March 2015. The company has a generous policy towards its shareholders: in addition to paying dividends, buyback programs are also regularly implemented.</string>
+    <string name="asset_text_jd_com"></string>
+    <string name="asset_text_sohu"></string>
+    <string name="asset_text_bilibili"></string>
+    <string name="asset_text_gazprom"></string>
+    <string name="asset_text_vtb"></string>
+    <string name="asset_text_lukoil"></string>
+    <string name="asset_text_evras"></string>
+    <string name="asset_text_bullcoin">Buy Bullcoin</string>
+    <string name="asset_text_bitcoin"></string>
+    <string name="asset_text_ethereum"></string>
+    <string name="asset_text_litecoin"></string>
+
 
     <string-array name="languages">
         <item>English</item>

@@ -5,24 +5,28 @@
         <type>stock</type>
         <price>474.98</price>
         <icon>asset_apple</icon>
+        <text>asset_text_apple</text>
     </asset>
     <asset>
         <name>JD.com</name>
         <type>stock</type>
         <price>70.57</price>
         <icon>asset_jd</icon>
+        <text>asset_text_jd_com</text>
     </asset>
     <asset>
         <name>Sohu.com</name>
         <type>stock</type>
         <price>21.32</price>
         <icon>asset_sohu</icon>
+        <text>asset_text_sohu</text>
     </asset>
     <asset>
         <name>Bilibili Inc.</name>
         <type>stock</type>
         <price>45.12</price>
         <icon>asset_bilibili</icon>
+        <text>asset_text_bilibili</text>
     </asset>
 
     <asset>
@@ -31,6 +35,7 @@
         <percent>4.7</percent>
         <price>1554.15</price>
         <icon>asset_gazprom</icon>
+        <text>asset_text_gazprom</text>
     </asset>
     <asset>
         <name>VTB Perp</name>
@@ -38,6 +43,7 @@
         <percent>4.7</percent>
         <price>1100.16</price>
         <icon>asset_vtb</icon>
+        <text>asset_text_vtb</text>
     </asset>
     <asset>
         <name>Lukoil</name>
@@ -45,6 +51,7 @@
         <percent>1</percent>
         <price>1080.16</price>
         <icon>asset_lukoil</icon>
+        <text>asset_text_lukoil</text>
     </asset>
     <asset>
         <name>Evras</name>
@@ -52,6 +59,7 @@
         <percent>2</percent>
         <price>1158.16</price>
         <icon>asset_evras</icon>
+        <text>asset_text_evras</text>
     </asset>
 
     <asset>
@@ -59,23 +67,27 @@
         <type>crypt</type>
         <price>0.11</price>
         <icon>asset_bullcoin</icon>
+        <text>asset_text_bullcoin</text>
     </asset>
     <asset>
         <name>Bitcoin</name>
         <type>crypt</type>
         <price>17139.04</price>
         <icon>asset_bitcoin</icon>
+        <text>asset_text_bitcoin</text>
     </asset>
     <asset>
         <name>Ethereum</name>
         <type>crypt</type>
         <price>514.29</price>
         <icon>asset_ethereum</icon>
+        <text>asset_text_ethereum</text>
     </asset>
     <asset>
         <name>Litecoin</name>
         <type>crypt</type>
         <price>68.98</price>
         <icon>asset_litecoin</icon>
+        <text>asset_text_litecoin</text>
     </asset>
 </buyableAssets>
