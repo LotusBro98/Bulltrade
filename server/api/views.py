@@ -2,7 +2,7 @@ import sys
 
 from django.conf import settings
 from django.db.models import Count, Value, Q
-from django.db.models.functions import Concat
+from django.db.models.functions import Concat, Lower
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.http.request import HttpRequest
@@ -186,7 +186,7 @@ def get_messages(request: HttpRequest):
         ],
         "count": chat.count
     }
-    return JsonResponse(messages, content_type="application/json")
+    return HttpResponse(json.dumps(messages, indent=2, ensure_ascii=False), content_type="application/json")
 
 
 def send_message(request: HttpRequest):
