@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -71,6 +72,10 @@ public class ProfileButtonsFragment extends Fragment {
                 }
             }
         });
+
+        TextView userName = root.findViewById(R.id.profile_name);
+        String userNameStr = DataModel.get().getUserFirstName() + " " + DataModel.get().getUserLastName();
+        userName.setText(userNameStr);
 
         return root;
     }
