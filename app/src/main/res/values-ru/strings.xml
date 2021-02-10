@@ -110,5 +110,8 @@
     <string name="how_can_i_help_you">Чем я могу Вам помочь?</string>
     <string name="buy_bullcoin2">Купить Bullcoin</string>
     <string name="save_the_world_grow_up_your_tree">Спасите мир, вырастите свое дерево.</string>
+    <string name="asset_country_america">Соединенные Штаты Америки</string>
+    <string name="asset_country_austria">Австрия</string>
+    <string name="asset_country_russia">Российская Федерация</string>
 
 </resources>
