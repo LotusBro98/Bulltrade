@@ -451,7 +451,7 @@ public class DataModel {
     }
 
 
-    public static void register(Context context,
+    public static void register(Context context, Runnable callback,
             String phone,
             String language,
             String email,
@@ -504,7 +504,11 @@ public class DataModel {
                     int userID = obj.getInt("user_id");
                     DataModel.get().setUserID(context, userID);
                     Log.d("REGISTRATION", "User ID: " + userID);
+
+                    callback.run();
+
                 } catch (JSONException e) {
+                    Toast.makeText(context, "Failed to register. Probably no internet connection", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
             }
