@@ -12,10 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -76,19 +78,22 @@ public class ChatFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
+        notificationManager.cancelAll();
+
         return root;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        DataModel.get().loadDialogues(getContext(), "", new Runnable() {
-            @Override
-            public void run() {
+//        DataModel.get().loadDialogues(getContext(), "", new Runnable() {
+//            @Override
+//            public void run() {
                 adapter.mData = DataModel.get().getDialogues();
                 adapter.notifyDataSetChanged();
-            }
-        });
+//            }
+//        });
     }
 
     public static class ChatFriendsRecyclerViewAdapter extends RecyclerView.Adapter<ChatFriendsRecyclerViewAdapter.ViewHolder> {
@@ -123,6 +128,11 @@ public class ChatFragment extends Fragment {
             }
             holder.lastMsg.setText(lastMsg);
             holder.avatar.setImageDrawable(dialogue.getAvatar());
+            if (dialogue.unread) {
+                holder.unread.setVisibility(View.VISIBLE);
+            } else {
+                holder.unread.setVisibility(View.INVISIBLE);
+            }
         }
 
         // total number of rows
@@ -137,12 +147,14 @@ public class ChatFragment extends Fragment {
             TextView name;
             TextView lastMsg;
             ImageView avatar;
+            ImageButton unread;
 
             ViewHolder(View itemView) {
                 super(itemView);
                 name = itemView.findViewById(R.id.friend_name);
                 lastMsg = itemView.findViewById(R.id.friend_last_msg);
                 avatar = itemView.findViewById(R.id.friend_avatar);
+                unread = itemView.findViewById(R.id.image_unread);
                 itemView.setOnClickListener(this);
             }
 

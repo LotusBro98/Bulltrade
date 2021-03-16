@@ -1,10 +1,19 @@
 package com.bullcoin.app.navigation.chat;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -17,19 +26,25 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.lifecycle.Lifecycle;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bullcoin.app.LocalizedActivity;
+import com.bullcoin.app.MainActivity;
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.DataModel;
 import com.bullcoin.app.datamodel.Dialogue;
 import com.bullcoin.app.datamodel.Message;
+import com.bullcoin.app.login.PinLoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -100,6 +115,10 @@ public class ChatDialogueActivity extends LocalizedActivity {
             }
         };
         updateRunnable.run();
+
+        DataModel.get().activeDialogue = dialogue;
+
+        dialogue.unread = false;
     }
 
     private class UpdateTask extends AsyncTask<Void, Void, Integer>{
@@ -116,7 +135,10 @@ public class ChatDialogueActivity extends LocalizedActivity {
             } else if (inserted != 0) {
                 adapter.notifyDataSetChanged();
             }
-            updateHandler.postDelayed(updateRunnable, UPDATE_PERIOD);
+
+            if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.RESUMED)) {
+                updateHandler.postDelayed(updateRunnable, UPDATE_PERIOD);
+            }
         }
     }
 
@@ -149,9 +171,21 @@ public class ChatDialogueActivity extends LocalizedActivity {
     }
 
     public void returnBack() {
+        if (getCallingActivity() == null) {
+            Intent intent = new Intent(ChatDialogueActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getCallingActivity() == null) {
+            Intent intent = new Intent(ChatDialogueActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+        super.onBackPressed();
+    }
 
     public static class ChatMessagesRecyclerViewAdapter extends RecyclerView.Adapter {
 

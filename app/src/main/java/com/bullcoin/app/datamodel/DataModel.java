@@ -49,6 +49,8 @@ public class DataModel {
     private List<Card> cards;
     private List<Dialogue> dialogues;
     private List<News> news;
+    private Updater updater;
+    public Dialogue activeDialogue;
 
     Drawable avatar;
 
@@ -71,6 +73,7 @@ public class DataModel {
 
     public static void initialize(Context context) {
         instance = new DataModel(context);
+
     }
 
     public Drawable getAvatar() {
@@ -127,6 +130,9 @@ public class DataModel {
         }
 
         loadAvatar(context);
+
+        updater = new Updater();
+        updater.start(context.getApplicationContext());
     }
 
     public static void loadDialogues(Context context, String search, Runnable callback) {
@@ -149,6 +155,14 @@ public class DataModel {
                 }
             }
         }.execute();
+    }
+
+    public static void updateDialogues(Context context, String search, boolean notify) {
+        try {
+            Dialogue.updateDialogues(context, search, notify);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static String encodeTobase64(Bitmap image) {
