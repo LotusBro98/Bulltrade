@@ -57,6 +57,14 @@ public class Dialogue {
         unread = false;
     }
 
+    Message getLastMessage() {
+        if (messages.size() == 0) {
+            return null;
+        } else {
+            return messages.get(messages.size()-1);
+        }
+    }
+
     public Dialogue(String name, List<Message> messages, Drawable avatar, int userID) {
         this.avatar = avatar;
         this.name = name;
@@ -99,7 +107,11 @@ public class Dialogue {
 
     public void sendNotification(Context context) {
         try {
-            Message message = messages.get(messages.size() - 1);
+            Message message = getLastMessage();
+
+            if (message.source == Message.FROM_ME) {
+                return;
+            }
 
             Intent intent = new Intent(context, ChatDialogueActivity.class);
 //            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -289,15 +301,16 @@ public class Dialogue {
                     dialogue.messages = dialogue.getUserMessages(userID, -1);
                     dialogue.start_seq = dialogue.last_seq;
                     DataModel.get().getDialogues().add(dialogue);
-                    if (notify)
+                    if (notify) {
                         dialogue.sendNotification(context);
+                    }
                 }
             }
 
             for (Dialogue dialogue : DataModel.get().getDialogues()) {
                 ActivityManager am = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
                 ComponentName cn = am.getRunningTasks(1).get(0).topActivity;
-                if (cn.getClassName().equals("com.bullcoin.app.navigation.chat.ChatDialogueActivity") && DataModel.get().activeDialogue == dialogue) {
+                if (cn.getClassName().equals("com.bullcoin.app.navigation.chat.ChatDialogueActivity") && DataModel.get().activeDialogue.userID == dialogue.userID) {
                     continue;
                 }
 

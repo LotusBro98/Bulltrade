@@ -54,6 +54,7 @@ public class DataModel {
     public String lastSearch = "";
 
     Drawable avatar;
+    Drawable chat_bg;
 
     Dialogue tradingAssistant;
     public static final int TRADING_ASSISTANT_ID = -228;
@@ -79,6 +80,10 @@ public class DataModel {
 
     public Drawable getAvatar() {
         return avatar;
+    }
+
+    public Drawable getChat_bg() {
+        return chat_bg;
     }
 
     private void setUserID(Context context, int userID) {
@@ -131,6 +136,7 @@ public class DataModel {
         }
 
         loadAvatar(context);
+        loadChatBG(context);
 
         updater = new Updater(context.getApplicationContext());
         updater.start();
@@ -198,6 +204,15 @@ public class DataModel {
         sendAvatar(getUserID(), bitmap);
     }
 
+    public void setChatBG(Context context, Bitmap bitmap) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("chat_bg", encodeTobase64(bitmap));
+        editor.commit();
+
+        chat_bg = new BitmapDrawable(context.getResources(), bitmap);
+    }
+
     private static void sendAvatar(int userID, Bitmap bitmap) {
         Map<String, String> args = new HashMap<>();
         args.put("user_id", String.valueOf(userID));
@@ -230,6 +245,16 @@ public class DataModel {
             avatar = context.getResources().getDrawable(R.drawable.avatar);
         } else {
             avatar = new BitmapDrawable(context.getResources(), decodeBase64(avatarStr));
+        }
+    }
+
+    private void loadChatBG(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String chat_bgStr = preferences.getString("chat_bg", "");
+        if (chat_bgStr.equals("")) {
+            chat_bg = null;
+        } else {
+            chat_bg = new BitmapDrawable(context.getResources(), decodeBase64(chat_bgStr));
         }
     }
 

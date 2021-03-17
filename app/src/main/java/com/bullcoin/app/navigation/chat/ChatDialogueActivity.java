@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.lifecycle.Lifecycle;
@@ -121,6 +122,9 @@ public class ChatDialogueActivity extends LocalizedActivity {
         DataModel.get().activeDialogue = dialogue;
 
         dialogue.unread = false;
+
+        ImageView background = findViewById(R.id.chat_bg);
+        background.setImageDrawable(DataModel.get().getChat_bg());
     }
 
     private class UpdateTask extends AsyncTask<Void, Void, Integer>{
