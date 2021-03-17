@@ -105,6 +105,7 @@ public class Dialogue {
 //            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             Bundle args = new Bundle();
             args.putInt("userID", getUserID());
+            args.putBoolean("fromNotification", true);
             intent.putExtras(args);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -336,7 +337,8 @@ public class Dialogue {
                 int fromID = messageObj.getInt("from");
                 String text = messageObj.getString("text");
                 int source = fromID == myID ? Message.FROM_ME : Message.FROM_FRIEND;
-                Message message = new Message(source, text);
+                String time = messageObj.getString("time");
+                Message message = new Message(source, text, time);
                 messages.add(message);
             }
 

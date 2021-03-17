@@ -27,6 +27,7 @@ import com.bullcoin.app.MainActivity;
 import com.bullcoin.app.R;
 import com.bullcoin.app.datamodel.DataModel;
 import com.bullcoin.app.datamodel.Dialogue;
+import com.bullcoin.app.datamodel.Updater;
 import com.bullcoin.app.login.PinLoginActivity;
 import com.bullcoin.app.login.RegisterActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -82,6 +83,20 @@ public class ChatFragment extends Fragment {
         notificationManager.cancelAll();
 
         return root;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Updater.instance.stop();
+        DataModel.get().loadDialogues(getContext(), "", new Runnable() {
+            @Override
+            public void run() {
+                adapter.mData = DataModel.get().getDialogues();
+                adapter.notifyDataSetChanged();
+                Updater.instance.start();
+            }
+        });
     }
 
     @Override

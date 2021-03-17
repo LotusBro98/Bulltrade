@@ -30,6 +30,7 @@ class Message(models.Model):
     id_from = models.IntegerField()
     seq = models.IntegerField()
     text = models.TextField()
+    send_time = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return str(self.id_from) + "> " + self.text

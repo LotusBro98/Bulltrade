@@ -51,6 +51,7 @@ public class DataModel {
     private List<News> news;
     private Updater updater;
     public Dialogue activeDialogue;
+    public String lastSearch = "";
 
     Drawable avatar;
 
@@ -98,7 +99,7 @@ public class DataModel {
         }
 
         List<Message> messages = new ArrayList<>();
-        messages.add(new Message(Message.FROM_FRIEND, context.getString(R.string.how_can_i_help_you)));
+        messages.add(new Message(Message.FROM_FRIEND, context.getString(R.string.how_can_i_help_you), ""));
         tradingAssistant = new Dialogue(context.getString(R.string.trading_assistant), messages, context.getResources().getDrawable(R.drawable.max_spencer), TRADING_ASSISTANT_ID);
 
         cards = new ArrayList<>();
@@ -131,8 +132,8 @@ public class DataModel {
 
         loadAvatar(context);
 
-        updater = new Updater();
-        updater.start(context.getApplicationContext());
+        updater = new Updater(context.getApplicationContext());
+        updater.start();
     }
 
     public static void loadDialogues(Context context, String search, Runnable callback) {
@@ -140,6 +141,7 @@ public class DataModel {
             @Override
             protected List<Dialogue> doInBackground(Void... voids) {
                 try {
+                    DataModel.get().lastSearch = search;
                     return Dialogue.loadDialogues(context, search);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -159,6 +161,7 @@ public class DataModel {
 
     public static void updateDialogues(Context context, String search, boolean notify) {
         try {
+            DataModel.get().lastSearch = search;
             Dialogue.updateDialogues(context, search, notify);
         } catch (Exception e) {
             e.printStackTrace();

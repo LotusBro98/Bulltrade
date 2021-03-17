@@ -55,6 +55,7 @@ public class ChatDialogueActivity extends LocalizedActivity {
     RecyclerView recyclerView;
     ChatMessagesRecyclerViewAdapter adapter;
     boolean inserted = false;
+    boolean fromNotification;
 
     Dialogue dialogue;
 
@@ -71,6 +72,7 @@ public class ChatDialogueActivity extends LocalizedActivity {
 
         Bundle args = getIntent().getExtras();
         int dialogueID = args.getInt("userID");
+        fromNotification = args.getBoolean("fromNotification");
         dialogue = DataModel.get().getDialogue(dialogueID);
 
         TextView name = findViewById(R.id.friend_name);
@@ -171,7 +173,7 @@ public class ChatDialogueActivity extends LocalizedActivity {
     }
 
     public void returnBack() {
-        if (getCallingActivity() == null) {
+        if (fromNotification) {
             Intent intent = new Intent(ChatDialogueActivity.this, MainActivity.class);
             startActivity(intent);
         }
@@ -180,7 +182,7 @@ public class ChatDialogueActivity extends LocalizedActivity {
 
     @Override
     public void onBackPressed() {
-        if (getCallingActivity() == null) {
+        if (fromNotification) {
             Intent intent = new Intent(ChatDialogueActivity.this, MainActivity.class);
             startActivity(intent);
         }
@@ -225,10 +227,12 @@ public class ChatDialogueActivity extends LocalizedActivity {
             switch (message.source) {
                 case Message.FROM_ME:
                     ((FromMeViewHolder) holder).message.setText(message.text);
+                    ((FromMeViewHolder) holder).time.setText(message.getTime());
                     break;
                 case Message.FROM_FRIEND:
                     ((FromFriendViewHolder) holder).message.setText(message.text);
                     ((FromFriendViewHolder) holder).friend_avatar.setImageDrawable(dialogue.getAvatar());
+                    ((FromFriendViewHolder) holder).time.setText(message.getTime());
                     break;
             }
         }
@@ -255,21 +259,25 @@ public class ChatDialogueActivity extends LocalizedActivity {
 
         public class FromMeViewHolder extends RecyclerView.ViewHolder {
             TextView message;
+            TextView time;
 
             FromMeViewHolder(View itemView) {
                 super(itemView);
                 message = itemView.findViewById(R.id.message);
+                time = itemView.findViewById(R.id.send_time);
             }
         }
 
         public class FromFriendViewHolder extends RecyclerView.ViewHolder {
             TextView message;
             ImageView friend_avatar;
+            TextView time;
 
             FromFriendViewHolder(View itemView) {
                 super(itemView);
                 message = itemView.findViewById(R.id.message);
                 friend_avatar = itemView.findViewById(R.id.friend_avatar);
+                time = itemView.findViewById(R.id.send_time);
             }
         }
     }

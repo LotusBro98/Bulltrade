@@ -180,7 +180,8 @@ def get_messages(request: HttpRequest):
         "messages": [
             {
                 "from": message.id_from,
-                "text": message.text
+                "text": message.text,
+                "time": message.send_time.strftime("%H:%M %d.%m.%Y")
             }
             for message in messages
         ],

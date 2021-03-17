@@ -1,5 +1,7 @@
 package com.bullcoin.app.datamodel;
 
+import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -11,11 +13,14 @@ public class Updater {
     Runnable updateRunnable;
     Handler updateHandler;
 
-    boolean first = true;
+    public boolean first = true;
+    public static Updater instance;
 
-    public Updater() {}
+    Context context;
 
-    public void start(Context context) {
+    public Updater(Context context) {
+        instance = this;
+        this.context = context;
         updateHandler = new Handler();
         updateRunnable = new Runnable() {
             @Override
@@ -23,12 +28,23 @@ public class Updater {
                 new UpdateTask(context).execute();
             }
         };
-        updateRunnable.run();
+    }
+
+    public void stop() {
+        updateHandler.removeCallbacks(updateRunnable);
+    }
+
+    public void start() {
+        first = true;
+        updateHandler.removeCallbacks(updateRunnable);
+        updateHandler.post(updateRunnable);
     }
 
     private static final int UPDATE_PERIOD = 5000;
 
     public void update(Context context) {
+        if (!DataModel.get().lastSearch.equals(""))
+            return;
         DataModel.updateDialogues(context, "", !first);
         first = false;
     }
@@ -48,6 +64,7 @@ public class Updater {
 
         @Override
         protected void onPostExecute(Void v) {
+            updateHandler.removeCallbacks(updateRunnable);
             updateHandler.postDelayed(updateRunnable, UPDATE_PERIOD);
         }
     }

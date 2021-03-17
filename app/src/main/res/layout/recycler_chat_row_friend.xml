@@ -30,7 +30,7 @@
         android:layout_marginStart="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -49,6 +49,20 @@
             android:text="TextView"
             android:textColor="#C9DBE8"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/send_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins"
+            android:text="TextView"
+            android:textColor="#888888"
+            android:textSize="8sp" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
@@ -57,12 +71,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.04" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.85" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
