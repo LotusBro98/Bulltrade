@@ -19,6 +19,7 @@ class User(models.Model):
 
 class Chat(models.Model):
     users = models.ManyToManyField(User)
+    blocked_users = models.ManyToManyField(User, related_name="blocked")
     count = models.IntegerField()
 
     def __str__(self):

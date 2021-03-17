@@ -48,6 +48,8 @@ public class Dialogue {
     int start_seq;
     int last_seq;
     public boolean unread;
+    public boolean blockedMe;
+    public boolean blockedFriend;
 
     public static final int MESSAGES_LIMIT = 100;
     private static final int NOTIFY_ID = 192;
@@ -158,6 +160,10 @@ public class Dialogue {
         new SendMessageTask(this, text, callback).execute();
     }
 
+    public void deleteMessage(Message message, Runnable callback) {
+        new DeleteMessageTask(this, message.seq, callback).execute();
+    }
+
     public int updateMessages() {
         if (start_seq > 0) {
             List<Message> newMessages = getUserMessages(userID, -MESSAGES_LIMIT);
@@ -177,6 +183,28 @@ public class Dialogue {
             messages.addAll(newMessages);
             return newMessages.size();
         }
+    }
+
+    public boolean isBlocked() {
+        return blockedMe || blockedFriend;
+    }
+
+    public boolean canUnblock() {
+        return !blockedFriend && blockedMe;
+    }
+
+    public boolean canBlock() {
+        return !blockedFriend && !blockedMe;
+    }
+
+    public void unblockUser() {
+        blockedMe = false;
+        new SetBlockedTask(this, false).execute();
+    }
+
+    public void blockUser() {
+        blockedMe = true;
+        new SetBlockedTask(this, true).execute();
     }
 
     class SendMessageTask extends AsyncTask<Void, Void, String> {
@@ -209,10 +237,73 @@ public class Dialogue {
         protected void onPostExecute(final String result) {
             if (!result.equals("Ok"))
                 return;
-
-//            Message message = new Message(Message.FROM_ME, text);
-//            dialogue.messages.add(message);
             callback.run();
+        }
+    }
+
+
+    class DeleteMessageTask extends AsyncTask<Void, Void, String> {
+
+        Runnable callback;
+        Dialogue dialogue;
+        int seq;
+
+        DeleteMessageTask(Dialogue dialogue, int seq, Runnable callback) {
+            this.dialogue = dialogue;
+            this.seq = seq;
+            this.callback = callback;
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                Map<String, String> args = new HashMap<>();
+                args.put("user_id", String.valueOf(DataModel.get().getUserID()));
+                args.put("friend_id", String.valueOf(dialogue.userID));
+                args.put("seq", String.valueOf(seq));
+                return DataModel.doGet("delete_message", args);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(final String result) {
+            if (!result.equals("Ok"))
+                return;
+
+            callback.run();
+        }
+    }
+
+    class SetBlockedTask extends AsyncTask<Void, Void, String> {
+        Dialogue dialogue;
+        boolean block;
+
+        SetBlockedTask(Dialogue dialogue, boolean block) {
+            this.dialogue = dialogue;
+            this.block = block;
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                Map<String, String> args = new HashMap<>();
+                args.put("user_id", String.valueOf(DataModel.get().getUserID()));
+                args.put("friend_id", String.valueOf(dialogue.userID));
+                args.put("block", block ? "1" : "0");
+                return DataModel.doGet("set_block", args);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(final String result) {
+            if (!result.equals("Ok"))
+                return;
         }
     }
 
@@ -246,10 +337,14 @@ public class Dialogue {
                     if (avatar == null) {
                         avatar = context.getResources().getDrawable(R.drawable.avatar);
                     }
+                    boolean blocked_me = user.getBoolean("blocked_me");
+                    boolean blocked_friend = user.getBoolean("blocked_friend");
 
                     Dialogue dialogue = new Dialogue(name, null, avatar, userID);
                     dialogue.messages = dialogue.getUserMessages(userID, -1);
                     dialogue.start_seq = dialogue.last_seq;
+                    dialogue.blockedMe = blocked_me;
+                    dialogue.blockedFriend = blocked_friend;
                     dialogues.add(dialogue);
                 }
             }
@@ -279,7 +374,13 @@ public class Dialogue {
 
                     int userID = user.getInt("id");
                     Dialogue oldDialogue = DataModel.get().getDialogue(userID);
+
+                    boolean blocked_me = user.getBoolean("blocked_me");
+                    boolean blocked_friend = user.getBoolean("blocked_friend");
+
                     if (oldDialogue != null) {
+                        oldDialogue.blockedMe = blocked_me;
+                        oldDialogue.blockedFriend = blocked_friend;
                         continue;
                     }
 
@@ -300,6 +401,8 @@ public class Dialogue {
                     Dialogue dialogue = new Dialogue(name, null, avatar, userID);
                     dialogue.messages = dialogue.getUserMessages(userID, -1);
                     dialogue.start_seq = dialogue.last_seq;
+                    dialogue.blockedMe = blocked_me;
+                    dialogue.blockedFriend = blocked_friend;
                     DataModel.get().getDialogues().add(dialogue);
                     if (notify) {
                         dialogue.sendNotification(context);
@@ -350,8 +453,10 @@ public class Dialogue {
                 int fromID = messageObj.getInt("from");
                 String text = messageObj.getString("text");
                 int source = fromID == myID ? Message.FROM_ME : Message.FROM_FRIEND;
+                int seq = messageObj.getInt("seq");
                 String time = messageObj.getString("time");
                 Message message = new Message(source, text, time);
+                message.seq = seq;
                 messages.add(message);
             }
 

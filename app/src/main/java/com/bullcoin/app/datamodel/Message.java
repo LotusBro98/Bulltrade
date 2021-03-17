@@ -14,6 +14,7 @@ public class Message {
     public int source;
     public String text;
     private Date time;
+    public int seq;
 
     public String getTime() {
         if (time == null) {

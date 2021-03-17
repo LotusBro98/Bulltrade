@@ -12,8 +12,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -187,6 +189,22 @@ public class ChatFragment extends Fragment {
 //        });
     }
 
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        Dialogue dialogue = DataModel.get().getDialogue(item.getItemId());
+        if (dialogue == null) {
+            return super.onContextItemSelected(item);
+        }
+
+        if (item.getGroupId() == 0) {
+            dialogue.unblockUser();
+        } else {
+            dialogue.blockUser();
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
     public static class ChatFriendsRecyclerViewAdapter extends RecyclerView.Adapter<ChatFriendsRecyclerViewAdapter.ViewHolder> {
 
         Context context;
@@ -219,6 +237,7 @@ public class ChatFragment extends Fragment {
             }
             holder.lastMsg.setText(lastMsg);
             holder.avatar.setImageDrawable(dialogue.getAvatar());
+            holder.dialogue = dialogue;
             if (dialogue.unread) {
                 holder.unread.setVisibility(View.VISIBLE);
             } else {
@@ -234,11 +253,12 @@ public class ChatFragment extends Fragment {
 
 
         // stores and recycles views as they are scrolled off screen
-        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
             TextView name;
             TextView lastMsg;
             ImageView avatar;
             ImageButton unread;
+            Dialogue dialogue;
 
             ViewHolder(View itemView) {
                 super(itemView);
@@ -247,6 +267,17 @@ public class ChatFragment extends Fragment {
                 avatar = itemView.findViewById(R.id.friend_avatar);
                 unread = itemView.findViewById(R.id.image_unread);
                 itemView.setOnClickListener(this);
+                itemView.setOnCreateContextMenuListener(this);
+            }
+
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                if (dialogue.canUnblock()) {
+                    menu.add(0, dialogue.getUserID(), 0, context.getString(R.string.dialogue_unblock));
+                } else if (dialogue.canBlock()) {
+                    menu.add(1, dialogue.getUserID(), 0, context.getString(R.string.dialogue_block));
+                }
+
             }
 
             @Override

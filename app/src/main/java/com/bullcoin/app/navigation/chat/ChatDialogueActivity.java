@@ -15,8 +15,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -125,6 +127,13 @@ public class ChatDialogueActivity extends LocalizedActivity {
 
         ImageView background = findViewById(R.id.chat_bg);
         background.setImageDrawable(DataModel.get().getChat_bg());
+
+        if (dialogue.isBlocked()) {
+            View bottomView = findViewById(R.id.view2);
+            bottomView.setVisibility(View.GONE);
+            editMessage.setVisibility(View.GONE);
+            buttonSend.setVisibility(View.GONE);
+        }
     }
 
     private class UpdateTask extends AsyncTask<Void, Void, Integer>{
@@ -176,6 +185,19 @@ public class ChatDialogueActivity extends LocalizedActivity {
         });
     }
 
+    private void deleteMessage(Message message)
+    {
+        dialogue.deleteMessage(message, new Runnable() {
+            @Override
+            public void run() {
+                int index = adapter.mData.indexOf(message);
+                adapter.mData.remove(index);
+                adapter.notifyItemRemoved(index);
+                recyclerView.scrollToPosition(index);
+            }
+        });
+    }
+
     public void returnBack() {
         if (fromNotification) {
             Intent intent = new Intent(ChatDialogueActivity.this, MainActivity.class);
@@ -191,6 +213,23 @@ public class ChatDialogueActivity extends LocalizedActivity {
             startActivity(intent);
         }
         super.onBackPressed();
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        Message message = null;
+        for (Message m : adapter.mData) {
+            if (m.seq == item.getItemId()) {
+                message = m;
+            }
+        }
+        if (message == null) {
+            return super.onContextItemSelected(item);
+        }
+
+        deleteMessage(message);
+
+        return super.onContextItemSelected(item);
     }
 
     public static class ChatMessagesRecyclerViewAdapter extends RecyclerView.Adapter {
@@ -228,15 +267,14 @@ public class ChatDialogueActivity extends LocalizedActivity {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             Message message = mData.get(position);
+            ((MessageViewHolder) holder).message.setText(message.text);
+            ((MessageViewHolder) holder).time.setText(message.getTime());
+            ((MessageViewHolder) holder).messageObj = message;
             switch (message.source) {
                 case Message.FROM_ME:
-                    ((FromMeViewHolder) holder).message.setText(message.text);
-                    ((FromMeViewHolder) holder).time.setText(message.getTime());
                     break;
                 case Message.FROM_FRIEND:
-                    ((FromFriendViewHolder) holder).message.setText(message.text);
                     ((FromFriendViewHolder) holder).friend_avatar.setImageDrawable(dialogue.getAvatar());
-                    ((FromFriendViewHolder) holder).time.setText(message.getTime());
                     break;
             }
         }
@@ -261,27 +299,36 @@ public class ChatDialogueActivity extends LocalizedActivity {
             return 0;
         }
 
-        public class FromMeViewHolder extends RecyclerView.ViewHolder {
+        public class MessageViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
             TextView message;
             TextView time;
+            Message messageObj;
 
-            FromMeViewHolder(View itemView) {
+            MessageViewHolder(View itemView) {
                 super(itemView);
                 message = itemView.findViewById(R.id.message);
                 time = itemView.findViewById(R.id.send_time);
             }
+
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                menu.add(0, messageObj.seq, 0, context.getString(R.string.message_delete));
+            }
         }
 
-        public class FromFriendViewHolder extends RecyclerView.ViewHolder {
-            TextView message;
+        public class FromMeViewHolder extends MessageViewHolder {
+            FromMeViewHolder(View itemView) {
+                super(itemView);
+                itemView.setOnCreateContextMenuListener(this);
+            }
+        }
+
+        public class FromFriendViewHolder extends MessageViewHolder {
             ImageView friend_avatar;
-            TextView time;
 
             FromFriendViewHolder(View itemView) {
                 super(itemView);
-                message = itemView.findViewById(R.id.message);
                 friend_avatar = itemView.findViewById(R.id.friend_avatar);
-                time = itemView.findViewById(R.id.send_time);
             }
         }
     }

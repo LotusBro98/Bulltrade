@@ -127,5 +127,8 @@
     <string name="asset_text_apple">Apple Inc. ist ein amerikanisches Unternehmen, das Personal-und Tablet-Computer, Audio-Player, Telefone und software.it besitzt den Apple Pay-Zahlungsdienst. Ein 7-zu-1-Split der Aktien ermöglichte es ihnen, im März 2015 dem Dow Jones Index beizutreten. Das Unternehmen verfolgt eine großzügige Politik gegenüber seinen Aktionären: Neben der Zahlung von Dividenden werden regelmäßig auch Rückkaufprogramme durchgeführt.</string>
     <string name="asset_country_china">Chinesisch</string>
     <string name="notification_title">Neue Nachricht von</string>
+    <string name="message_delete">Löschen</string>
+    <string name="dialogue_block">Benutzer blockieren</string>
+    <string name="dialogue_unblock">Benutzer entsperren</string>
 
 </resources>

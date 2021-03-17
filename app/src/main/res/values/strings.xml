@@ -161,4 +161,7 @@
     <string name="notification_channel_name" translatable="false">Bulltrade chat</string>
     <string name="notification_channel_description" translatable="false">Bulltrade chat notifications</string>
     <string name="notification_channel_id" translatable="false">bulltrade_chat</string>
+    <string name="message_delete">Delete</string>
+    <string name="dialogue_block">Block user</string>
+    <string name="dialogue_unblock">Unblock user</string>
 </resources>
