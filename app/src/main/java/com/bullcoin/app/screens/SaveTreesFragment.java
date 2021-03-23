@@ -28,7 +28,7 @@ public class SaveTreesFragment extends Fragment {
         VideoView videoView = root.findViewById(R.id.videoView);
         String path = "android.resource://" + "com.bullcoin.app" + "/" + R.raw.save_trees;
         videoView.setVideoURI(Uri.parse(path));
-        videoView.setBackgroundDrawable(getResources().getDrawable(R.drawable.save_trees_preload));
+        videoView.setBackgroundDrawable(getResources().getDrawable(R.drawable.video_preview));
 
         videoView.setOnClickListener(new View.OnClickListener() {
             @Override
