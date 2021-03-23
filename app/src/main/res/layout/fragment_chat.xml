@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1E385B"
-    tools:context=".navigation.chat.ChatFragment" >
+    tools:context=".navigation.chat.ChatFragment">
+
+    <ImageView
+        android:id="@+id/chat_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@null" />
 
     <EditText
         android:id="@+id/search_for_friends"
@@ -40,4 +51,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </ScrollView>
+
+    <Button
+        android:id="@+id/button_change_bg"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:foreground="@drawable/ic_add_image"
+        android:foregroundGravity="center"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:backgroundTint="#1886BC"
+        app:cornerRadius="50dp"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

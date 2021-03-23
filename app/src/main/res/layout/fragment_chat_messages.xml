@@ -4,8 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="#2B456B">
+    android:background="#2B456B"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/chat_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@null" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -120,7 +131,7 @@
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:layout_marginEnd="8dp"
-        android:foreground="@drawable/ic_add_image"
+        android:foreground="@drawable/ic_baseline_send_24"
         android:foregroundGravity="center"
         android:insetTop="0dp"
         android:insetBottom="0dp"

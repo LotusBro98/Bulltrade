@@ -94,39 +94,6 @@ def search_users(query: str):
         .annotate(full_name_2=Concat('last_name', Value(' '), 'first_name')) \
         .filter(Q(full_name_1__contains=query) | Q(full_name_2__contains=query))
 
-def get_users(request: HttpRequest):
-    user_id = int(request.GET["user_id"])
-    if "query" in request.GET:
-        query = request.GET["query"]
-    else:
-        query = ""
-
-    user = User.objects.get(id=user_id)
-    if user is None:
-        return HttpResponse("User not found", content_type="text/html", status=404)
-
-    if query == "":
-        chats = Chat.objects.filter(users=user)
-        users = User.objects.filter(chat__in=chats).distinct()
-        if user in users:
-            self_chat = Chat.objects.annotate(users_count=Count('users')).filter(users=user).filter(users_count=1)
-            if len(self_chat) == 0:
-                users = [u for u in users if u != user]
-    else:
-        users = search_users(query)
-
-    users_list = []
-    for user in users:
-        user_dict = {}
-        for field in user._meta.fields:
-            if field.name in ["id", "first_name", "last_name", "avatar"]:
-                user_dict[field.name] = user.__getattribute__(field.name)
-        users_list.append(user_dict)
-
-    users_json = json.dumps({"users": users_list}, indent=2, ensure_ascii=False)
-    return HttpResponse(users_json, content_type="application/json")
-
-
 def get_dialogue(user_1, user_2, force_create=False):
     if user_1.id == user_2.id:
         chats = Chat.objects.annotate(users_count=Count('users')).filter(users=user_1).filter(users_count=1)
@@ -147,6 +114,43 @@ def get_dialogue(user_1, user_2, force_create=False):
 
     assert len(chats) == 1
     return chats[0]
+
+def get_users(request: HttpRequest):
+    user_id = int(request.GET["user_id"])
+    if "query" in request.GET:
+        query = request.GET["query"]
+    else:
+        query = ""
+
+    user0 = User.objects.get(id=user_id)
+    if user0 is None:
+        return HttpResponse("User not found", content_type="text/html", status=404)
+
+    if query == "":
+        chats = Chat.objects.filter(users=user0)
+        users = User.objects.filter(chat__in=chats).distinct()
+        if user0 in users:
+            self_chat = Chat.objects.annotate(users_count=Count('users')).filter(users=user0).filter(users_count=1)
+            if len(self_chat) == 0:
+                users = [u for u in users if u != user0]
+    else:
+        users = search_users(query)
+
+    users_list = []
+    for user in users:
+        chat = get_dialogue(user0, user)
+        blocked_me = user0 in chat.blocked_users.all()
+        blocked_friend = user in chat.blocked_users.all()
+        user_dict = {}
+        for field in user._meta.fields:
+            if field.name in ["id", "first_name", "last_name", "avatar"]:
+                user_dict[field.name] = user.__getattribute__(field.name)
+        user_dict["blocked_me"] = blocked_me
+        user_dict["blocked_friend"] = blocked_friend
+        users_list.append(user_dict)
+
+    users_json = json.dumps({"users": users_list}, indent=2, ensure_ascii=False)
+    return HttpResponse(users_json, content_type="application/json")
 
 
 def get_messages(request: HttpRequest):
@@ -180,7 +184,9 @@ def get_messages(request: HttpRequest):
         "messages": [
             {
                 "from": message.id_from,
-                "text": message.text
+                "text": message.text,
+                "time": message.send_time.strftime("%H:%M %d.%m.%Y"),
+                "seq": message.seq
             }
             for message in messages
         ],
@@ -203,6 +209,10 @@ def send_message(request: HttpRequest):
 
     chat = get_dialogue(user, friend, force_create=True)
 
+    blocked = ((friend in chat.blocked_users.all()) or (user in chat.blocked_users.all()))
+    if blocked:
+        return HttpResponse("User is blocked", content_type="text/html", status=403)
+
     message = Message()
     message.id_from = user_id
     message.chat = chat
@@ -210,6 +220,50 @@ def send_message(request: HttpRequest):
     message.seq = chat.count
     chat.count = chat.count + 1
     message.save()
+    chat.save()
+
+    return HttpResponse("Ok", content_type="text/html")
+
+
+def delete_message(request: HttpRequest):
+    user_id = int(request.GET["user_id"])
+    friend_id = int(request.GET["friend_id"])
+    seq = int(request.GET["seq"])
+
+    user = User.objects.get(id=user_id)
+    friend = User.objects.get(id=friend_id)
+    if user is None:
+        return HttpResponse("User not found", content_type="text/html", status=404)
+    if friend is None:
+        return HttpResponse("Friend not found", content_type="text/html", status=404)
+
+    chat = get_dialogue(user, friend, force_create=True)
+
+    message: Message = Message.objects.get(seq=seq, chat=chat)
+    if message is not None:
+        message.delete()
+
+    return HttpResponse("Ok", content_type="text/html")
+
+
+def set_block(request: HttpRequest):
+    user_id = int(request.GET["user_id"])
+    friend_id = int(request.GET["friend_id"])
+    block = request.GET["block"] == "1"
+
+    user = User.objects.get(id=user_id)
+    friend = User.objects.get(id=friend_id)
+    if user is None:
+        return HttpResponse("User not found", content_type="text/html", status=404)
+    if friend is None:
+        return HttpResponse("Friend not found", content_type="text/html", status=404)
+
+    chat = get_dialogue(user, friend)
+    print(request.GET["block"], file=sys.stderr)
+    if block:
+        chat.blocked_users.add(user)
+    else:
+        chat.blocked_users.remove(user)
     chat.save()
 
     return HttpResponse("Ok", content_type="text/html")

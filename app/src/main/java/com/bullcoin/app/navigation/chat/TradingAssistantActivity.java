@@ -73,10 +73,10 @@ public class TradingAssistantActivity extends LocalizedActivity {
             return true;
         });
 
-        findViewById(R.id.message2).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.get_a_ready_made_portfolio))));
-        findViewById(R.id.message6).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.order_a_call))));
-        findViewById(R.id.message8).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.help))));
-        findViewById(R.id.message7).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.get_recommendations_for_your_portfolio))));
+        findViewById(R.id.message2).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.get_a_ready_made_portfolio), "")));
+        findViewById(R.id.message6).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.order_a_call),"")));
+        findViewById(R.id.message8).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.help),"")));
+        findViewById(R.id.message7).setOnClickListener(v -> send(new Message(Message.FROM_ME, getString(R.string.get_recommendations_for_your_portfolio),"")));
     }
 
     public void hideKeyboardFrom(Context context, View view) {
@@ -96,7 +96,7 @@ public class TradingAssistantActivity extends LocalizedActivity {
         if (text.equals("")) {
             return;
         }
-        Message message = new Message(Message.FROM_ME, text);
+        Message message = new Message(Message.FROM_ME, text,"");
         send(message);
     }
 

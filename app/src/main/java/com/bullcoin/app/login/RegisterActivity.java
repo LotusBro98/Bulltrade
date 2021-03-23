@@ -121,7 +121,14 @@ public class RegisterActivity extends LocalizedActivity {
     private void finishRegistration() {
 
         String languageStr = getResources().getStringArray(R.array.languages)[language.getSelectedItemPosition()];
-        DataModel.register(this,
+        DataModel.register(this, new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(RegisterActivity.this, PinCreateActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                },
                 phone.getText().toString(),
                 languageStr,
                 email.getText().toString(),
@@ -130,10 +137,6 @@ public class RegisterActivity extends LocalizedActivity {
                 firstName.getText().toString(),
                 lastName.getText().toString()
         );
-
-        Intent intent = new Intent(RegisterActivity.this, PinCreateActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     @Override

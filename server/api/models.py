@@ -19,6 +19,7 @@ class User(models.Model):
 
 class Chat(models.Model):
     users = models.ManyToManyField(User)
+    blocked_users = models.ManyToManyField(User, related_name="blocked")
     count = models.IntegerField()
 
     def __str__(self):
@@ -30,6 +31,7 @@ class Message(models.Model):
     id_from = models.IntegerField()
     seq = models.IntegerField()
     text = models.TextField()
+    send_time = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return str(self.id_from) + "> " + self.text

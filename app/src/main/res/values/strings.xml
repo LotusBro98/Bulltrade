@@ -141,6 +141,7 @@
     <string name="asset_country_america">United States of America</string>
     <string name="asset_country_austria">Austria</string>
     <string name="asset_country_russia">Russian Federation</string>
+    <string name="asset_country_china">China</string>
 
 
     <string-array name="languages">
@@ -156,4 +157,11 @@
     </string-array>
     <string name="asset_text_jd_com">JD.com -Chinese online hypermarket, the main competitor of AliExpress. On JD.com they buy household goods, cosmetics and perfumes, clothing, shoes, accessories and electronics. See also JD.com Invests in European online stores: in June 2017, the company invested $ 397 million in the online luxury clothing boutique Farfetch.The company is included in the Fortune Global 500-the rating of the largest corporations in the world according to the magazine of the same name. In 2016, revenue JD.com They were larger than those of Alibaba, the company that owns AliExpress and Taobao. In 2017 JD.com 236.5 million people use it.</string>
     <string name="asset_text_sohu">Sohu, Inc (Chinese: 搜狐; pinyin: Souhu; literally: \"Search-fox\") is a Chinese internet company that offers advertising, a search engine, online multiplayer games, and more. Provides a Web 2.0-based network to millions of Chinese users every day. The headquarters is located Sohu Internet Plaza in Haidian district, Beijing. Sohu was ranked as the third and twelfth fastest growing company in the world by Fortune in 2009 and 2010, respectively. Sohu Subsidiary Changyou.com has a diverse portfolio of online games, including Tian Long Ba Bu, a massively multiplayer online game in China, and DDTank and Wartune (also known as Shen Qu), these games are the two most popular web games in China.</string>
+    <string name="notification_title">New message from</string>
+    <string name="notification_channel_name" translatable="false">Bulltrade chat</string>
+    <string name="notification_channel_description" translatable="false">Bulltrade chat notifications</string>
+    <string name="notification_channel_id" translatable="false">bulltrade_chat</string>
+    <string name="message_delete">Delete</string>
+    <string name="dialogue_block">Block user</string>
+    <string name="dialogue_unblock">Unblock user</string>
 </resources>

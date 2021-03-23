@@ -49,8 +49,12 @@ public class DataModel {
     private List<Card> cards;
     private List<Dialogue> dialogues;
     private List<News> news;
+    private Updater updater;
+    public Dialogue activeDialogue;
+    public String lastSearch = "";
 
     Drawable avatar;
+    Drawable chat_bg;
 
     Dialogue tradingAssistant;
     public static final int TRADING_ASSISTANT_ID = -228;
@@ -71,10 +75,15 @@ public class DataModel {
 
     public static void initialize(Context context) {
         instance = new DataModel(context);
+
     }
 
     public Drawable getAvatar() {
         return avatar;
+    }
+
+    public Drawable getChat_bg() {
+        return chat_bg;
     }
 
     private void setUserID(Context context, int userID) {
@@ -95,7 +104,7 @@ public class DataModel {
         }
 
         List<Message> messages = new ArrayList<>();
-        messages.add(new Message(Message.FROM_FRIEND, context.getString(R.string.how_can_i_help_you)));
+        messages.add(new Message(Message.FROM_FRIEND, context.getString(R.string.how_can_i_help_you), ""));
         tradingAssistant = new Dialogue(context.getString(R.string.trading_assistant), messages, context.getResources().getDrawable(R.drawable.max_spencer), TRADING_ASSISTANT_ID);
 
         cards = new ArrayList<>();
@@ -127,6 +136,10 @@ public class DataModel {
         }
 
         loadAvatar(context);
+        loadChatBG(context);
+
+        updater = new Updater(context.getApplicationContext());
+        updater.start();
     }
 
     public static void loadDialogues(Context context, String search, Runnable callback) {
@@ -134,6 +147,7 @@ public class DataModel {
             @Override
             protected List<Dialogue> doInBackground(Void... voids) {
                 try {
+                    DataModel.get().lastSearch = search;
                     return Dialogue.loadDialogues(context, search);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -149,6 +163,15 @@ public class DataModel {
                 }
             }
         }.execute();
+    }
+
+    public static void updateDialogues(Context context, String search, boolean notify) {
+        try {
+            DataModel.get().lastSearch = search;
+            Dialogue.updateDialogues(context, search, notify);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static String encodeTobase64(Bitmap image) {
@@ -179,6 +202,15 @@ public class DataModel {
         avatar = new BitmapDrawable(context.getResources(), bitmap);
 
         sendAvatar(getUserID(), bitmap);
+    }
+
+    public void setChatBG(Context context, Bitmap bitmap) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("chat_bg", encodeTobase64(bitmap));
+        editor.commit();
+
+        chat_bg = new BitmapDrawable(context.getResources(), bitmap);
     }
 
     private static void sendAvatar(int userID, Bitmap bitmap) {
@@ -213,6 +245,16 @@ public class DataModel {
             avatar = context.getResources().getDrawable(R.drawable.avatar);
         } else {
             avatar = new BitmapDrawable(context.getResources(), decodeBase64(avatarStr));
+        }
+    }
+
+    private void loadChatBG(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String chat_bgStr = preferences.getString("chat_bg", "");
+        if (chat_bgStr.equals("")) {
+            chat_bg = null;
+        } else {
+            chat_bg = new BitmapDrawable(context.getResources(), decodeBase64(chat_bgStr));
         }
     }
 
@@ -451,7 +493,7 @@ public class DataModel {
     }
 
 
-    public static void register(Context context,
+    public static void register(Context context, Runnable callback,
             String phone,
             String language,
             String email,
@@ -504,7 +546,11 @@ public class DataModel {
                     int userID = obj.getInt("user_id");
                     DataModel.get().setUserID(context, userID);
                     Log.d("REGISTRATION", "User ID: " + userID);
+
+                    callback.run();
+
                 } catch (JSONException e) {
+                    Toast.makeText(context, "Failed to register. Probably no internet connection", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
             }
