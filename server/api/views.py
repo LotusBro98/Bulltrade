@@ -139,8 +139,12 @@ def get_users(request: HttpRequest):
     users_list = []
     for user in users:
         chat = get_dialogue(user0, user)
-        blocked_me = user0 in chat.blocked_users.all()
-        blocked_friend = user in chat.blocked_users.all()
+        if chat is None:
+            blocked_me = False
+            blocked_friend = False
+        else:
+            blocked_me = user0 in chat.blocked_users.all()
+            blocked_friend = user in chat.blocked_users.all()
         user_dict = {}
         for field in user._meta.fields:
             if field.name in ["id", "first_name", "last_name", "avatar"]:
