@@ -198,8 +198,11 @@ public class ChatFragment extends Fragment {
 
         if (item.getGroupId() == 0) {
             dialogue.unblockUser();
-        } else {
+        } else if (item.getGroupId() == 1) {
             dialogue.blockUser();
+        } else {
+            dialogue.hideChat();
+            adapter.notifyDataSetChanged();
         }
 
         return super.onContextItemSelected(item);
@@ -277,7 +280,7 @@ public class ChatFragment extends Fragment {
                 } else if (dialogue.canBlock()) {
                     menu.add(1, dialogue.getUserID(), 0, context.getString(R.string.dialogue_block));
                 }
-
+                menu.add(2, dialogue.getUserID(), 0, R.string.delete_chat);
             }
 
             @Override

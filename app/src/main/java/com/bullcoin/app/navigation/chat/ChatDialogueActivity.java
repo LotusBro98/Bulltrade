@@ -329,6 +329,7 @@ public class ChatDialogueActivity extends LocalizedActivity {
             FromFriendViewHolder(View itemView) {
                 super(itemView);
                 friend_avatar = itemView.findViewById(R.id.friend_avatar);
+                itemView.setOnCreateContextMenuListener(this);
             }
         }
     }

@@ -128,6 +128,7 @@ def get_users(request: HttpRequest):
 
     if query == "":
         chats = Chat.objects.filter(users=user0)
+        chats = chats.exclude(hidden_users=user0)
         users = User.objects.filter(chat__in=chats).distinct()
         if user0 in users:
             self_chat = Chat.objects.annotate(users_count=Count('users')).filter(users=user0).filter(users_count=1)
@@ -183,6 +184,8 @@ def get_messages(request: HttpRequest):
         messages = Message.objects.filter(chat=chat, seq__gte=from_n)
     else:
         messages = Message.objects.filter(chat=chat)
+
+    messages = messages.exclude(id_from=friend_id, hidden=True)
 
     messages = {
         "messages": [
@@ -245,7 +248,11 @@ def delete_message(request: HttpRequest):
 
     message: Message = Message.objects.get(seq=seq, chat=chat)
     if message is not None:
-        message.delete()
+        if message.id_from != user_id:
+            message.hidden = True
+            message.save()
+        else:
+            message.delete()
 
     return HttpResponse("Ok", content_type="text/html")
 
@@ -254,6 +261,7 @@ def set_block(request: HttpRequest):
     user_id = int(request.GET["user_id"])
     friend_id = int(request.GET["friend_id"])
     block = request.GET["block"] == "1"
+    hide = request.GET["hide"] == "1" if "hide" in request.GET else False
 
     user = User.objects.get(id=user_id)
     friend = User.objects.get(id=friend_id)
@@ -268,6 +276,10 @@ def set_block(request: HttpRequest):
         chat.blocked_users.add(user)
     else:
         chat.blocked_users.remove(user)
+
+    if hide:
+        chat.hidden_users.add(user)
+
     chat.save()
 
     return HttpResponse("Ok", content_type="text/html")

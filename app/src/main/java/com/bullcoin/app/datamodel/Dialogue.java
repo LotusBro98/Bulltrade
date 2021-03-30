@@ -199,12 +199,17 @@ public class Dialogue {
 
     public void unblockUser() {
         blockedMe = false;
-        new SetBlockedTask(this, false).execute();
+        new SetBlockedTask(this, false, false).execute();
     }
 
     public void blockUser() {
         blockedMe = true;
-        new SetBlockedTask(this, true).execute();
+        new SetBlockedTask(this, true, false).execute();
+    }
+
+    public void hideChat() {
+        new SetBlockedTask(this, false, true).execute();
+        DataModel.get().getDialogues().remove(this);
     }
 
     class SendMessageTask extends AsyncTask<Void, Void, String> {
@@ -280,10 +285,12 @@ public class Dialogue {
     class SetBlockedTask extends AsyncTask<Void, Void, String> {
         Dialogue dialogue;
         boolean block;
+        boolean hide;
 
-        SetBlockedTask(Dialogue dialogue, boolean block) {
+        SetBlockedTask(Dialogue dialogue, boolean block, boolean hide) {
             this.dialogue = dialogue;
             this.block = block;
+            this.hide = hide;
         }
 
         @Override
@@ -293,6 +300,7 @@ public class Dialogue {
                 args.put("user_id", String.valueOf(DataModel.get().getUserID()));
                 args.put("friend_id", String.valueOf(dialogue.userID));
                 args.put("block", block ? "1" : "0");
+                args.put("hide", hide ? "1" : "0");
                 return DataModel.doGet("set_block", args);
             } catch (Exception e) {
                 e.printStackTrace();

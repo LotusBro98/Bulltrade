@@ -130,5 +130,6 @@
     <string name="message_delete">Löschen</string>
     <string name="dialogue_block">Benutzer blockieren</string>
     <string name="dialogue_unblock">Benutzer entsperren</string>
+    <string name="delete_chat">Löschen chat</string>
 
 </resources>

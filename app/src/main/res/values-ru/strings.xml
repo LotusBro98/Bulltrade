@@ -130,5 +130,6 @@
     <string name="message_delete">Удалить</string>
     <string name="dialogue_block">Заблокировать</string>
     <string name="dialogue_unblock">Разблокировать</string>
+    <string name="delete_chat">Удалить чат</string>
 
 </resources>
