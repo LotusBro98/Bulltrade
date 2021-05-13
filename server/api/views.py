@@ -83,7 +83,10 @@ def get_avatar(request: HttpRequest):
 
     user = User.objects.get(id=user_id)
     if user is not None:
-        return HttpResponse(user.avatar_base64, content_type="text/html")
+        if hasattr(user, "avatar"):
+            return HttpResponse(user.avatar, content_type="text/html")
+        else:
+            return HttpResponse("None", content_type="text/html")
     else:
         return HttpResponse("User not found", content_type="text/html", status=404)
 
