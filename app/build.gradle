@@ -5,13 +5,13 @@ plugins {
 android.defaultConfig.vectorDrawables.useSupportLibrary = true
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.bullcoin.app"
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 4
         versionName "1.2.1"
 
@@ -28,6 +28,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.bullcoin.app'
 }
 
 dependencies {
