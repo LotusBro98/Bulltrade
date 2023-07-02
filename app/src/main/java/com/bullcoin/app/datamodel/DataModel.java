@@ -63,7 +63,7 @@ public class DataModel {
         return tradingAssistant;
     }
 
-    private static final String BASE_URL = "http://82.148.29.197:8000/";
+    private static final String BASE_URL = "http://91.215.154.157/";
 
     private int userID;
 

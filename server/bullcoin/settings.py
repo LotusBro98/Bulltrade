@@ -124,4 +124,4 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-BASE_URL = "http://82.148.29.197:8000"
+BASE_URL = "http://91.215.154.157"
