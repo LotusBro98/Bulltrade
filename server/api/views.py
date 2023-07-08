@@ -18,6 +18,18 @@ from .models import User, Chat, Message
 
 
 def index(request):
+    return render(request, 'index.html')
+
+
+def delete(request):
+    return render(request, 'delete.html')
+
+
+def privacy(request):
+    return render(request, 'privacy.html')
+
+
+def all_users(request):
     users = User.objects.all()
     users_list = []
     for user in users:
